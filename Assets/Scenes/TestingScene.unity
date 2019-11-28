@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: 0
-  HorizontalSpeed: 10
+  HorizontalSpeed: 300
   JumpForce: 0
 --- !u!1 &474346175
 GameObject:
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: 1
-  HorizontalSpeed: 10
+  HorizontalSpeed: 300
   JumpForce: 0
 --- !u!1 &1173606892
 GameObject:
