@@ -97,9 +97,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KeyboardPlayer: 1
   ControllerNumber: 0
-  HorizontalSpeed: 10
-  VerticalSpeed: 10
+  HorizontalSpeed: 5
+  VerticalSpeed: 5
   HeldObject: {fileID: 0}
+  HeldOffset: {x: 0, y: 0.9}
 --- !u!60 &5909937672650158148
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -173,5 +174,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4, y: 1.6}
+  m_Size: {x: 1.4, y: 1.8}
   m_EdgeRadius: 0

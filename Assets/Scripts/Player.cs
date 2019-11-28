@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public GameObject HeldObject;
     public Vector2 HeldOffset;
     private List<Collider2D> colliders = new List<Collider2D>();
+    private bool Holding;
 
     private Rigidbody2D rb;
 
@@ -32,11 +33,34 @@ public class Player : MonoBehaviour
         if (KeyboardPlayer)
         {
             rb.velocity = new Vector2(Input.GetAxis("KeyboardHorizontal") * HorizontalSpeed, Input.GetAxis("KeyboardVertical") * VerticalSpeed);
-
-            if (Input.GetButton("KeyboardGrab") && colliders.Count > 0)
+            if (colliders.Count > 0)
             {
-                colliders[0].transform.position = gameObject.transform.position + new Vector3(HeldOffset.x, HeldOffset.y);
+                if (Input.GetButton("KeyboardGrab"))
+                {
+                    colliders[0].transform.position = gameObject.transform.position + new Vector3(HeldOffset.x, HeldOffset.y);
+                    colliders[0].transform.rotation = transform.rotation;
+                    if (colliders[0].GetComponent<Gun>()?.held == false)
+                    {
+                        colliders[0].GetComponent<Rigidbody2D>().isKinematic = true;
+                        colliders[0].GetComponent<Rigidbody2D>().freezeRotation = true;
+                        colliders[0].GetComponent<Gun>().held = true;
+                    }
+                }
+                else
+                {
+                    foreach (Collider2D item in colliders)
+                    {
+                        if (colliders[0].GetComponent<Gun>()?.held == true)
+                        {
+                            colliders[0].GetComponent<Rigidbody2D>().isKinematic = false;
+                            colliders[0].GetComponent<Rigidbody2D>().freezeRotation = false;
+                            colliders[0].GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
+                            colliders[0].GetComponent<Gun>().held = false;
+                        }
+                    }
+                }
             }
+
         }
     }
 
