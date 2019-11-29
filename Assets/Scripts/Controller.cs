@@ -6,7 +6,7 @@ using UnityEngine;
 public enum Control
 {
     LeftStickXAxis, LeftStickYAxis, Triggers, RightStickXAxis, RightStickYAxis, DPadXAxis, DPadYAxis, Unused, LeftTrigger, RightTrigger,
-    A, B, X, Y, LB, RB, Back, Start, LeftStick, RightStick
+    A, B, X, Y, LeftBumper, RightBumper, Back, Start, LeftStick, RightStick
 }
 
 public class Controller : MonoBehaviour

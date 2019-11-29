@@ -95,12 +95,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788d66fada34a7446893045af3a4faa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KeyboardPlayer: 1
-  ControllerNumber: 0
-  HorizontalSpeed: 5
-  VerticalSpeed: 5
+  controller: {fileID: 0}
+  HorizontalSpeed: 10
+  VerticalSpeed: 10
   HeldObject: {fileID: 0}
   HeldOffset: {x: 0, y: 0.9}
+  MoveHorizontal: 0
+  MoveVertical: 1
+  LookHorizontal: 3
+  LookVertical: 4
+  Grab: 14
+  Shoot: 15
 --- !u!60 &5909937672650158148
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +168,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.20210385}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -174,5 +179,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4, y: 1.8}
+  m_Size: {x: 1.4, y: 2.2042077}
   m_EdgeRadius: 0

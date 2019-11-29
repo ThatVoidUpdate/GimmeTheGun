@@ -31,7 +31,7 @@ public class ControllerInputCreator : EditorWindow
                     output.Append(i.ToString());
                     output.Append("Axis");
                     output.Append(j.ToString());
-                    output.Append("\n    descriptiveName:\n    descriptiveNegativeName:\n    negativeButton: \n    positiveButton:\n    altNegativeButton: \n    altPositiveButton:\n    gravity: 0\n    dead: 0.19\n    sensitivity: 1\n    snap: 0\n    invert: 0\n    type: 2");
+                    output.Append("\n    descriptiveName:\n    descriptiveNegativeName:\n    negativeButton: \n    positiveButton:\n    altNegativeButton: \n    altPositiveButton:\n    gravity: 0\n    dead: 0\n    sensitivity: 1\n    snap: 0\n    invert: 0\n    type: 2");
                     output.Append("\n    axis: ");
                     output.Append(j.ToString());
                     output.Append("\n    joyNum: ");
