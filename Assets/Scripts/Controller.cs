@@ -27,11 +27,6 @@ public class Controller : MonoBehaviour
 
     public void Start()
     {
-        if (ControllerID > 1)
-        {
-            Debug.LogError("ControllerID is too large, setting to 4");
-            ControllerID = 1;
-        }
         if (ControllerID < 0)
         {
             Debug.LogError("ControllerID is too small, setting to 0");

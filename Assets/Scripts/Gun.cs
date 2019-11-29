@@ -6,16 +6,29 @@ public class Gun : MonoBehaviour
 {
     public bool held;
 
+    [Space]
+    public float ShotsPerSecond;
+    public bool Shooting;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float TimeSinceShot = 999;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Shooting)
+        {
+            if (TimeSinceShot > (1/ShotsPerSecond))
+            {
+                Shoot();
+                TimeSinceShot = 0;
+            }
+        }
+
+        TimeSinceShot += Time.deltaTime;
+    }
+
+    public void Shoot()
+    {
+        GetComponent<AudioSource>().Play();
     }
 }

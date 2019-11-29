@@ -52,10 +52,7 @@ public class Player : MonoBehaviour
                     colliders[0].GetComponent<Gun>().held = true;
                 }
 
-                if (controller.ControlState[Shoot] == 1)
-                {
-                    Debug.Log("Pew!!");
-                }
+                colliders[0].GetComponent<Gun>().Shooting = controller.ControlState[Shoot] == 1;
             }
             else
             {
@@ -67,6 +64,7 @@ public class Player : MonoBehaviour
                         colliders[0].GetComponent<Rigidbody2D>().freezeRotation = false;
                         colliders[0].GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
                         colliders[0].GetComponent<Gun>().held = false;
+                        colliders[0].GetComponent<Gun>().Shooting = false;
                     }
                 }
             }
