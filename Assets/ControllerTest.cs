@@ -23,4 +23,9 @@ public class ControllerTest : MonoBehaviour
         float value = controller.ControlState[InteractControl];
         self.color = new Color(value, value, value);
     }
+
+    public void SetInput(int control)
+    {
+        InteractControl = (Control)control;
+    }
 }
