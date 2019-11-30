@@ -5,25 +5,29 @@ using System.Text;
 
 public class ControllerInputCreator : EditorWindow
 {
-    int Controllers;
+    int MaxControllers;
+    float DeadZone;
 
-    [MenuItem("Window/Controllers")]
+    [MenuItem("Window/Controller Input")]
     static void Init()
     {
         // Get existing open window or if none, make a new one:
-        ControllerInputCreator window = (ControllerInputCreator)EditorWindow.GetWindow(typeof(ControllerInputCreator));
+        ControllerInputCreator window = (ControllerInputCreator)GetWindow(typeof(ControllerInputCreator));
         window.Show();
     }
 
     void OnGUI()
     {
         EditorGUILayout.LabelField("The max amount of controllers");
-        Controllers = EditorGUILayout.IntField(Controllers);
+        MaxControllers = EditorGUILayout.IntField(MaxControllers);
+
+        EditorGUILayout.LabelField("The deadzone in the middle of the axes");
+        DeadZone = EditorGUILayout.FloatField(DeadZone);
 
         if (GUILayout.Button("Write InputManager"))
         {
             StringBuilder output = new StringBuilder("%YAML 1.1\n% TAG!u! tag: unity3d.com, 2011:\n---!u!13 & 1\nInputManager: \n  m_ObjectHideFlags: 0\n  serializedVersion: 2\n  m_Axes: ");
-            for (int i = 0; i < Controllers; i++)
+            for (int i = 0; i < MaxControllers; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
@@ -31,7 +35,10 @@ public class ControllerInputCreator : EditorWindow
                     output.Append(i.ToString());
                     output.Append("Axis");
                     output.Append(j.ToString());
-                    output.Append("\n    descriptiveName:\n    descriptiveNegativeName:\n    negativeButton: \n    positiveButton:\n    altNegativeButton: \n    altPositiveButton:\n    gravity: 0\n    dead: 0\n    sensitivity: 1\n    snap: 0\n    invert: 0\n    type: 2");
+                    output.Append("\n    descriptiveName:\n    descriptiveNegativeName:\n    negativeButton: \n    positiveButton:\n    altNegativeButton: \n    altPositiveButton:\n    gravity: 0");
+                    output.Append("\n    dead: ");
+                    output.Append(DeadZone.ToString());
+                    output.Append("\n    sensitivity: 1\n    snap: 0\n    invert: 0\n    type: 2");
                     output.Append("\n    axis: ");
                     output.Append(j.ToString());
                     output.Append("\n    joyNum: ");
@@ -43,7 +50,6 @@ public class ControllerInputCreator : EditorWindow
             
             File.WriteAllText(@"ProjectSettings\InputManager.asset", output.ToString());
             Debug.Log("Done rewriting input settings");
-
         }
     }
 }

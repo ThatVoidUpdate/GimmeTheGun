@@ -25,10 +25,25 @@ public class Gun : MonoBehaviour
         }
 
         TimeSinceShot += Time.deltaTime;
+
+        Debug.DrawRay(transform.position + transform.up * 0.3f, transform.up * 999, Color.blue);
     }
 
     public void Shoot()
     {
         GetComponent<AudioSource>().Play();
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.up * 0.3f, transform.up * 100);
+        if (hit.collider != null)
+        {
+            Debug.Log("Hit Something: " + hit.collider.gameObject.name);
+
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                
+            }
+        }
+
+
     }
 }
