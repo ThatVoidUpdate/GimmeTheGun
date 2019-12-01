@@ -10,6 +10,10 @@ public class Gun : MonoBehaviour
     public float ShotsPerSecond;
     public bool Shooting;
 
+    [Space]
+    public GameObject bullet;
+    public float BulletSpeed = 10;
+
     private float TimeSinceShot = 999;
 
     // Update is called once per frame
@@ -33,6 +37,10 @@ public class Gun : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
 
+        GameObject currentBullet = Instantiate(bullet, transform.position + transform.up * 0.3f, transform.rotation);
+        currentBullet.GetComponent<Rigidbody2D>().velocity = currentBullet.transform.up * BulletSpeed;
+
+        /*
         RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.up * 0.3f, transform.up * 100);
         if (hit.collider != null)
         {
@@ -43,6 +51,7 @@ public class Gun : MonoBehaviour
                 
             }
         }
+        */
 
 
     }
