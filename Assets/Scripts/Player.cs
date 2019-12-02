@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed);
         if (colliders.Count > 0)
         {
@@ -100,11 +102,15 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!colliders.Contains(other)) { colliders.Add(other); }
+        if (!colliders.Contains(other) && other.gameObject.CompareTag("Gun")) { colliders.Add(other); }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        colliders.Remove(other);
+        if (other.gameObject.CompareTag("Gun"))
+        {
+            colliders.Remove(other);
+        }
+        
     }
 }
