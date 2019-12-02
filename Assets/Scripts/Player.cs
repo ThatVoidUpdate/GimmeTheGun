@@ -102,15 +102,22 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!colliders.Contains(other) && other.gameObject.CompareTag("Gun")) { colliders.Add(other); }
+        if (!colliders.Contains(other) && other.gameObject.CompareTag("Gun")) 
+        { 
+            colliders.Add(other);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Gun"))
         {
+            colliders.Find(x => x == other).GetComponent<Gun>().held = false;
+            colliders.Find(x => x == other).GetComponent<Gun>().Shooting = false;
+
             colliders.Remove(other);
         }
+
         
     }
 }

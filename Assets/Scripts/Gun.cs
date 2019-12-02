@@ -19,7 +19,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Shooting)
+        if (Shooting && held)
         {
             if (TimeSinceShot > (1/ShotsPerSecond))
             {
@@ -27,6 +27,8 @@ public class Gun : MonoBehaviour
                 TimeSinceShot = 0;
             }
         }
+
+       
 
         TimeSinceShot += Time.deltaTime;
 
@@ -40,18 +42,7 @@ public class Gun : MonoBehaviour
         GameObject currentBullet = Instantiate(bullet, transform.position + transform.up * 0.3f, transform.rotation);
         currentBullet.GetComponent<Rigidbody2D>().velocity = currentBullet.transform.up * BulletSpeed;
 
-        /*
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.up * 0.3f, transform.up * 100);
-        if (hit.collider != null)
-        {
-            Debug.Log("Hit Something: " + hit.collider.gameObject.name);
-
-            if (hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                
-            }
-        }
-        */
+        
 
 
     }
