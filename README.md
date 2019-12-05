@@ -1,2 +1,2 @@
-# Team15
-Github repository for the game pitch for Team 15
+# Gimme The Gun!
+A game by White Flag Games
