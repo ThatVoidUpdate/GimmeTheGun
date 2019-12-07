@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2917426517756723987}
   - component: {fileID: 481474815076443483}
   - component: {fileID: 4869492900279892062}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -146,6 +146,7 @@ MonoBehaviour:
   ShotsPerSecond: 2
   Shooting: 0
   bullet: {fileID: 8585553154183444644, guid: 64775e72051d38b4882d7f152135aa73, type: 3}
+  BulletSpeed: 10
 --- !u!82 &4869492900279892062
 AudioSource:
   m_ObjectHideFlags: 0
