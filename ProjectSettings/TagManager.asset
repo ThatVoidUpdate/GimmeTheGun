@@ -17,10 +17,10 @@ TagManager:
   - 
   - 
   - Enemies
-  - 
-  - 
-  - 
-  - 
+  - OuterWalls
+  - InnerWalls
+  - Bullet
+  - Gun
   - 
   - 
   - 
