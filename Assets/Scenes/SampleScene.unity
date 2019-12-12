@@ -281,7 +281,6 @@ GameObject:
   - component: {fileID: 224865257}
   - component: {fileID: 224865256}
   - component: {fileID: 224865255}
-  - component: {fileID: 224865254}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -289,22 +288,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &224865254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 224865253}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c0b6a982c3eff428e814fe73f13921, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  Released: 0
-  MenuOpen: 0
-  MenuHolder: {fileID: 1485583629}
 --- !u!114 &224865255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,12 +487,15 @@ MonoBehaviour:
   controllerObject: {fileID: 5464134633549716322, guid: e676989d627e51d4ebe5e6bfb7015081,
     type: 3}
   players: []
-  playerCount: 4
+  playerCount: 2
   gunOffset: {x: 0, y: 1, z: 0}
   gunPrefab: {fileID: 2417027060427022117, guid: 8e79f6c625ec32b4fb66f5bc8e6d6448,
     type: 3}
   enemySpawnerPrefab: {fileID: 7484206180223878757, guid: 8db7b13bcaafaea48a8f30950e4c0349,
     type: 3}
+  enemyPrefab: {fileID: 8048073611069811309, guid: 6ae7e1f932c55dd44ab93051a7157326,
+    type: 3}
+  spawners: []
 --- !u!4 &644290164
 Transform:
   m_ObjectHideFlags: 0
@@ -630,7 +616,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -5.627462}
+  m_Offset: {x: 0, y: -5.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -641,7 +627,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18, y: 1.3549242}
+  m_Size: {x: 18, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &1245897999
 BoxCollider2D:
@@ -656,7 +642,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 5.891193}
+  m_Offset: {x: 0, y: 5.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -667,7 +653,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18, y: 1.8823862}
+  m_Size: {x: 18, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1245898002
 SpriteRenderer:

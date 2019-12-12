@@ -22,6 +22,11 @@ public class LevelManager : MonoBehaviour
     [Space]
     public GameObject gunPrefab;
     public GameObject enemySpawnerPrefab;
+    public GameObject enemyPrefab;
+
+    [Space]
+    public List<GameObject> spawners = new List<GameObject>();
+
 
     private float gameWidthLessWalls;
     private float gameWidth;
@@ -70,8 +75,21 @@ public class LevelManager : MonoBehaviour
                 Instantiate(gunPrefab, new Vector3(((gameWidth / 2) - innerWallWidth / 2) / 2, 0, 0) + gunOffset, Quaternion.identity);
 
                 //create the enemy spawners
-                Instantiate(enemySpawnerPrefab, new Vector3(((gameWidth / 2) - innerWallWidth / 2) / 2, gameHeight / 2, 0), Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[0];
-                Instantiate(enemySpawnerPrefab, new Vector3(-((gameWidth / 2) + innerWallWidth / 2) / 2, gameHeight / 2, 0), Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[1];
+                spawners.Add(Instantiate(enemySpawnerPrefab, new Vector3(((gameWidth / 2) - innerWallWidth / 2) / 2, gameHeight / 2, 0), Quaternion.identity));
+                spawners.Add(Instantiate(enemySpawnerPrefab, new Vector3(-((gameWidth / 2) + innerWallWidth / 2) / 2, gameHeight / 2, 0), Quaternion.identity));
+
+                for (int i = 0; i < spawners.Count; i++)
+                {
+                    spawners[i].GetComponent<Spawner>().EnemyTarget = players[i];
+                }
+
+                Debug.Log(spawners);
+
+                foreach (GameObject spawner in spawners)
+                {
+                    spawner.GetComponent<Spawner>().waves = new List<Wave>() { new Wave(new GameObject[] { enemyPrefab }, new int[] { 1 }) };
+                    Debug.Log("Set spawner " + spawner + " waves");
+                }
                 break;
             case 3:
                 //set up the board for 3 players.
