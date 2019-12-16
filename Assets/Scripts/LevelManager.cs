@@ -8,11 +8,11 @@ public class LevelManager : MonoBehaviour
     private float innerWallWidth = 0.1f;    
 
     [Header("Players")]
-    public List<GameObject> players = new List<GameObject>();
+    private List<GameObject> players = new List<GameObject>();
     public int playerCount = 2;
 
-    [Space]
-    public Vector3 gunOffset;
+    //[Space]
+    private Vector3 gunOffset = new Vector3(0,1,0);
 
     [Header("Prefabs")]
     public GameObject gunPrefab;
@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     public GameObject horizontalWallPrefab;
 
     [Space]
-    public List<GameObject> spawners = new List<GameObject>();
+    private List<GameObject> spawners = new List<GameObject>();
 
 
     private float gameWidthLessWalls;
