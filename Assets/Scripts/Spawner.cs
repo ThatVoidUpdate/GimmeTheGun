@@ -26,7 +26,6 @@ public class Spawner : MonoBehaviour
 
     IEnumerator NextWave()
     {
-        Debug.Log(waves[0]);
         for (int i = 0; i < waves[CurrentWave-1].Enemies.Length; i++)
         {
             for (int j = 0; j < waves[CurrentWave-1].Amounts[i]; j++)

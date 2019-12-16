@@ -5,24 +5,23 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [Header("Inner Walls")]
-    public float innerWallWidth = 0.1f;
-    public GameObject innerWall;
-    
+    private float innerWallWidth = 0.1f;    
 
     [Header("Players")]
-    public GameObject playerPrefab;
-    public GameObject controllerObject;
-    [Space]
     public List<GameObject> players = new List<GameObject>();
+    public int playerCount = 2;
 
     [Space]
-    public int playerCount = 2;
     public Vector3 gunOffset;
 
-    [Space]
+    [Header("Prefabs")]
     public GameObject gunPrefab;
     public GameObject enemySpawnerPrefab;
     public GameObject enemyPrefab;
+    public GameObject playerPrefab;
+    public GameObject controllerPrefab;
+    public GameObject verticalWallPrefab;
+    public GameObject horizontalWallPrefab;
 
     [Space]
     public List<GameObject> spawners = new List<GameObject>();
@@ -48,7 +47,12 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("Player count greater than 4, which is not allowed. Resetting to 4");
             playerCount = 4;
         }
-        
+
+        innerWallWidth = verticalWallPrefab.GetComponent<BoxCollider2D>().size.x * verticalWallPrefab.transform.localScale.x;
+
+        Instantiate(horizontalWallPrefab, new Vector2(0, (gameHeight / 2f) + 0.5f), Quaternion.identity).transform.localScale = new Vector2(gameWidth, 1f);
+        Instantiate(horizontalWallPrefab, new Vector2(0, -(gameHeight / 2f) - 0.5f), Quaternion.identity).transform.localScale = new Vector2(gameWidth, 1f);
+
 
         switch (playerCount)
         {
@@ -56,19 +60,19 @@ public class LevelManager : MonoBehaviour
                 //set up the board for 2 players.                
 
                 //Create all the walls
-                Instantiate(innerWall, Vector3.zero, Quaternion.identity).layer = 10;
-                Instantiate(innerWall, new Vector3((gameWidth / 2) - innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
-                Instantiate(innerWall, new Vector3(- (gameWidth / 2) + innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
+                Instantiate(verticalWallPrefab, Vector3.zero, Quaternion.identity).layer = 10;
+                Instantiate(verticalWallPrefab, new Vector3((gameWidth / 2) - innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
+                Instantiate(verticalWallPrefab, new Vector3(- (gameWidth / 2) + innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
 
                 //Create the players
                 players.Add(Instantiate(playerPrefab, new Vector3( ((gameWidth / 2) - innerWallWidth / 2) / 2, 0, 0), Quaternion.identity));
                 players.Add(Instantiate(playerPrefab, new Vector3(-((gameWidth / 2) + innerWallWidth / 2) / 2, 0, 0), Quaternion.identity));
 
                 //Set up the controllers
-                players[0].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[0].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[0].GetComponent<Player>().controller.ControllerID = 0;
 
-                players[1].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[1].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[1].GetComponent<Player>().controller.ControllerID = 1;
 
                 //Spawn the gun
@@ -83,12 +87,9 @@ public class LevelManager : MonoBehaviour
                     spawners[i].GetComponent<Spawner>().EnemyTarget = players[i];
                 }
 
-                Debug.Log(spawners);
-
                 foreach (GameObject spawner in spawners)
                 {
                     spawner.GetComponent<Spawner>().waves = new List<Wave>() { new Wave(new GameObject[] { enemyPrefab }, new int[] { 1 }) };
-                    Debug.Log("Set spawner " + spawner + " waves");
                 }
                 break;
             case 3:
@@ -96,10 +97,10 @@ public class LevelManager : MonoBehaviour
                 gameWidthLessWalls = gameWidth - (innerWallWidth * 2);
 
                 //create all the walls
-                Instantiate(innerWall, new Vector3(gameWidthLessWalls / 6, 0, 0), Quaternion.identity).layer = 10;
-                Instantiate(innerWall, new Vector3(-gameWidthLessWalls / 6, 0, 0), Quaternion.identity).layer = 10;
-                Instantiate(innerWall, new Vector3((gameWidth / 2) - innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
-                Instantiate(innerWall, new Vector3(-(gameWidth / 2) + innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
+                Instantiate(verticalWallPrefab, new Vector3(gameWidthLessWalls / 6, 0, 0), Quaternion.identity).layer = 10;
+                Instantiate(verticalWallPrefab, new Vector3(-gameWidthLessWalls / 6, 0, 0), Quaternion.identity).layer = 10;
+                Instantiate(verticalWallPrefab, new Vector3((gameWidth / 2) - innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
+                Instantiate(verticalWallPrefab, new Vector3(-(gameWidth / 2) + innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
 
                 //create the players
                 players.Add(Instantiate(playerPrefab, Vector3.zero, Quaternion.identity));
@@ -107,13 +108,13 @@ public class LevelManager : MonoBehaviour
                 players.Add(Instantiate(playerPrefab, new Vector3(gameWidthLessWalls * -1 / 3, 0, 0), Quaternion.identity));
 
                 //set up the controllers
-                players[0].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[0].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[0].GetComponent<Player>().controller.ControllerID = 0;
 
-                players[1].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[1].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[1].GetComponent<Player>().controller.ControllerID = 1;
 
-                players[2].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[2].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[2].GetComponent<Player>().controller.ControllerID = 2;
 
                 //spawn the gun
@@ -129,11 +130,11 @@ public class LevelManager : MonoBehaviour
                 gameWidthLessWalls = gameWidth - (innerWallWidth * 2);
 
                 //create all the walls
-                Instantiate(innerWall, Vector3.zero, Quaternion.identity).layer = 10;
-                Instantiate(innerWall, new Vector3(gameWidthLessWalls / 4, 0, 0), Quaternion.identity).layer = 10;
-                Instantiate(innerWall, new Vector3(-gameWidthLessWalls / 4, 0, 0), Quaternion.identity).layer = 10;
-                Instantiate(innerWall, new Vector3((gameWidth / 2) - innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
-                Instantiate(innerWall, new Vector3(-(gameWidth / 2) + innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
+                Instantiate(verticalWallPrefab, Vector3.zero, Quaternion.identity).layer = 10;
+                Instantiate(verticalWallPrefab, new Vector3(gameWidthLessWalls / 4, 0, 0), Quaternion.identity).layer = 10;
+                Instantiate(verticalWallPrefab, new Vector3(-gameWidthLessWalls / 4, 0, 0), Quaternion.identity).layer = 10;
+                Instantiate(verticalWallPrefab, new Vector3((gameWidth / 2) - innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
+                Instantiate(verticalWallPrefab, new Vector3(-(gameWidth / 2) + innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
 
                 //Create the players
                 players.Add(Instantiate(playerPrefab, new Vector3((innerWallWidth / 2) + (gameWidthLessWalls / 8), 0, 0), Quaternion.identity));
@@ -142,16 +143,16 @@ public class LevelManager : MonoBehaviour
                 players.Add(Instantiate(playerPrefab, new Vector3(3 * (innerWallWidth / 2) + 3f * (gameWidthLessWalls / 8), 0, 0), Quaternion.identity));
 
                 //set up the controllers
-                players[0].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[0].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[0].GetComponent<Player>().controller.ControllerID = 0;
 
-                players[1].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[1].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[1].GetComponent<Player>().controller.ControllerID = 1;
 
-                players[2].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[2].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[2].GetComponent<Player>().controller.ControllerID = 2;
 
-                players[3].GetComponent<Player>().controller = Instantiate(controllerObject, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
+                players[3].GetComponent<Player>().controller = Instantiate(controllerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Controller>();
                 players[3].GetComponent<Player>().controller.ControllerID = 3;
 
                 //spawn the gun
