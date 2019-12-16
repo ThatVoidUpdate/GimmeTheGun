@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float SpawnDelay;
     public GameObject SpawnObject;
-
-    private float TimeSinceLastSpawn = 999;
 
     [Tooltip("If spawning an enemy, set this to the enemy target gameobject")]
     public GameObject EnemyTarget;
@@ -24,26 +21,18 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (TimeSinceLastSpawn >= SpawnDelay)
-        //{
-        //    GameObject Spawned = Instantiate(SpawnObject, transform.position, transform.rotation);
-        //    if (EnemyTarget != null)
-        //    {
-        //        Spawned.GetComponent<Enemy>().Target = EnemyTarget;
-        //    }
-        //    TimeSinceLastSpawn = 0;
-        //}
 
-        //TimeSinceLastSpawn += Time.deltaTime;
     }
 
     IEnumerator NextWave()
     {
-        for (int i = 0; i < waves[CurrentWave].Enemies.Length; i++)
+        Debug.Log(waves[0]);
+        for (int i = 0; i < waves[CurrentWave-1].Enemies.Length; i++)
         {
-            for (int j = 0; j < waves[CurrentWave].Amounts[i]; j++)
+            for (int j = 0; j < waves[CurrentWave-1].Amounts[i]; j++)
             {
-                Instantiate(waves[CurrentWave].Enemies[i], transform.position, Quaternion.identity);
+                GameObject enemy = Instantiate(waves[CurrentWave-1].Enemies[i], transform.position, Quaternion.identity);
+                enemy.GetComponent<Enemy>().Target = EnemyTarget;
                 yield return new WaitForSeconds(1f);
             }
 
