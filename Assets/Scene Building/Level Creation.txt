@@ -1,0 +1,4 @@
+Level Creation:
+Level creation is currently very easy. Create a new scene with a camera, and drag in the LevelManager prefab, which is in this folder
+To set it up correctly, set the amount of players that will be playing in this scene on the LevelManager's "Player Count" variable, and if needed, change the enemy prefabs in the Prefabs section of the manager.
+All the other prefabs should be set up exactly how they are needed for the scene to initialise itself correctly
