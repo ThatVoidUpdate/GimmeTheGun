@@ -23,10 +23,11 @@ public class LevelManager : MonoBehaviour
     public GameObject verticalWallPrefab;
     public GameObject horizontalWallPrefab;
 
-    [Space]
+    [Header("Waves")]
+    public GameObject wave;
+
+
     private List<GameObject> spawners = new List<GameObject>();
-
-
     private float gameWidthLessWalls;
     private float gameWidth;
     private float gameHeight;
@@ -34,6 +35,9 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        transform.position = Vector3.zero;
+
         gameHeight = Camera.main.orthographicSize * 2;
         gameWidth = gameHeight * Camera.main.aspect;
 
@@ -86,11 +90,6 @@ public class LevelManager : MonoBehaviour
                 {
                     spawners[i].GetComponent<Spawner>().EnemyTarget = players[i];
                 }
-
-                foreach (GameObject spawner in spawners)
-                {
-                    spawner.GetComponent<Spawner>().waves = new List<Wave>() { new Wave(new GameObject[] { enemyPrefab }, new int[] { 1 }) };
-                }
                 break;
             case 3:
                 //set up the board for 3 players.
@@ -121,9 +120,14 @@ public class LevelManager : MonoBehaviour
                 Instantiate(gunPrefab, Vector3.zero + gunOffset, Quaternion.identity);
 
                 //create the enemy spawners
-                Instantiate(enemySpawnerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[0];
-                Instantiate(enemySpawnerPrefab, new Vector3(gameWidthLessWalls * 1 / 3, gameHeight / 2, 0), Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[1];
-                Instantiate(enemySpawnerPrefab, new Vector3(gameWidthLessWalls * -1 / 3, gameHeight / 2, 0), Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[2];
+                spawners.Add(Instantiate(enemySpawnerPrefab, Vector3.zero, Quaternion.identity));
+                spawners.Add(Instantiate(enemySpawnerPrefab, new Vector3(gameWidthLessWalls * 1 / 3, gameHeight / 2, 0), Quaternion.identity));
+                spawners.Add(Instantiate(enemySpawnerPrefab, new Vector3(gameWidthLessWalls * -1 / 3, gameHeight / 2, 0), Quaternion.identity));
+
+                for (int i = 0; i < spawners.Count; i++)
+                {
+                    spawners[i].GetComponent<Spawner>().EnemyTarget = players[i];
+                }
                 break;
             case 4:
                 //set up the board for 4 players.
@@ -159,17 +163,27 @@ public class LevelManager : MonoBehaviour
                 Instantiate(gunPrefab, new Vector3((innerWallWidth / 2) + (gameWidthLessWalls / 8), 0, 0) + gunOffset, Quaternion.identity);
 
                 //create the enemy spawners
-                Instantiate(enemySpawnerPrefab, new Vector3((innerWallWidth / 2) + (gameWidthLessWalls / 8), gameHeight / 2, 0), Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[0];
-                Instantiate(enemySpawnerPrefab, new Vector3(-(innerWallWidth / 2) - (gameWidthLessWalls / 8), gameHeight / 2, 0), Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[1];
-                Instantiate(enemySpawnerPrefab, new Vector3(-3 * (innerWallWidth / 2) - 3 * (gameWidthLessWalls / 8), gameHeight / 2, 0), Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[2];
-                Instantiate(enemySpawnerPrefab, new Vector3(3 * (innerWallWidth / 2) + 3f * (gameWidthLessWalls / 8), gameHeight / 2, 0), Quaternion.identity).GetComponent<Spawner>().EnemyTarget = players[3];
+                spawners.Add(Instantiate(enemySpawnerPrefab, new Vector3((innerWallWidth / 2) + (gameWidthLessWalls / 8), gameHeight / 2, 0), Quaternion.identity));
+                spawners.Add(Instantiate(enemySpawnerPrefab, new Vector3(-(innerWallWidth / 2) - (gameWidthLessWalls / 8), gameHeight / 2, 0), Quaternion.identity));
+                spawners.Add(Instantiate(enemySpawnerPrefab, new Vector3(-3 * (innerWallWidth / 2) - 3 * (gameWidthLessWalls / 8), gameHeight / 2, 0), Quaternion.identity));
+                spawners.Add(Instantiate(enemySpawnerPrefab, new Vector3(3 * (innerWallWidth / 2) + 3f * (gameWidthLessWalls / 8), gameHeight / 2, 0), Quaternion.identity));
+
+                for (int i = 0; i < spawners.Count; i++)
+                {
+                    spawners[i].GetComponent<Spawner>().EnemyTarget = players[i];
+                }
                 break;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
+        wave.GetComponent<WaveAnimation>().manager = this;
+
+    }
+    
+    public void SpawnEnemies(GameObject Enemy)
     {
-        
+        foreach (GameObject spawner in spawners)
+        {
+            spawner.GetComponent<Spawner>().SpawnEnemy(Enemy);
+        }
     }
 }

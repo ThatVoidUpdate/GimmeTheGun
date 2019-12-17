@@ -13,28 +13,19 @@ public class Spawner : MonoBehaviour
     public List<Wave> waves;
     public int CurrentWave = 1;
 
-    public void Start()
-    {
-        StartCoroutine(NextWave());
-    }
-
     // Update is called once per frame
     void Update()
     {
 
     }
 
-    IEnumerator NextWave()
+    public void SpawnEnemy(GameObject Enemy)
     {
-        for (int i = 0; i < waves[CurrentWave-1].Enemies.Length; i++)
+        if (Enemy != null)
         {
-            for (int j = 0; j < waves[CurrentWave-1].Amounts[i]; j++)
-            {
-                GameObject enemy = Instantiate(waves[CurrentWave-1].Enemies[i], transform.position, Quaternion.identity);
-                enemy.GetComponent<Enemy>().Target = EnemyTarget;
-                yield return new WaitForSeconds(1f);
-            }
-
+            Instantiate(Enemy, transform.position, transform.rotation).GetComponent<Enemy>().Target = EnemyTarget;
         }
     }
+
+
 }
