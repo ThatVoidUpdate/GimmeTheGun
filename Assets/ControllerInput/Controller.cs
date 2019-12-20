@@ -47,7 +47,7 @@ public class Controller : MonoBehaviour
             ControlState.Add(control, 0);
         }
     }
-    void Update()
+    public void Update()
     {
         
         string output = "";

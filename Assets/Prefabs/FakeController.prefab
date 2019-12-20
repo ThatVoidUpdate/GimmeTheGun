@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &171144227381610535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5488861777550429014}
+  - component: {fileID: 1929977944275626617}
+  m_Layer: 0
+  m_Name: FakeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5488861777550429014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171144227381610535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3686533, y: -0.33619067, z: -0.04296875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1929977944275626617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171144227381610535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5538e2311765243814613c5b4af28b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ControllerID: 0
+  Buttons: 00000000000000000000
+  Axes:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  LeftStickXAxisPositive: 100
+  LeftStickXAxisNegative: 97
+  LeftStickYAxisPositive: 119
+  LeftStickYAxisNegative: 115
+  RightStickXAxisPositive: 0
+  RightStickXAxisNegative: 0
+  RightStickYAxisPositive: 0
+  RightStickYAxisNegative: 0
+  DPadUp: 0
+  DPadDown: 0
+  DPadLeft: 0
+  DPadRight: 0
+  LeftTrigger: 113
+  RightTrigger: 101
+  A: 0
+  B: 0
+  X: 0
+  Y: 0
+  LeftBumper: 0
+  RightBumper: 0
+  BackButton: 0
+  StartButton: 0
+  LeftStick: 0
+  RightStick: 0

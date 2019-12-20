@@ -10,19 +10,51 @@ using UnityEngine;
 //    A, B, X, Y, LeftBumper, RightBumper, Back, Start, LeftStick, RightStick
 //}
 
-public class FakeController : MonoBehaviour
+public class FakeController : Controller
 {
-    [Header("Controller ID")]
-    [Tooltip("The controller index to listen to, as given by Unity")]
-    public int ControllerID = 0;
+    //[Header("Controller ID")]
+    //[Tooltip("The controller index to listen to, as given by Unity")]
+    //public int ControllerID = 0;
 
-    [Header("Controller State")]
-    public bool[] Buttons = new bool[10];
-    public float[] Axes = new float[10];
+    //[Header("Controller State")]
+    //public bool[] Buttons = new bool[10];
+    //public float[] Axes = new float[10];
 
-    public Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
+    [Header("Keyboard - Controller assignments")]
+    public KeyCode LeftStickXAxisPositive;
+    public KeyCode LeftStickXAxisNegative;
+    public KeyCode LeftStickYAxisPositive;
+    public KeyCode LeftStickYAxisNegative;
+    public KeyCode RightStickXAxisPositive;
+    public KeyCode RightStickXAxisNegative;
+    public KeyCode RightStickYAxisPositive;
+    public KeyCode RightStickYAxisNegative;
 
-    public void Start()
+    public KeyCode DPadUp;
+    public KeyCode DPadDown;
+    public KeyCode DPadLeft;
+    public KeyCode DPadRight;
+
+    public KeyCode LeftTrigger;
+    public KeyCode RightTrigger;
+
+    public KeyCode A;
+    public KeyCode B;
+    public KeyCode X;
+    public KeyCode Y;
+
+    public KeyCode LeftBumper;
+    public KeyCode RightBumper;
+
+    public KeyCode BackButton;
+    public KeyCode StartButton;
+    public KeyCode LeftStick;
+    public KeyCode RightStick;
+
+
+    //public Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
+
+    public new void Start()
     {
         //We need to check that the controller is in a valid range. We cant listen to a controller below 0.
         if (ControllerID < 0)
@@ -38,21 +70,40 @@ public class FakeController : MonoBehaviour
         }
     }
 
-    void Update()
+    public new void Update()
     {
-        //Loop over every button on the specific controller, and save its value to the control dictionary
-        for (int i = 0; i < 10; i++)
-        {
-            //Set the correct button to the button state, in both the array and the dictionary
-            Buttons[i] = Input.GetKey("joystick " + (ControllerID + 1) + " button " + i);
-            ControlState[(Control)(i + 10)] = Buttons[i] ? 1 : 0;
-        }
+        ControlState[Control.LeftStickXAxis] = Input.GetKey(LeftStickXAxisPositive) ? 1 : (Input.GetKey(LeftStickXAxisNegative) ? -1 : 0);
+        ControlState[Control.LeftStickYAxis] = Input.GetKey(LeftStickYAxisPositive) ? 1 : (Input.GetKey(LeftStickYAxisNegative) ? -1 : 0);
+        ControlState[Control.RightStickXAxis] = Input.GetKey(RightStickXAxisPositive) ? 1 : (Input.GetKey(RightStickXAxisNegative) ? -1 : 0);
+        ControlState[Control.RightStickYAxis] = Input.GetKey(RightStickYAxisPositive) ? 1 : (Input.GetKey(RightStickYAxisNegative) ? -1 : 0);
+
+        ControlState[Control.DPadXAxis] = Input.GetKey(DPadLeft) ? 1 : (Input.GetKey(DPadRight) ? -1 : 0);
+        ControlState[Control.DPadYAxis] = Input.GetKey(DPadUp) ? 1 : (Input.GetKey(DPadDown) ? -1 : 0);
+
+        ControlState[Control.LeftTrigger] = Input.GetKey(LeftTrigger) ? 1 : 0;
+        ControlState[Control.RightTrigger] = Input.GetKey(RightTrigger) ? 1 : 0;
+        ControlState[Control.Triggers] = Input.GetKey(RightTrigger) ? 1 : (Input.GetKey(LeftTrigger) ? -1 : 0);
+
+        ControlState[Control.A] = Input.GetKey(A) ? 1 : 0;
+        ControlState[Control.B] = Input.GetKey(B) ? 1 : 0;
+        ControlState[Control.X] = Input.GetKey(X) ? 1 : 0;
+        ControlState[Control.Y] = Input.GetKey(Y) ? 1 : 0;
+
+        ControlState[Control.LeftBumper] = Input.GetKey(LeftBumper) ? 1 : 0;
+        ControlState[Control.RightBumper] = Input.GetKey(RightBumper) ? 1 : 0;
+
+        ControlState[Control.Back] = Input.GetKey(BackButton) ? 1 : 0;
+        ControlState[Control.Start] = Input.GetKey(StartButton) ? 1 : 0;
+        ControlState[Control.LeftStick] = Input.GetKey(LeftStick) ? 1 : 0;
+        ControlState[Control.RightStick] = Input.GetKey(RightStick) ? 1 : 0;
 
         for (int i = 0; i < 10; i++)
         {
-            //Set the correct axis to the axis value in the array and the dictionary
-            Axes[i] = Input.GetAxis("Joy" + ControllerID + "Axis" + i);
-            ControlState[(Control)i] = Axes[i];
+            Buttons[i] = ControlState[(Control)(i + 10)] == 1;
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            Axes[i] = ControlState[(Control)i];
         }
     }
 }
