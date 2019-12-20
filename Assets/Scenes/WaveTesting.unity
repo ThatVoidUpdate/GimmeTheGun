@@ -334,6 +334,12 @@ PrefabInstance:
         type: 3}
       propertyPath: wave
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1141707433}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df42c4354a22ee4c9906f508e7b3cfb, type: 3}
+--- !u!1 &1141707433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8878568450563630676, guid: 6c4f43e53d300f34180ff588742792cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 289742549}
+  m_PrefabAsset: {fileID: 0}
