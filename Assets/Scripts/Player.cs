@@ -8,18 +8,18 @@ public enum PlayerGraphics {Blue, Green, Orange, Pink, Purple, Yellow}
 public class Player : MonoBehaviour
 {
     [Header("Control Options")]
-    public Controller controller;
+    public Controller controller; //The controller that his player is listening to
 
     [Header("Speeds")]
     public float HorizontalSpeed;
-    public float VerticalSpeed;
+    public float VerticalSpeed; //The ohirzontal and vertical speed of the player
 
     [Header("Held object options")]
-    public GameObject HeldObject;
+    public GameObject HeldObject; //The object that the player is currently holding
     //public Vector2 HeldOffset;
-    public float HeldDistance;
-    private List<Collider2D> colliders = new List<Collider2D>();
-    private bool Holding;
+    public float HeldDistance; //The distance to hold the object at
+    private List<Collider2D> closeGuns = new List<Collider2D>(); //A list of all the guns in the trigger
+    private bool Holding; //Whether the player is holding on to something
 
     [Header("Controls")]
     public Control MoveHorizontal;
@@ -27,21 +27,22 @@ public class Player : MonoBehaviour
     public Control LookHorizontal;
     public Control LookVertical;
     public Control Grab;
-    public Control Shoot;
+    public Control Shoot; //The controls for each of the respective actions
 
     [Header("Graphics")]
-    public PlayerGraphics Graphics;
+    public PlayerGraphics Graphics; //The sprite to render the player with
 
     private Rigidbody2D rb;
-    private float theta = 90;
+    private float theta = 90; //The current angle of the rotation stick
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
+        //Select the correct image from the resources folder, depeding on the player graphic selected
         switch (Graphics)
-        {
+        {//Select the correct iamge freom the resources folder, and load it
             case PlayerGraphics.Blue:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Blue");
                 break;
@@ -65,43 +66,46 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+
     void Update()
     {       
 
-        rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed);
-        if (colliders.Count > 0)
+        rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed); //Set the movement speed according to the controller input
+        if (closeGuns.Count > 0)
         {
             if (controller.ControlState[Grab] == 1)
             {
                 //colliders[0].transform.position = transform.TransformPoint(new Vector3(HeldOffset.x, HeldOffset.y));
-                colliders[0].transform.position = new Vector2(transform.position.x + HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360), transform.position.y + HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360));
-                colliders[0].transform.eulerAngles = new Vector3(0, 0, theta - 90);
-                if (colliders[0].GetComponent<Gun>()?.held == false)
+
+                //Set the position and rotation of the gun, using the angle of the stick assigned to the gun movement
+                closeGuns[0].transform.position = new Vector2(transform.position.x + HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360), transform.position.y + HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360));
+                closeGuns[0].transform.eulerAngles = new Vector3(0, 0, theta - 90);
+
+
+                if (closeGuns[0].GetComponent<Gun>()?.held == false)
                 {
-                    colliders[0].GetComponent<Rigidbody2D>().isKinematic = true;
-                    colliders[0].GetComponent<Rigidbody2D>().freezeRotation = true;
-                    colliders[0].GetComponent<Gun>().held = true;
+                    closeGuns[0].GetComponent<Rigidbody2D>().freezeRotation = true;
+                    closeGuns[0].GetComponent<Gun>().held = true;
                 }
 
-                colliders[0].GetComponent<Gun>().Shooting = controller.ControlState[Shoot] == 1;
+                closeGuns[0].GetComponent<Gun>().Shooting = controller.ControlState[Shoot] == 1;
             }
             else
             {
-                foreach (Collider2D item in colliders)
+                foreach (Collider2D item in closeGuns)
                 {
-                    if (colliders[0].GetComponent<Gun>()?.held == true)
+                    if (closeGuns[0].GetComponent<Gun>()?.held == true)
                     {
-                        colliders[0].GetComponent<Rigidbody2D>().isKinematic = false;
-                        colliders[0].GetComponent<Rigidbody2D>().freezeRotation = false;
-                        colliders[0].GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
-                        colliders[0].GetComponent<Gun>().held = false;
-                        colliders[0].GetComponent<Gun>().Shooting = false;
+                        closeGuns[0].GetComponent<Rigidbody2D>().freezeRotation = false;
+                        closeGuns[0].GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
+                        closeGuns[0].GetComponent<Gun>().held = false;
+                        closeGuns[0].GetComponent<Gun>().Shooting = false;
                     }
                 }
             }
         }
 
+        //Maths to get the angle of the stick assigned to rotation
         if (controller.ControlState[LookVertical] != 0 || controller.ControlState[LookHorizontal] != 0)
         {
             if (Mathf.Atan(controller.ControlState[LookVertical] / controller.ControlState[LookHorizontal]) / Mathf.PI == 0.5)
@@ -126,28 +130,26 @@ public class Player : MonoBehaviour
             theta += Mathf.PI;
             theta = theta * -360 / (2 * Mathf.PI);
         }
-        
-        //transform.rotation = Quaternion.Euler(0, 0, theta);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!colliders.Contains(other) && other.gameObject.CompareTag("Gun")) 
+        //Whenever an object enters the trigger around the player, and it has the tag Gun and isnt in the colliders list, add it to the colliders list
+        if (!closeGuns.Contains(other) && other.gameObject.CompareTag("Gun")) 
         { 
-            colliders.Add(other);
+            closeGuns.Add(other);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        //If a gun move out of the trigger, stop it from shooting and being held, and remove it from the colliders list
         if (other.gameObject.CompareTag("Gun"))
         {
-            colliders.Find(x => x == other).GetComponent<Gun>().held = false;
-            colliders.Find(x => x == other).GetComponent<Gun>().Shooting = false;
+            closeGuns.Find(x => x == other).GetComponent<Gun>().held = false;
+            closeGuns.Find(x => x == other).GetComponent<Gun>().Shooting = false;
 
-            colliders.Remove(other);
-        }
-
-        
+            closeGuns.Remove(other);
+        }        
     }
 }
