@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     public PlayerGraphics Graphics;
 
     private Rigidbody2D rb;
-    private float theta = 0;
+    private float theta = 90;
 
     // Start is called before the first frame update
     void Start()
