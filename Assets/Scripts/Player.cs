@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
 
     [Header("Held object options")]
     public GameObject HeldObject;
-    public Vector2 HeldOffset;
+    //public Vector2 HeldOffset;
+    public float HeldDistance;
     private List<Collider2D> colliders = new List<Collider2D>();
     private bool Holding;
 
@@ -73,8 +74,9 @@ public class Player : MonoBehaviour
         {
             if (controller.ControlState[Grab] == 1)
             {
-                colliders[0].transform.position = transform.TransformPoint(new Vector3(HeldOffset.x, HeldOffset.y));
-                colliders[0].transform.rotation = transform.rotation;
+                //colliders[0].transform.position = transform.TransformPoint(new Vector3(HeldOffset.x, HeldOffset.y));
+                colliders[0].transform.position = new Vector2(transform.position.x + HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360), transform.position.y + HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360));
+                colliders[0].transform.eulerAngles = new Vector3(0, 0, theta - 90);
                 if (colliders[0].GetComponent<Gun>()?.held == false)
                 {
                     colliders[0].GetComponent<Rigidbody2D>().isKinematic = true;
@@ -121,11 +123,11 @@ public class Player : MonoBehaviour
                  theta += Mathf.PI;
             }
 
-            theta -= Mathf.PI / 2;
+            theta += Mathf.PI;
             theta = theta * -360 / (2 * Mathf.PI);
         }
         
-        transform.rotation = Quaternion.Euler(0, 0, theta);
+        //transform.rotation = Quaternion.Euler(0, 0, theta);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
