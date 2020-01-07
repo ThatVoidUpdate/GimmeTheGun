@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerGraphics {Blue, Green, Orange, Pink, Purple, Yellow}
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
@@ -26,6 +28,9 @@ public class Player : MonoBehaviour
     public Control Grab;
     public Control Shoot;
 
+    [Header("Graphics")]
+    public PlayerGraphics Graphics;
+
     private Rigidbody2D rb;
     private float theta = 0;
 
@@ -33,12 +38,35 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        switch (Graphics)
+        {
+            case PlayerGraphics.Blue:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Blue");
+                break;
+            case PlayerGraphics.Green:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Green");
+                break;
+            case PlayerGraphics.Orange:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Orange");
+                break;
+            case PlayerGraphics.Pink:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Pink");
+                break;
+            case PlayerGraphics.Purple:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Purple");
+                break;
+            case PlayerGraphics.Yellow:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Yellow");
+                break;
+            default:
+                break;
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {       
 
         rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed);
         if (colliders.Count > 0)
