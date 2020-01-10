@@ -79,43 +79,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {       
-        rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed); //Set the movement speed according to the controller input
-
-        /*if (closeGuns.Count > 0)
-        {
-            if (controller.ControlState[Grab] == 1)
-            {
-                //colliders[0].transform.position = transform.TransformPoint(new Vector3(HeldOffset.x, HeldOffset.y));
-
-                //Set the position and rotation of the gun, using the angle of the stick assigned to the gun movement
-                closeGuns[0].transform.position = new Vector2(transform.position.x + HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360), transform.position.y + HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360));
-                closeGuns[0].transform.eulerAngles = new Vector3(0, 0, theta - 90);
-
-
-                if (closeGuns[0].GetComponent<Gun>()?.held == false)
-                {
-                    closeGuns[0].GetComponent<Rigidbody2D>().freezeRotation = true;
-                    closeGuns[0].GetComponent<Gun>().held = true;
-                }
-
-                closeGuns[0].GetComponent<Gun>().Shooting = controller.ControlState[Shoot] == 1;
-            }
-            else
-            {
-                foreach (Collider2D item in closeGuns)
-                {
-                    if (closeGuns[0].GetComponent<Gun>()?.held == true)
-                    {
-                        closeGuns[0].GetComponent<Rigidbody2D>().freezeRotation = false;
-                        closeGuns[0].GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
-                        closeGuns[0].GetComponent<Gun>().held = false;
-                        closeGuns[0].GetComponent<Gun>().Shooting = false;
-                    }
-                }
-            }
-        }*/
-
-        
+        rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed); //Set the movement speed according to the controller input        
 
         if (controller.GetControllerDown(Grab) && closeGuns.Count > 0 && HeldObject == null)
         {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun
@@ -124,7 +88,7 @@ public class Player : MonoBehaviour
         }
 
         if (controller.ControlState[Grab] == 0)
-        {
+        {//Let the player drop the gun after they release the grab button
             CanDrop = true;
         }
 
@@ -133,17 +97,18 @@ public class Player : MonoBehaviour
             HeldObject.GetComponent<Gun>().Shooting = true;
         }
         else if (controller.ControlState[Shoot] == 0 && HeldObject != null)
-        {//We are trying to shoot, and we are holding a gun
+        {//We are trying to not shoot, and we are holding a gun
             HeldObject.GetComponent<Gun>().Shooting = false;
         }
 
         if (controller.GetControllerDown(Grab) && HeldObject != null && CanDrop)
         {//We are holding a gun, and trying to drop it
+            HeldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(ThrowSpeed * Mathf.Cos(theta * 2 * Mathf.PI / 360), ThrowSpeed * Mathf.Sin(theta * 2 * Mathf.PI / 360));
             HeldObject = null;
         }
 
         if (HeldObject != null)
-        {
+        {//We are holding a gun, so move it around the player
             HeldObject.transform.position = new Vector2(transform.position.x + (HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360)), transform.position.y + (HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360)));
             HeldObject.transform.eulerAngles = new Vector3(0, 0, theta - 90);
         }
@@ -173,26 +138,29 @@ public class Player : MonoBehaviour
             theta += Mathf.PI;
             theta = theta * -360 / (2 * Mathf.PI);
 
-            if (theta < -315 && theta > -405 && CurrentDirection != Direction.Left )
-            {
-                CurrentDirection = Direction.Left;
-                rend.sprite = RightSprite;
-            }
-            else if (theta < -225 && theta > -315 && CurrentDirection != Direction.Up)
-            {
-                CurrentDirection = Direction.Up;
-                rend.sprite = UpSprite;
-            }
-            else if (theta < -135 && theta > -225 && CurrentDirection != Direction.Right)
-            {
-                CurrentDirection = Direction.Right;
-                rend.sprite = LeftSprite;
-            }
-            else if ((theta > -135 || theta < -405) && CurrentDirection != Direction.Down)
-            {
-                CurrentDirection = Direction.Down;
-                rend.sprite = DownSprite;
-            }
+            
+        }
+
+        //Set the current sprite to the correct one for the looking angle
+        if (theta < -315 && theta > -405 && CurrentDirection != Direction.Left)
+        {
+            CurrentDirection = Direction.Left;
+            rend.sprite = RightSprite;
+        }
+        else if (theta < -225 && theta > -315 && CurrentDirection != Direction.Up)
+        {
+            CurrentDirection = Direction.Up;
+            rend.sprite = UpSprite;
+        }
+        else if (theta < -135 && theta > -225 && CurrentDirection != Direction.Right)
+        {
+            CurrentDirection = Direction.Right;
+            rend.sprite = LeftSprite;
+        }
+        else if ((theta > -135 || theta < -405) && CurrentDirection != Direction.Down)
+        {
+            CurrentDirection = Direction.Down;
+            rend.sprite = DownSprite;
         }
     }
 
