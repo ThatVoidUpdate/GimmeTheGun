@@ -11,12 +11,6 @@ public class Spawner : MonoBehaviour
     public List<Wave> waves;
     public int CurrentWave = 1;
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SpawnEnemy(GameObject Enemy)
     {
         if (Enemy != null)
@@ -24,6 +18,4 @@ public class Spawner : MonoBehaviour
             Instantiate(Enemy, transform.position, transform.rotation).GetComponent<Enemy>().Target = EnemyTarget;
         }
     }
-
-
 }

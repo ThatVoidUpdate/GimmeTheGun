@@ -26,11 +26,13 @@ public class Controller : MonoBehaviour
 
     public Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
 
+    //Used for GetControllerDown and GetControllerUp. Stored in order of axes (9-0), buttons (9-0)
+    private int ControlStateInt;
+    private int OldControlStateInt;
+
     [Space]
     [Tooltip("Enabling this will give a debug log of every button pressed and axis moved, every frame")]
     public bool Verbose;
-
-
 
     public void Start()
     {
@@ -49,7 +51,9 @@ public class Controller : MonoBehaviour
     }
     public void Update()
     {
-        
+        OldControlStateInt = ControlStateInt;
+        ControlStateInt = 0;
+
         string output = "";
 
         //Loop over every button on the specific controller, and save its value to the control dictionary
@@ -66,6 +70,7 @@ public class Controller : MonoBehaviour
             //Set the correct button to the button state, in both the array and the dictionary
             Buttons[i] = Input.GetKey("joystick " + (ControllerID + 1) + " button " + i);
             ControlState[(Control)(i + 10)] = Buttons[i] ? 1 : 0;
+            ControlStateInt += Buttons[i] ? (int)Mathf.Pow(2, i + 10): 0;
         }
 
         for (int i = 0; i < 10; i++)
@@ -81,11 +86,18 @@ public class Controller : MonoBehaviour
             //Set the correct axis to the axis value in the array and the dictionary
             Axes[i] = Input.GetAxis("Joy" + ControllerID + "Axis" + i);
             ControlState[(Control)i] = Axes[i];
+            ControlStateInt += Axes[i] == 1 ? (int)Mathf.Pow(2, i) : 0;
         }
 
         if (output != "" && Verbose)
         {
             Debug.Log(output);
-        }        
+        }
+    }
+
+    public bool GetControllerDown(Control control)
+    {
+        int ControlsDown = ~OldControlStateInt & ControlStateInt;
+        return (ControlsDown & (1 << (int)control)) != 0;
     }
 }

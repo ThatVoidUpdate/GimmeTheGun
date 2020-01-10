@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerGraphics {Blue, Green, Orange, Pink, Purple, Yellow}
-public enum Direction { North, South, East, West}
+public enum Direction { Up, Down, Right, Left}
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -16,11 +15,12 @@ public class Player : MonoBehaviour
     public float VerticalSpeed; //The ohirzontal and vertical speed of the player
 
     [Header("Held object options")]
-    public GameObject HeldObject; //The object that the player is currently holding
-    //public Vector2 HeldOffset;
+    public GameObject HeldObject = null; //The object that the player is currently holding
     public float HeldDistance; //The distance to hold the object at
-    private List<Collider2D> closeGuns = new List<Collider2D>(); //A list of all the guns in the trigger
-    private bool Holding; //Whether the player is holding on to something
+    public float ThrowSpeed;
+
+    public List<Collider2D> closeGuns = new List<Collider2D>(); //A list of all the guns in the trigger
+    private bool CanDrop = true;
 
     [Header("Controls")]
     public Control MoveHorizontal;
@@ -31,17 +31,16 @@ public class Player : MonoBehaviour
     public Control Shoot; //The controls for each of the respective actions
 
     [Header("Graphics")]
-    public PlayerGraphics Graphics; //The sprite to render the player with
     public Sprite UpSprite;
     public Sprite DownSprite;
     public Sprite LeftSprite;
-    public Sprite RightSprite;
+    public Sprite RightSprite; //The sprites for each of their respective directions
 
     private Rigidbody2D rb;
     public float theta = 90; //The current angle of the rotation stick
 
     private SpriteRenderer rend;
-    private Direction CurrentDirection = Direction.South;
+    private Direction CurrentDirection = Direction.Down;
 
     // Start is called before the first frame update
     void Start()
@@ -80,10 +79,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {       
-
         rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed); //Set the movement speed according to the controller input
 
-        if (closeGuns.Count > 0)
+        /*if (closeGuns.Count > 0)
         {
             if (controller.ControlState[Grab] == 1)
             {
@@ -115,6 +113,39 @@ public class Player : MonoBehaviour
                     }
                 }
             }
+        }*/
+
+        
+
+        if (controller.GetControllerDown(Grab) && closeGuns.Count > 0 && HeldObject == null)
+        {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun
+            HeldObject = closeGuns[0].gameObject;
+            CanDrop = false;
+        }
+
+        if (controller.ControlState[Grab] == 0)
+        {
+            CanDrop = true;
+        }
+
+        if (controller.ControlState[Shoot] == 1 && HeldObject != null)
+        {//We are trying to shoot, and we are holding a gun
+            HeldObject.GetComponent<Gun>().Shooting = true;
+        }
+        else if (controller.ControlState[Shoot] == 0 && HeldObject != null)
+        {//We are trying to shoot, and we are holding a gun
+            HeldObject.GetComponent<Gun>().Shooting = false;
+        }
+
+        if (controller.GetControllerDown(Grab) && HeldObject != null && CanDrop)
+        {//We are holding a gun, and trying to drop it
+            HeldObject = null;
+        }
+
+        if (HeldObject != null)
+        {
+            HeldObject.transform.position = new Vector2(transform.position.x + (HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360)), transform.position.y + (HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360)));
+            HeldObject.transform.eulerAngles = new Vector3(0, 0, theta - 90);
         }
 
         //Maths to get the angle of the stick assigned to rotation
@@ -142,24 +173,24 @@ public class Player : MonoBehaviour
             theta += Mathf.PI;
             theta = theta * -360 / (2 * Mathf.PI);
 
-            if (theta < -315 && theta > -405 && CurrentDirection != Direction.West )
+            if (theta < -315 && theta > -405 && CurrentDirection != Direction.Left )
             {
-                CurrentDirection = Direction.West;
+                CurrentDirection = Direction.Left;
                 rend.sprite = RightSprite;
             }
-            else if (theta < -225 && theta > -315 && CurrentDirection != Direction.North)
+            else if (theta < -225 && theta > -315 && CurrentDirection != Direction.Up)
             {
-                CurrentDirection = Direction.North;
+                CurrentDirection = Direction.Up;
                 rend.sprite = UpSprite;
             }
-            else if (theta < -135 && theta > -225 && CurrentDirection != Direction.East)
+            else if (theta < -135 && theta > -225 && CurrentDirection != Direction.Right)
             {
-                CurrentDirection = Direction.East;
+                CurrentDirection = Direction.Right;
                 rend.sprite = LeftSprite;
             }
-            else if ((theta > -135 || theta < -405) && CurrentDirection != Direction.South)
+            else if ((theta > -135 || theta < -405) && CurrentDirection != Direction.Down)
             {
-                CurrentDirection = Direction.South;
+                CurrentDirection = Direction.Down;
                 rend.sprite = DownSprite;
             }
         }
@@ -179,7 +210,7 @@ public class Player : MonoBehaviour
         //If a gun move out of the trigger, stop it from shooting and being held, and remove it from the colliders list
         if (other.gameObject.CompareTag("Gun"))
         {
-            closeGuns.Find(x => x == other).GetComponent<Gun>().held = false;
+            //closeGuns.Find(x => x == other).GetComponent<Gun>().held = false;
             closeGuns.Find(x => x == other).GetComponent<Gun>().Shooting = false;
 
             closeGuns.Remove(other);

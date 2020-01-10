@@ -179,15 +179,6 @@ public class LevelManager : MonoBehaviour
         }
 
         wave.GetComponent<WaveAnimation>().Spawners = spawners;
-        //wave.GetComponent<WaveAnimation>().manager = this;
 
     }
-    
-    /*public void SpawnEnemies(GameObject Enemy)
-    {
-        foreach (GameObject spawner in spawners)
-        {
-            spawner.GetComponent<Spawner>().SpawnEnemy(Enemy);
-        }
-    }*/
 }
