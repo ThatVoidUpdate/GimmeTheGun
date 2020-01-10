@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float VerticalSpeed; //The ohirzontal and vertical speed of the player
 
     [Header("Held object options")]
-    public GameObject HeldObject = null; //The object that the player is currently holding
+    public Gun HeldObject = null; //The object that the player is currently holding
     public float HeldDistance; //The distance to hold the object at
     public float ThrowSpeed;
 
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 
         if (controller.GetControllerDown(Grab) && closeGuns.Count > 0 && HeldObject == null)
         {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun
-            HeldObject = closeGuns[0].gameObject;
+            HeldObject = closeGuns[0].GetComponent<Gun>();
             CanDrop = false;
         }
 
@@ -109,8 +109,11 @@ public class Player : MonoBehaviour
 
         if (HeldObject != null)
         {//We are holding a gun, so move it around the player
-            HeldObject.transform.position = new Vector2(transform.position.x + (HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360)), transform.position.y + (HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360)));
-            HeldObject.transform.eulerAngles = new Vector3(0, 0, theta - 90);
+            //HeldObject.transform.position = new Vector2(transform.position.x + (HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360)), transform.position.y + (HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360)));
+            //HeldObject.transform.eulerAngles = new Vector3(0, 0, theta - 90);
+            HeldObject.SetAngle(theta, transform.position);
+            print(theta);
+
         }
 
         //Maths to get the angle of the stick assigned to rotation
