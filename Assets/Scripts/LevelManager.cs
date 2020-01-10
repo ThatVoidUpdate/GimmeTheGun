@@ -64,7 +64,10 @@ public class LevelManager : MonoBehaviour
                 //set up the board for 2 players.                
 
                 //Create all the walls
-                Instantiate(verticalWallPrefab, Vector3.zero, Quaternion.identity).layer = 10;
+                GameObject CenterWall = Instantiate(verticalWallPrefab, Vector3.zero, Quaternion.identity);
+                CenterWall.layer = 10;
+                CenterWall.transform.localScale = new Vector3(0.024f, 1, 1);
+
                 Instantiate(verticalWallPrefab, new Vector3((gameWidth / 2) - innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
                 Instantiate(verticalWallPrefab, new Vector3(- (gameWidth / 2) + innerWallWidth / 2, 0, 0), Quaternion.identity).layer = 9;
 

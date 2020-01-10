@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlayerGraphics {Blue, Green, Orange, Pink, Purple, Yellow}
+public enum Direction { North, South, East, West}
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -31,16 +32,26 @@ public class Player : MonoBehaviour
 
     [Header("Graphics")]
     public PlayerGraphics Graphics; //The sprite to render the player with
+    public Sprite UpSprite;
+    public Sprite DownSprite;
+    public Sprite LeftSprite;
+    public Sprite RightSprite;
 
     private Rigidbody2D rb;
-    private float theta = 90; //The current angle of the rotation stick
+    public float theta = 90; //The current angle of the rotation stick
+
+    private SpriteRenderer rend;
+    private Direction CurrentDirection = Direction.South;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rend = GetComponent<SpriteRenderer>();
 
-        //Select the correct image from the resources folder, depeding on the player graphic selected
+        rend.sprite = DownSprite;
+
+        /*Select the correct image from the resources folder, depeding on the player graphic selected
         switch (Graphics)
         {//Select the correct iamge freom the resources folder, and load it
             case PlayerGraphics.Blue:
@@ -63,7 +74,7 @@ public class Player : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
 
@@ -71,6 +82,7 @@ public class Player : MonoBehaviour
     {       
 
         rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed); //Set the movement speed according to the controller input
+
         if (closeGuns.Count > 0)
         {
             if (controller.ControlState[Grab] == 1)
@@ -129,6 +141,27 @@ public class Player : MonoBehaviour
 
             theta += Mathf.PI;
             theta = theta * -360 / (2 * Mathf.PI);
+
+            if (theta < -315 && theta > -405 && CurrentDirection != Direction.West )
+            {
+                CurrentDirection = Direction.West;
+                rend.sprite = RightSprite;
+            }
+            else if (theta < -225 && theta > -315 && CurrentDirection != Direction.North)
+            {
+                CurrentDirection = Direction.North;
+                rend.sprite = UpSprite;
+            }
+            else if (theta < -135 && theta > -225 && CurrentDirection != Direction.East)
+            {
+                CurrentDirection = Direction.East;
+                rend.sprite = LeftSprite;
+            }
+            else if ((theta > -135 || theta < -405) && CurrentDirection != Direction.South)
+            {
+                CurrentDirection = Direction.South;
+                rend.sprite = DownSprite;
+            }
         }
     }
 
