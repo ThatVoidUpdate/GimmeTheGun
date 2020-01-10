@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject SpawnObject;
-
     [Tooltip("If spawning an enemy, set this to the enemy target gameobject")]
     public GameObject EnemyTarget;
 

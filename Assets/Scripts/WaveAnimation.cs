@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class WaveAnimation : MonoBehaviour
 {
-    public LevelManager manager;
+
+    public List<GameObject> Spawners;
 
     public void WaveTrigger(GameObject Enemy)
     {
-        manager.SpawnEnemies(Enemy);
+        foreach (GameObject spawner in Spawners)
+        {
+            spawner.GetComponent<Spawner>()?.SpawnEnemy(Enemy);
+        }
     }
 }
