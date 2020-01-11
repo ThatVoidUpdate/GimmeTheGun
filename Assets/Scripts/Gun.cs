@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
     private SpriteRenderer rend;
 
     private bool UsingParticleSystem = false;
+    private bool GunSide; //Left is true, right is false
 
     public void Start()
     {
@@ -48,20 +49,29 @@ public class Gun : MonoBehaviour
 
     public void SetAngle(float angle, Vector2 PlayerPosition)
     {
-        if (angle > -270 )
-        {
-            //rend.sprite = Left;
+
+        if (angle < -270 - 45 && GunSide)
+        {//gun is pointing more clockwise than up-right. if its on the left side, it needs to be on the right
+            GunSide = false;
+        }
+
+        if (angle > -270 + 45 && !GunSide)
+        {//gun is pointing more anticlockwise than up-left. if its on the right side, it needs to be on the left
+            GunSide = true;
+        }
+
+        if (GunSide)
+        {//gun is on the left side of the player
             transform.position = PlayerPosition + new Vector2(-HeldDistance, 0);
             transform.eulerAngles = new Vector3(0, 0, angle);
             transform.localScale = new Vector2(1, -1);
         }
-        else if (angle < -270)
-        {
-            //rend.sprite = Right;
+        else
+        {//gun is on the right side of hte player
             transform.position = PlayerPosition + new Vector2(HeldDistance, 0);
             transform.eulerAngles = new Vector3(0, 0, angle);
             transform.localScale = new Vector2(1, 1);
-        }        
+        }
     }
 
     public void Shoot()
