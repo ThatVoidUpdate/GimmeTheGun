@@ -4771,7 +4771,7 @@ GameObject:
   - component: {fileID: 4111365108316363228}
   - component: {fileID: 8949747561669084377}
   m_Layer: 12
-  m_Name: Shotgun Variant
+  m_Name: Shotgun
   m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4899,7 +4899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5d564035ee0dd4fb98dc8931ea6e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShotsPerSecond: 2
+  ShotsPerSecond: 0.5
   Shooting: 0
   bullet: {fileID: 8585553154183444644, guid: 64775e72051d38b4882d7f152135aa73, type: 3}
   BulletSpeed: 10

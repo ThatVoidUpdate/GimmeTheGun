@@ -21,11 +21,17 @@ public class Enemy : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
-    {
+    {        
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
         }
+
+    }
+
+    public void OnParticleCollision(GameObject other)
+    {
+        Destroy(this.gameObject);
     }
 }
