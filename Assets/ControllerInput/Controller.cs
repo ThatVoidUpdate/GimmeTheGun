@@ -26,7 +26,7 @@ public class Controller : MonoBehaviour
 
     public Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
 
-    //Used for GetControllerDown and GetControllerUp. Stored in order of axes (9-0), buttons (9-0)
+    //Used for GetControllerDown and GetControllerUp.
     private int ControlStateInt;
     private int OldControlStateInt;
 
@@ -95,9 +95,25 @@ public class Controller : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns true on the first frame that the control is pressed
+    /// </summary>
+    /// <param name="control">The control to check for</param>
+    /// <returns>True on the first frame that the control is pressed, otherwise false</returns>
     public bool GetControllerDown(Control control)
     {
         int ControlsDown = ~OldControlStateInt & ControlStateInt;
+        return (ControlsDown & (1 << (int)control)) != 0;
+    }
+
+    /// <summary>
+    /// Returns true on the first frame that the control is released
+    /// </summary>
+    /// <param name="control">The control to check for</param>
+    /// <returns>True on the first frame that the control is released, otherwise false</returns>
+    public bool GetControllerUp(Control control)
+    {
+        int ControlsDown = OldControlStateInt & ~ControlStateInt;
         return (ControlsDown & (1 << (int)control)) != 0;
     }
 }
