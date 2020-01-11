@@ -12,15 +12,23 @@ public class Gun : MonoBehaviour
     public GameObject bullet;
     public float BulletSpeed = 10;
 
-    //[Header("Graphics")]
-    //public Sprite Graphic;
+    [Space]
+    public float HeldDistance;
+    public GameObject BulletSpawn;
 
     private float TimeSinceShot = 999;
     private SpriteRenderer rend;
 
+    private bool UsingParticleSystem = false;
+
     public void Start()
     {
         rend = GetComponent<SpriteRenderer>();
+
+        if (GetComponentInChildren<ParticleSystem>())
+        {//We are using a particle system, so switch over to particle systems
+            UsingParticleSystem = true;
+        }
     }
 
     // Update is called once per frame
@@ -35,9 +43,7 @@ public class Gun : MonoBehaviour
             }
         }      
 
-        TimeSinceShot += Time.deltaTime;
-
-        
+        TimeSinceShot += Time.deltaTime;        
     }
 
     public void SetAngle(float angle, Vector2 PlayerPosition)
@@ -45,28 +51,31 @@ public class Gun : MonoBehaviour
         if (angle > -270 )
         {
             //rend.sprite = Left;
-            transform.position = PlayerPosition + new Vector2(-1.2f, 0);
+            transform.position = PlayerPosition + new Vector2(-HeldDistance, 0);
             transform.eulerAngles = new Vector3(0, 0, angle);
             transform.localScale = new Vector2(1, -1);
         }
         else if (angle < -270)
         {
             //rend.sprite = Right;
-            transform.position = PlayerPosition + new Vector2(1.2f, 0);
+            transform.position = PlayerPosition + new Vector2(HeldDistance, 0);
             transform.eulerAngles = new Vector3(0, 0, angle);
             transform.localScale = new Vector2(1, 1);
-
-        }
-
-
-        
+        }        
     }
 
     public void Shoot()
     {
         GetComponent<AudioSource>().Play();
 
-        GameObject currentBullet = Instantiate(bullet, transform.position, transform.rotation);
-        currentBullet.GetComponent<Rigidbody2D>().velocity = currentBullet.transform.right * BulletSpeed;
+        if (UsingParticleSystem)
+        {
+            GetComponentInChildren<ParticleSystem>().Play();
+        }
+        else
+        {
+            GameObject currentBullet = Instantiate(bullet, BulletSpawn.transform.position, transform.rotation);
+            currentBullet.GetComponent<Rigidbody2D>().velocity = currentBullet.transform.right * BulletSpeed;
+        }
     }
 }

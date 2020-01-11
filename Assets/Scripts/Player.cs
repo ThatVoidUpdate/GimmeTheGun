@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
 
     [Header("Held object options")]
     public Gun HeldObject = null; //The object that the player is currently holding
-    public float HeldDistance; //The distance to hold the object at
     public float ThrowSpeed;
 
     public List<Collider2D> closeGuns = new List<Collider2D>(); //A list of all the guns in the trigger
@@ -49,31 +48,6 @@ public class Player : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
 
         rend.sprite = DownSprite;
-
-        /*Select the correct image from the resources folder, depeding on the player graphic selected
-        switch (Graphics)
-        {//Select the correct iamge freom the resources folder, and load it
-            case PlayerGraphics.Blue:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Blue");
-                break;
-            case PlayerGraphics.Green:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Green");
-                break;
-            case PlayerGraphics.Orange:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Orange");
-                break;
-            case PlayerGraphics.Pink:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Pink");
-                break;
-            case PlayerGraphics.Purple:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Purple");
-                break;
-            case PlayerGraphics.Yellow:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Squares/Yellow");
-                break;
-            default:
-                break;
-        }*/
     }
 
 
@@ -109,10 +83,7 @@ public class Player : MonoBehaviour
 
         if (HeldObject != null)
         {//We are holding a gun, so move it around the player
-            //HeldObject.transform.position = new Vector2(transform.position.x + (HeldDistance * Mathf.Cos(theta * 2 * Mathf.PI / 360)), transform.position.y + (HeldDistance * Mathf.Sin(theta * 2 * Mathf.PI / 360)));
-            //HeldObject.transform.eulerAngles = new Vector3(0, 0, theta - 90);
             HeldObject.SetAngle(theta, transform.position);
-            print(theta);
 
         }
 
