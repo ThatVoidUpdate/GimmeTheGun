@@ -32,6 +32,19 @@ public class Enemy : MonoBehaviour
 
     public void OnParticleCollision(GameObject other)
     {
-        Destroy(this.gameObject);
+        Die();
+        
+    }
+
+    public void Die()
+    {
+        if (GetComponent<Smash>())
+        {
+            GetComponent<Smash>().DoSmash();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

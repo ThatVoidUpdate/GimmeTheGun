@@ -14,7 +14,7 @@ public class Smash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DoSmash();
+
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class Smash : MonoBehaviour
 
     public void DoSmash()
     {
-
+        long StartTicks = System.DateTime.Now.Ticks;
         Sprite CurrentSprite = GetComponent<SpriteRenderer>().sprite;
 
         //Generate points
@@ -40,6 +40,9 @@ public class Smash : MonoBehaviour
             float c = p1y - (m * p1x);
             Lines.Add(new float[] { m, c });
         }
+        print("Generating points took " + (System.DateTime.Now.Ticks - StartTicks) + " ticks");
+        StartTicks = System.DateTime.Now.Ticks;
+
         //Generate objs
         for (int i = 0; i < Mathf.Pow(2, LinesAmount); i++)
         {
@@ -53,6 +56,8 @@ public class Smash : MonoBehaviour
 
             Texture2D texture = new Texture2D(CurrentSprite.texture.width, CurrentSprite.texture.height, TextureFormat.ARGB32, false);
 
+
+            StartTicks = System.DateTime.Now.Ticks;
 
 
             for (int x = 0; x < texture.width; x++)
@@ -83,6 +88,8 @@ public class Smash : MonoBehaviour
                 }
             }
             texture.Apply();
+            print("Creating mask texture took " + (System.DateTime.Now.Ticks - StartTicks) + " ticks");
+            StartTicks = System.DateTime.Now.Ticks;
 
             rend.material = new Material(SmashShader);
             rend.material.SetTexture("_MainTex", CurrentSprite.texture);
@@ -92,6 +99,8 @@ public class Smash : MonoBehaviour
             rb.gravityScale = 0;
             rb.AddForce(new Vector2(Random.Range(-MaxSpeed, MaxSpeed), Random.Range(-MaxSpeed, MaxSpeed)));
             particle.AddComponent<CircleCollider2D>();
+
+            particle.transform.position = transform.position;
         }
 
         Destroy(this.gameObject);
