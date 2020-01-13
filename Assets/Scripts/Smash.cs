@@ -33,15 +33,17 @@ public class Smash : MonoBehaviour
         {
             int p1x = Random.Range(0, CurrentSprite.texture.width);
             int p1y = Random.Range(0, CurrentSprite.texture.height);
-            int p2x = Random.Range(0, CurrentSprite.texture.width);
-            int p2y = Random.Range(0, CurrentSprite.texture.height);
+            //int p2x = Random.Range(0, CurrentSprite.texture.width);
+            //int p2y = Random.Range(0, CurrentSprite.texture.height);
+            int p2x = CurrentSprite.texture.width / 2;
+            int p2y = CurrentSprite.texture.height / 2;
 
             float m = (p2y - p1y) / (p2x - p1x);
             float c = p1y - (m * p1x);
             Lines.Add(new float[] { m, c });
         }
-        print("Generating points took " + (System.DateTime.Now.Ticks - StartTicks) + " ticks");
-        StartTicks = System.DateTime.Now.Ticks;
+        //print("Generating points took " + (System.DateTime.Now.Ticks - StartTicks) + " ticks");
+        //StartTicks = System.DateTime.Now.Ticks;
 
         //Generate objs
         for (int i = 0; i < Mathf.Pow(2, LinesAmount); i++)
@@ -88,8 +90,8 @@ public class Smash : MonoBehaviour
                 }
             }
             texture.Apply();
-            print("Creating mask texture took " + (System.DateTime.Now.Ticks - StartTicks) + " ticks");
-            StartTicks = System.DateTime.Now.Ticks;
+            //print("Creating mask texture took " + (System.DateTime.Now.Ticks - StartTicks) + " ticks");
+            //StartTicks = System.DateTime.Now.Ticks;
 
             rend.material = new Material(SmashShader);
             rend.material.SetTexture("_MainTex", CurrentSprite.texture);
