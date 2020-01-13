@@ -352,7 +352,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 2
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -845,7 +845,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 500
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1050,7 +1050,7 @@ ParticleSystem:
     arc:
       value: 360
       mode: 0
-      spread: 0.46
+      spread: 0.31
       speed:
         serializedVersion: 2
         minMaxState: 0
