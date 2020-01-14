@@ -34,12 +34,20 @@ public class Player : MonoBehaviour
     public Sprite DownSprite;
     public Sprite LeftSprite;
     public Sprite RightSprite; //The sprites for each of their respective directions
+    private SpriteRenderer rend; //The sprite renderer attached to this gameobject
+    private Direction CurrentDirection = Direction.Down; //The direction that the player is currently facing
 
-    private Rigidbody2D rb;
-    public float theta = 90; //The current angle of the rotation stick
+    [Header("Health")]
+    public float MaxHealth = 100; //The maximum health of the player
+    public float Health; //The current health of the player
+    public bool dead = false; //Whether the player is dead or not
+    private float DamageTime; //How long since the enemy started doing damage
+    public float DamageSpeed; //How long it takes an enemy to do damage
 
-    private SpriteRenderer rend;
-    private Direction CurrentDirection = Direction.Down;
+    private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
+    private float theta = 90; //The current angle of the rotation stick
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +56,8 @@ public class Player : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
 
         rend.sprite = DownSprite;
+
+        MaxHealth = Health;
     }
 
 
@@ -138,13 +148,28 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    public void TakeDamage(float DamageAmount)
+    {
+        Health -= DamageAmount;
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        rend.color = new Color(1, 1, 1, 0.5f);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Whenever an object enters the trigger around the player, and it has the tag Gun and isnt in the colliders list, add it to the colliders list
         if (!closeGuns.Contains(other) && other.gameObject.CompareTag("Gun")) 
         { 
             closeGuns.Add(other);
-        }
+        }        
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -157,5 +182,27 @@ public class Player : MonoBehaviour
 
             closeGuns.Remove(other);
         }        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            DamageTime = 0;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            DamageTime += Time.deltaTime;
+        }
+
+        if (DamageTime > DamageSpeed)
+        {
+            DamageTime = 0;
+            TakeDamage(collision.gameObject.GetComponent<Enemy>().Damage);
+        }
     }
 }

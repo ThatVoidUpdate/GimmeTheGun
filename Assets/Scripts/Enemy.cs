@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     private float Health;
     public float MaxHealth;
 
+    public float Damage;// The damage to do to a player
+
     // Start is called before the first frame update
     void Start()
     {
