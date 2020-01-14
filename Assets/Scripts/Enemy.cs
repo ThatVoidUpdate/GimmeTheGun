@@ -7,10 +7,14 @@ public class Enemy : MonoBehaviour
 
     public float Speed;
     public GameObject Target;
+
+    private float Health;
+    public float MaxHealth;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Health = MaxHealth;
     }
 
     // Update is called once per frame
@@ -32,8 +36,18 @@ public class Enemy : MonoBehaviour
 
     public void OnParticleCollision(GameObject other)
     {
-        Die();
-        
+        List<Vector4> data = new List<Vector4>();
+        other.GetComponent<ParticleSystem>().GetCustomParticleData(data, ParticleSystemCustomData.Custom1);
+        TakeDamage(data[0].x);        
+    }
+
+    public void TakeDamage(float DamageAmount)
+    {
+        Health -= DamageAmount;
+        if (Health <= 0)
+        {
+            Die();
+        }
     }
 
     public void Die()
