@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
 
         rend.sprite = DownSprite;
 
-        MaxHealth = Health;
+        Health = MaxHealth;
     }
 
 
@@ -161,6 +161,7 @@ public class Player : MonoBehaviour
     public void Die()
     {
         rend.color = new Color(1, 1, 1, 0.5f);
+        dead = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -194,6 +195,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             DamageTime += Time.deltaTime;

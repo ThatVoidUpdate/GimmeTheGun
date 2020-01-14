@@ -96,6 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1
   Target: {fileID: 0}
+  MaxHealth: 100
+  Damage: 10
 --- !u!60 &3032010844547566131
 PolygonCollider2D:
   m_ObjectHideFlags: 0

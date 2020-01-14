@@ -1241,11 +1241,6 @@ PrefabInstance:
       propertyPath: Health
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 8048073611069811308, guid: 6ae7e1f932c55dd44ab93051a7157326,
-        type: 3}
-      propertyPath: MaxHealth
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ae7e1f932c55dd44ab93051a7157326, type: 3}
 --- !u!114 &1684713117 stripped
@@ -1670,6 +1665,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy2
       objectReference: {fileID: 0}
+    - target: {fileID: 2993770084012471832, guid: d7e4a61eba856f3438d9e0c9928e0e22,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4540591094270624971, guid: d7e4a61eba856f3438d9e0c9928e0e22,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1730,15 +1730,5 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1182552350}
-    - target: {fileID: 4610262153845268424, guid: d7e4a61eba856f3438d9e0c9928e0e22,
-        type: 3}
-      propertyPath: Speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4610262153845268424, guid: d7e4a61eba856f3438d9e0c9928e0e22,
-        type: 3}
-      propertyPath: MaxHealth
-      value: 140
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7e4a61eba856f3438d9e0c9928e0e22, type: 3}

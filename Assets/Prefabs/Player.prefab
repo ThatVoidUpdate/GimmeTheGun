@@ -111,7 +111,9 @@ MonoBehaviour:
   DownSprite: {fileID: 21300000, guid: 58b99274dfdf30b4fa89687f8ac8f873, type: 3}
   LeftSprite: {fileID: 21300000, guid: b02c524b6ebf2174c9227b5006a42285, type: 3}
   RightSprite: {fileID: 21300000, guid: a0437aebafb456d4d9f6dc9a1faa1649, type: 3}
-  theta: 90
+  MaxHealth: 100
+  dead: 0
+  DamageSpeed: 1
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4
