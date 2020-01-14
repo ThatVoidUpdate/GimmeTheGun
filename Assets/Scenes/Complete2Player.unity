@@ -647,22 +647,22 @@ PrefabInstance:
     - target: {fileID: 8878568450563630676, guid: 6c4f43e53d300f34180ff588742792cf,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8878568450563630699, guid: 6c4f43e53d300f34180ff588742792cf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3686533
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8878568450563630699, guid: 6c4f43e53d300f34180ff588742792cf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.33619067
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8878568450563630699, guid: 6c4f43e53d300f34180ff588742792cf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.04296875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8878568450563630699, guid: 6c4f43e53d300f34180ff588742792cf,
         type: 3}
@@ -1095,7 +1095,7 @@ PrefabInstance:
     - target: {fileID: 7180134694829683239, guid: e8ab5e1255b84f640b6b1b8fb364ed3c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7180134694829683238, guid: e8ab5e1255b84f640b6b1b8fb364ed3c,
         type: 3}
@@ -1669,6 +1669,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993770084012471832, guid: d7e4a61eba856f3438d9e0c9928e0e22,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4540591094270624971, guid: d7e4a61eba856f3438d9e0c9928e0e22,
         type: 3}

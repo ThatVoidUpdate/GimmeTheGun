@@ -65,8 +65,8 @@ public class Player : MonoBehaviour
     {       
         rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed); //Set the movement speed according to the controller input        
 
-        if (controller.GetControllerDown(Grab) && closeGuns.Count > 0 && HeldObject == null)
-        {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun
+        if (controller.GetControllerDown(Grab) && closeGuns.Count > 0 && HeldObject == null && !dead)
+        {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun, and we arent currently dead
             HeldObject = closeGuns[0].GetComponent<Gun>();
             CanDrop = false;
         }
@@ -162,6 +162,7 @@ public class Player : MonoBehaviour
     {
         rend.color = new Color(1, 1, 1, 0.5f);
         dead = true;
+        HeldObject = null;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
