@@ -177,8 +177,5 @@ public class LevelManager : MonoBehaviour
                 }
                 break;
         }
-
-        wave.GetComponent<WaveAnimation>().Spawners = spawners;
-
     }
 }

@@ -7,15 +7,28 @@ public class Spawner : MonoBehaviour
     [Tooltip("If spawning an enemy, set this to the enemy target gameobject")]
     public GameObject EnemyTarget;
 
-    [Space]
-    public List<Wave> waves;
-    public int CurrentWave = 1;
+    public List<(GameObject, int)> Wave;
 
-    public void SpawnEnemy(GameObject Enemy)
+    private float time = 0;
+
+    public void Update()
     {
-        if (Enemy != null)
+        time += Time.deltaTime;
+        if (time < 1)
         {
-            Instantiate(Enemy, transform.position, transform.rotation).GetComponent<Enemy>().Target = EnemyTarget;
+            Spawn();
+            time += 1;
+        }
+    }
+
+    public void Spawn()
+    {
+        foreach ((GameObject, int) set in Wave)
+        {
+            for (int i = 0; i < set.Item2; i++)
+            {
+                Instantiate(set.Item1, transform.position, Quaternion.identity).GetComponent<Enemy>().Target = EnemyTarget;
+            }
         }
     }
 }
