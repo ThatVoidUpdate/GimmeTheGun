@@ -20,6 +20,7 @@ public class WaveBuilder : EditorWindow
         EditorWindow.GetWindow(typeof(WaveBuilder));
         SpawnObjects.Add(null);
         SpawnAmounts.Add(0);
+        EditorStyles.label.wordWrap = true;
     }
 
     void OnGUI()
@@ -80,5 +81,7 @@ public class WaveBuilder : EditorWindow
         }
 
         GUILayout.EndHorizontal();
+
+        EditorGUILayout.LabelField("Add enemies to the wave by clicking the plus, selecting the correct enemy prefab and choosing the amount of them to spawn. When you are finished, give the wave a name, and click done. You may need to alt-tab and come back again for Unity to load the file. Then add the script as a component to a spawner object, and it will spawn the enemies");
     }
 }
