@@ -23,7 +23,6 @@ public class Spawner : MonoBehaviour
         MinY = transform.position.y + SpawnArea.offset.y - SpawnArea.size.y / 2;
         MaxX = transform.position.x + SpawnArea.offset.x + SpawnArea.size.x / 2;
         MaxY = transform.position.y + SpawnArea.offset.y + SpawnArea.size.y / 2;
-        Debug.Log(string.Format("MinX: {0}. MaxX: {1}. MinY: {2}. MaxY: {3}", MinX, MaxX, MinY, MaxY));
     }
 
     public void Update()

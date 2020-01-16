@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum Direction { Up, Down, Right, Left}
 
@@ -43,6 +44,10 @@ public class Player : MonoBehaviour
     public bool dead = false; //Whether the player is dead or not
     private float DamageTime; //How long since the enemy started doing damage
     public float DamageSpeed; //How long it takes an enemy to do damage
+
+    [Header("Bark lines")]
+    public GameObject BarkBubble;
+    public float ShowTime = 1;
 
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
@@ -151,6 +156,20 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float DamageAmount)
     {
+        Debug.Log(Health + " " + (Health - DamageAmount) + " " + (MaxHealth / 2));
+        if (Health > MaxHealth / 2 && Health - DamageAmount <= MaxHealth / 2)
+        {
+            Debug.Log("Showing bark line");
+            StartCoroutine(ShowBarkLine("That's gonna sting", ShowTime));
+        }
+
+        if (Health > MaxHealth / 10 && Health - DamageAmount <= MaxHealth / 10)
+        {
+            Debug.Log("Showing bark line");
+            StartCoroutine(ShowBarkLine("Make it stop!", ShowTime));
+        }
+
+
         Health -= DamageAmount;
         if (Health <= 0)
         {
@@ -186,5 +205,14 @@ public class Player : MonoBehaviour
             DamageTime = 0;
             TakeDamage(collision.gameObject.GetComponent<Enemy>().Damage);
         }
+    }
+
+    IEnumerator ShowBarkLine(string Line, float WaitTime)
+    {
+        BarkBubble.SetActive(true);
+        BarkBubble.GetComponentInChildren<TextMeshProUGUI>().text = Line;
+        BarkBubble.GetComponent<BarkBubble>().TrackingObject = gameObject;
+        yield return new WaitForSeconds(WaitTime);
+        BarkBubble.SetActive(false);
     }
 }
