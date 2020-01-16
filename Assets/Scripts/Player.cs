@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
     public GameObject BarkBubble;
     public float ShowTime = 1;
     public string[] DeathLines;
+    public string[] HalfHealthLines;
+    public string[] NearDeathLines;
 
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
@@ -157,17 +159,23 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float DamageAmount)
     {
-        Debug.Log(Health + " " + (Health - DamageAmount) + " " + (MaxHealth / 2));
+        
         if (Health > MaxHealth / 2 && Health - DamageAmount <= MaxHealth / 2)
         {
-            Debug.Log("Showing bark line");
-            StartCoroutine(ShowBarkLine("That's gonna sting", ShowTime));
+            
+            if (Random.Range(0f, 1f) < 0.1f)
+            {
+                StartCoroutine(ShowBarkLine(HalfHealthLines[Random.Range(0, HalfHealthLines.Length-1)], ShowTime));
+            }
         }
 
         if (Health > MaxHealth / 10 && Health - DamageAmount <= MaxHealth / 10)
         {
-            Debug.Log("Showing bark line");
-            StartCoroutine(ShowBarkLine("Make it stop!", ShowTime));
+            
+            if (Random.Range(0f, 1f) < 0.2f)
+            {
+                StartCoroutine(ShowBarkLine(NearDeathLines[Random.Range(0, NearDeathLines.Length-1)], ShowTime));
+            }
         }
 
 
@@ -182,7 +190,7 @@ public class Player : MonoBehaviour
     {
         if (Random.Range(0f,1f)<0.5f)
         {
-            StartCoroutine(ShowBarkLine(DeathLines[Random.Range(0,DeathLines.Length)], ShowTime));
+            StartCoroutine(ShowBarkLine(DeathLines[Random.Range(0,DeathLines.Length-1)], ShowTime));
         }
         
         rend.color = new Color(1, 1, 1, 0.5f);

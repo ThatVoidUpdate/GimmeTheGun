@@ -159,7 +159,7 @@ MonoBehaviour:
   HorizontalSpeed: 10
   VerticalSpeed: 10
   HeldObject: {fileID: 0}
-  ThrowSpeed: 0
+  ThrowSpeed: 30
   closeGuns: []
   MoveHorizontal: 0
   MoveVertical: 1
@@ -175,6 +175,39 @@ MonoBehaviour:
   Health: 0
   dead: 0
   DamageSpeed: 1
+  BarkBubble: {fileID: 0}
+  ShowTime: 1
+  DeathLines:
+  - "I\u2019ll be back fuckers!"
+  - "You ain\u2019t seen the last of me!"
+  - "So this is it\u2026"
+  - "I couldn\u2019t square less\u2026"
+  - They got me!
+  - Agh!
+  - Did I... *cough* Did I get a high score?
+  - At least I get to see what I unlocked now
+  HalfHealthLines:
+  - "I\u2019m hit!"
+  - Damn!
+  - "They\u2019re getting through!"
+  - Ah! Fuck!
+  - Pointy pricks!
+  - Ouch!
+  - Watch out for those pointy bits!
+  - "That\u2019s gunna sting"
+  - Just a scratch
+  - "They\u2019re not messing around "
+  NearDeathLines:
+  - "Can\u2019t take much more of this..."
+  - Make it stop!
+  - No!
+  - "I\u2019m going down\u2026"
+  - Not like this!
+  - "Don\u2019t give up!"
+  - Keep going!
+  - "Come on\u2026"
+  - I need a heal!
+  - "I\u2019m not done yet!"
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4
