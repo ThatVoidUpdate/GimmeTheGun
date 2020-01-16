@@ -27,7 +27,7 @@ public class EndlessMode : MonoBehaviour
         if (CurrentEnemies.Count == 0)
         {
             //calculate the amount of enemies we need to spawn, and spawn them
-            int EnemyCount = Mathf.CeilToInt(Level * Level / 20);
+            int EnemyCount = Mathf.CeilToInt(Level * Level / 2);
             int FastEnemyCount = Mathf.CeilToInt((Level * Level / 30) - 1) > 0 ? Mathf.CeilToInt((Level * Level / 30) - 1) : 0;
 
             foreach (Spawner spawner in SpawnPoints)
