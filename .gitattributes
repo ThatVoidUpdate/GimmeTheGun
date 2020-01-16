@@ -113,3 +113,9 @@
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
+
+##Personal modifications
+.gitattributes export-ignore
+.gitignore export-ignore
+README.md export-ignore
+/Logs/* export-ignore
