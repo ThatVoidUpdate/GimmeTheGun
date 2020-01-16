@@ -13,17 +13,21 @@ public class Enemy : MonoBehaviour
 
     public float Damage;// The damage to do to a player
 
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
         Health = MaxHealth;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //transform.LookAt(Target.transform);
-        transform.Translate((Target.transform.position - transform.position).normalized * Speed * Time.deltaTime);
+        //transform.Translate((Target.transform.position - transform.position).normalized * Speed * Time.deltaTime);]
+        rb.MovePosition(transform.position + (Target.transform.position - transform.position).normalized * Speed * Time.deltaTime);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

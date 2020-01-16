@@ -26,13 +26,9 @@ public class EndlessMode : MonoBehaviour
         {
             //calculate the amount of enemies we need to spawn, and spawn them
             int enemyCount = Mathf.CeilToInt(Level * Level / 20);
-
-            for (int i = 0; i < enemyCount; i++)
+            foreach (Spawner spawner in SpawnPoints)
             {
-                foreach (Spawner spawner in SpawnPoints)
-                {
-                    CurrentEnemies.Add(spawner.Spawn(Enemy));
-                }
+                CurrentEnemies.AddRange(spawner.Spawn(Enemy, enemyCount));
             }
 
             Level++;
