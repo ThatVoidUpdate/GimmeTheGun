@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4778435962066611655}
   - component: {fileID: 2545481912181609362}
   - component: {fileID: 5498408357728158936}
+  - component: {fileID: 999975810073300935}
   m_Layer: 0
   m_Name: FastTriangle
   m_TagString: Untagged
@@ -96,3 +97,31 @@ MonoBehaviour:
   Target: {fileID: 0}
   MaxHealth: 20
   Damage: 15
+--- !u!60 &999975810073300935
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464648849592760336}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03, y: -0.1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.4545455, y: 1.6363636}
+    newSize: {x: 1.4545455, y: 1.6363636}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.013081087, y: 0.43730327}
+      - {x: -0.5744665, y: -0.65238774}
+      - {x: 0.5940879, y: -0.65892816}
