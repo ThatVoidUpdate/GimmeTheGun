@@ -18,14 +18,14 @@ public class PlayerSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controller.GetControllerDown(NextPlayer))
+        if (controller.GetControlDown(NextPlayer))
         {
             AllPlayers[CurrentPlayer].controller = null;
             CurrentPlayer++;
             CurrentPlayer = CurrentPlayer % AllPlayers.Length;
             AllPlayers[CurrentPlayer].controller = controller;
         }
-        else if (controller.GetControllerDown(PrevPlayer))
+        else if (controller.GetControlDown(PrevPlayer))
         {
             AllPlayers[CurrentPlayer].controller = null;
             CurrentPlayer--;

@@ -118,4 +118,4 @@
 .gitattributes export-ignore
 .gitignore export-ignore
 README.md export-ignore
-/Logs/* export-ignore
+/Logs/ export-ignore

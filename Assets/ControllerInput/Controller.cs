@@ -8,7 +8,7 @@ using UnityEngine;
 public enum Control
 {
     LeftStickXAxis, LeftStickYAxis, Triggers, RightStickXAxis, RightStickYAxis, DPadXAxis, DPadYAxis, Unused, LeftTrigger, RightTrigger,
-    A, B, X, Y, LeftBumper, RightBumper, Back, Start, LeftStick, RightStick
+    South, East, West, North, LeftBumper, RightBumper, Back, Start, LeftStick, RightStick
 }
 
 /// <summary>
@@ -26,7 +26,7 @@ public class Controller : MonoBehaviour
 
     public Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
 
-    //Used for GetControllerDown and GetControllerUp.
+    //Used for GetControlDown and GetControlUp.
     private int ControlStateInt;
     private int OldControlStateInt;
 
@@ -39,7 +39,7 @@ public class Controller : MonoBehaviour
         //We need to check that the controller is in a valid range. We cant listen to a controller below 0.
         if (ControllerID < 0)
         {
-            Debug.LogError("ControllerID is too small, setting to 0");
+            Debug.LogError("ControllerID (" + ControllerID.ToString() + ") is too small, setting to 0");
             ControllerID = 0;
         }
 
@@ -51,9 +51,11 @@ public class Controller : MonoBehaviour
     }
     public void Update()
     {
+        //Reset the control states, so that GetControllerUp and GetControllerDown work
         OldControlStateInt = ControlStateInt;
         ControlStateInt = 0;
 
+        //Debug output
         string output = "";
 
         //Loop over every button on the specific controller, and save its value to the control dictionary
@@ -90,7 +92,7 @@ public class Controller : MonoBehaviour
         }
 
         if (output != "" && Verbose)
-        {
+        {//Log all the output if needed
             Debug.Log(output);
         }
     }
@@ -100,9 +102,12 @@ public class Controller : MonoBehaviour
     /// </summary>
     /// <param name="control">The control to check for</param>
     /// <returns>True on the first frame that the control is pressed, otherwise false</returns>
-    public bool GetControllerDown(Control control)
+    public bool GetControlDown(Control control)
     {
+        //ControlsDown becomes 1 wherever the old state was up, and the new state is down. 0 everywhere else
         int ControlsDown = ~OldControlStateInt & ControlStateInt;
+
+        //Extract the correct bit of the changed controls, and check if it is not 0
         return (ControlsDown & (1 << (int)control)) != 0;
     }
 
@@ -111,9 +116,12 @@ public class Controller : MonoBehaviour
     /// </summary>
     /// <param name="control">The control to check for</param>
     /// <returns>True on the first frame that the control is released, otherwise false</returns>
-    public bool GetControllerUp(Control control)
+    public bool GetControlUp(Control control)
     {
-        int ControlsDown = OldControlStateInt & ~ControlStateInt;
-        return (ControlsDown & (1 << (int)control)) != 0;
+        //ControlsDown becomes 1 wherever the old state was down, and the new state is up. 0 everywhere else
+        int ControlsUp = OldControlStateInt & ~ControlStateInt;
+
+        //Extract the correct bit of the changed controls, and check if it is not 0
+        return (ControlsUp & (1 << (int)control)) != 0;
     }
 }

@@ -46,10 +46,10 @@ public class ControllerDebug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AIndicator.color = controller.ControlState[Control.A] == 1 ? Pressed : Normal;
-        BIndicator.color = controller.ControlState[Control.B] == 1 ? Pressed : Normal;
-        XIndicator.color = controller.ControlState[Control.X] == 1 ? Pressed : Normal;
-        YIndicator.color = controller.ControlState[Control.Y] == 1 ? Pressed : Normal;
+        AIndicator.color = controller.ControlState[Control.South] == 1 ? Pressed : Normal;
+        BIndicator.color = controller.ControlState[Control.East] == 1 ? Pressed : Normal;
+        XIndicator.color = controller.ControlState[Control.West] == 1 ? Pressed : Normal;
+        YIndicator.color = controller.ControlState[Control.North] == 1 ? Pressed : Normal;
         MenuIndicator.color = controller.ControlState[Control.Start] == 1 ? Pressed : Normal;
         BackIndicator.color = controller.ControlState[Control.Back] == 1 ? Pressed : Normal;
         LeftStickIndicator.color = controller.ControlState[Control.LeftStick] == 1 ? Pressed : Normal;

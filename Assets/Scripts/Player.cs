@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     {       
         rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed); //Set the movement speed according to the controller input        
 
-        if (controller.GetControllerDown(Grab) && closeGuns.Count > 0 && HeldObject == null && !dead)
+        if (controller.GetControlDown(Grab) && closeGuns.Count > 0 && HeldObject == null && !dead)
         {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun, and we arent currently dead
             HeldObject = closeGuns[0].GetComponent<Gun>();
             CanDrop = false;
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
             HeldObject.GetComponent<Gun>().Shooting = false;
         }
 
-        if (controller.GetControllerDown(Grab) && HeldObject != null && CanDrop)
+        if (controller.GetControlDown(Grab) && HeldObject != null && CanDrop)
         {//We are holding a gun, and trying to drop it
             HeldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(ThrowSpeed * Mathf.Cos(theta * 2 * Mathf.PI / 360), ThrowSpeed * Mathf.Sin(theta * 2 * Mathf.PI / 360));
             HeldObject = null;

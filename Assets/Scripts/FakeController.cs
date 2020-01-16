@@ -84,10 +84,10 @@ public class FakeController : Controller
         ControlState[Control.RightTrigger] = Input.GetKey(RightTrigger) ? 1 : 0;
         ControlState[Control.Triggers] = Input.GetKey(RightTrigger) ? 1 : (Input.GetKey(LeftTrigger) ? -1 : 0);
 
-        ControlState[Control.A] = Input.GetKey(A) ? 1 : 0;
-        ControlState[Control.B] = Input.GetKey(B) ? 1 : 0;
-        ControlState[Control.X] = Input.GetKey(X) ? 1 : 0;
-        ControlState[Control.Y] = Input.GetKey(Y) ? 1 : 0;
+        ControlState[Control.South] = Input.GetKey(A) ? 1 : 0;
+        ControlState[Control.East] = Input.GetKey(B) ? 1 : 0;
+        ControlState[Control.West] = Input.GetKey(X) ? 1 : 0;
+        ControlState[Control.North] = Input.GetKey(Y) ? 1 : 0;
 
         ControlState[Control.LeftBumper] = Input.GetKey(LeftBumper) ? 1 : 0;
         ControlState[Control.RightBumper] = Input.GetKey(RightBumper) ? 1 : 0;

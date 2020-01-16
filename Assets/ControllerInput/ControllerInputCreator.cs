@@ -18,19 +18,24 @@ public class ControllerInputCreator : EditorWindow
 
     void OnGUI()
     {
+        //Field to hold the maximum amount of controllers that can be accessed at the same time
         EditorGUILayout.LabelField("The max amount of controllers");
         MaxControllers = EditorGUILayout.IntField(MaxControllers);
 
+        //The deadzone on controller axes, outside of which it will not return 0
         EditorGUILayout.LabelField("The deadzone in the middle of the axes");
         DeadZone = EditorGUILayout.FloatField(DeadZone);
 
+        //Button to commence the rewriting
         if (GUILayout.Button("Write InputManager"))
         {
+            //Holds the output file
             StringBuilder output = new StringBuilder("%YAML 1.1\n% TAG!u! tag: unity3d.com, 2011:\n---!u!13 & 1\nInputManager: \n  m_ObjectHideFlags: 0\n  serializedVersion: 2\n  m_Axes: ");
             for (int i = 0; i < MaxControllers; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
+                    //for every controller, write a normal entry to the input manager
                     output.Append("\n  - serializedVersion: 3\n    m_Name: Joy");
                     output.Append(i.ToString());
                     output.Append("Axis");
@@ -47,7 +52,7 @@ public class ControllerInputCreator : EditorWindow
                 output.Append("\n");
             }
 
-            
+            //Write the new input managet to the inputmanager asset in unity
             File.WriteAllText(@"ProjectSettings\InputManager.asset", output.ToString());
             Debug.Log("Done rewriting input settings");
         }
