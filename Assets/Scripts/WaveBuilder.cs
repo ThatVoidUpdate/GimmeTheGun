@@ -62,7 +62,7 @@ public class WaveBuilder : EditorWindow
         if (GUILayout.Button("Done"))
         {
             //Write out the file
-            StringBuilder output = new StringBuilder("using System.Collections.Generic;\nusing UnityEngine;\npublic class " + FileName + " : MonoBehaviour\n{\npublic List<(GameObject, int)> Enemies;\npublic void Start()\n{ Enemies = new List<(GameObject, int)> { ");
+            StringBuilder output = new StringBuilder("using System.Collections.Generic;\nusing UnityEngine;\npublic class " + FileName.Replace(' ', '_') + " : MonoBehaviour\n{\npublic List<(GameObject, int)> Enemies;\npublic void Start()\n{ Enemies = new List<(GameObject, int)> { ");
 
             for (int i = 0; i < SpawnObjects.Count; i++)
             {
