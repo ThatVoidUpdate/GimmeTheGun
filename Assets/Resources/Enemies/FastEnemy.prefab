@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2545481912181609362}
   - component: {fileID: 5498408357728158936}
   - component: {fileID: 999975810073300935}
+  - component: {fileID: 362952281243813151}
   m_Layer: 0
-  m_Name: FastTriangle
+  m_Name: FastEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,3 +126,24 @@ PolygonCollider2D:
     - - {x: 0.013081087, y: 0.43730327}
       - {x: -0.5744665, y: -0.65238774}
       - {x: 0.5940879, y: -0.65892816}
+--- !u!50 &362952281243813151
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464648849592760336}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

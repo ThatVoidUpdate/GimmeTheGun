@@ -22,8 +22,8 @@ TagManager:
   - Bullet
   - Gun
   - Player
-  - 
-  - 
+  - HorizontalWall
+  - GunTrigger
   - 
   - 
   - 
