@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class EndlessMode : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class EndlessMode : MonoBehaviour
 
     [Header("Enemies")]
     public GameObject Enemy;
+    public GameObject FastEnemy;
 
     public List<GameObject> CurrentEnemies = new List<GameObject>();
 
@@ -25,10 +27,13 @@ public class EndlessMode : MonoBehaviour
         if (CurrentEnemies.Count == 0)
         {
             //calculate the amount of enemies we need to spawn, and spawn them
-            int enemyCount = Mathf.CeilToInt(Level * Level / 20);
+            int EnemyCount = Mathf.CeilToInt(Level * Level / 20);
+            int FastEnemyCount = Mathf.CeilToInt((Level * Level / 30) - 1) > 0 ? Mathf.CeilToInt((Level * Level / 30) - 1) : 0;
+
             foreach (Spawner spawner in SpawnPoints)
             {
-                CurrentEnemies.AddRange(spawner.Spawn(Enemy, enemyCount));
+                CurrentEnemies.AddRange(spawner.Spawn(Enemy, EnemyCount));
+                CurrentEnemies.AddRange(spawner.Spawn(FastEnemy, FastEnemyCount));
             }
 
             Level++;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5498408357728158936}
   - component: {fileID: 999975810073300935}
   - component: {fileID: 362952281243813151}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FastEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

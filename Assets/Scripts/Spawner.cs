@@ -8,7 +8,23 @@ public class Spawner : MonoBehaviour
 
     public List<(GameObject, int)> Wave;
 
+    private BoxCollider2D SpawnArea;
+    private float MinX;
+    private float MaxX;
+    private float MinY;
+    private float MaxY;
+
     private float time = 0;
+
+    public void Start()
+    {
+        SpawnArea = GetComponent<BoxCollider2D>();
+        MinX = transform.position.x + SpawnArea.offset.x - SpawnArea.size.x / 2;
+        MinY = transform.position.y + SpawnArea.offset.y - SpawnArea.size.y / 2;
+        MaxX = transform.position.x + SpawnArea.offset.x + SpawnArea.size.x / 2;
+        MaxY = transform.position.y + SpawnArea.offset.y + SpawnArea.size.y / 2;
+        Debug.Log(string.Format("MinX: {0}. MaxX: {1}. MinY: {2}. MaxY: {3}", MinX, MaxX, MinY, MaxY));
+    }
 
     public void Update()
     {
@@ -28,12 +44,6 @@ public class Spawner : MonoBehaviour
         foreach ((GameObject, int) set in Wave)
         {
             Spawn(set.Item1, set.Item2);
-            /*
-            for (int i = 0; i < set.Item2; i++)
-            {
-                Instantiate(set.Item1, transform.position, Quaternion.identity).GetComponent<Enemy>().Target = EnemyTarget;
-            }
-            */
         }
     }
 
@@ -42,7 +52,7 @@ public class Spawner : MonoBehaviour
         GameObject[] ret = new GameObject[amount];
         for (int i = 0; i < amount; i++)
         {
-            GameObject SpawnedEnemy = Instantiate(enemy, transform.position, Quaternion.identity);
+            GameObject SpawnedEnemy = Instantiate(enemy, new Vector2(Random.Range(MinX, MaxX), Random.Range(MinY, MaxY)), Quaternion.identity);
             SpawnedEnemy.GetComponent<Enemy>().Target = EnemyTarget;
             ret[i] = SpawnedEnemy;
         }
