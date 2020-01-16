@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     [Header("Bark lines")]
     public GameObject BarkBubble;
     public float ShowTime = 1;
+    public string[] DeathLines;
 
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
@@ -179,6 +180,11 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        if (Random.Range(0f,1f)<0.5f)
+        {
+            StartCoroutine(ShowBarkLine(DeathLines[Random.Range(0,DeathLines.Length)], ShowTime));
+        }
+        
         rend.color = new Color(1, 1, 1, 0.5f);
         dead = true;
         HeldObject = null;
