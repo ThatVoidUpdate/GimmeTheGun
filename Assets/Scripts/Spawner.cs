@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [Tooltip("If spawning an enemy, set this to the enemy target gameobject")]
     public GameObject EnemyTarget;
 
     public List<(GameObject, int)> Wave;
@@ -13,15 +12,18 @@ public class Spawner : MonoBehaviour
 
     public void Update()
     {
-        time += Time.deltaTime;
-        if (time < 1)
+        if (Wave != null)
         {
-            Spawn();
-            time += 1;
+            time += Time.deltaTime;
+            if (time < 1)
+            {
+                SpawnWave();
+                time += 1;
+            }
         }
     }
 
-    public void Spawn()
+    public void SpawnWave()
     {
         foreach ((GameObject, int) set in Wave)
         {
@@ -30,5 +32,12 @@ public class Spawner : MonoBehaviour
                 Instantiate(set.Item1, transform.position, Quaternion.identity).GetComponent<Enemy>().Target = EnemyTarget;
             }
         }
+    }
+
+    public GameObject Spawn(GameObject enemy)
+    {
+        GameObject SpawnedEnemy = Instantiate(enemy, transform.position, Quaternion.identity);
+        SpawnedEnemy.GetComponent<Enemy>().Target = EnemyTarget;
+        return SpawnedEnemy;
     }
 }
