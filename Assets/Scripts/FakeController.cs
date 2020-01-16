@@ -51,6 +51,9 @@ public class FakeController : Controller
     public KeyCode LeftStick;
     public KeyCode RightStick;
 
+    //Used for GetControlDown and GetControlUp.
+    private int ControlStateInt;
+    private int OldControlStateInt;
 
     //public Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
 
@@ -72,6 +75,10 @@ public class FakeController : Controller
 
     public new void Update()
     {
+        //Reset the control states, so that GetControllerUp and GetControllerDown work
+        OldControlStateInt = ControlStateInt;
+        ControlStateInt = 0;
+
         ControlState[Control.LeftStickXAxis] = Input.GetKey(LeftStickXAxisPositive) ? 1 : (Input.GetKey(LeftStickXAxisNegative) ? -1 : 0);
         ControlState[Control.LeftStickYAxis] = Input.GetKey(LeftStickYAxisPositive) ? 1 : (Input.GetKey(LeftStickYAxisNegative) ? -1 : 0);
         ControlState[Control.RightStickXAxis] = Input.GetKey(RightStickXAxisPositive) ? 1 : (Input.GetKey(RightStickXAxisNegative) ? -1 : 0);
@@ -100,10 +107,12 @@ public class FakeController : Controller
         for (int i = 0; i < 10; i++)
         {
             Buttons[i] = ControlState[(Control)(i + 10)] == 1;
+            ControlStateInt += Buttons[i] ? (int)Mathf.Pow(2, i + 10) : 0;
         }
         for (int i = 0; i < 10; i++)
         {
             Axes[i] = ControlState[(Control)i];
+            ControlStateInt += Axes[i] == 1 ? (int)Mathf.Pow(2, i) : 0;
         }
     }
 }
