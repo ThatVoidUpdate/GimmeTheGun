@@ -5,7 +5,7 @@ using System.Linq;
 
 public class EndlessMode : MonoBehaviour
 {
-    public int Level = 0;
+    public int Level = 1;
     public Spawner[] SpawnPoints;
 
     [Header("Enemies")]
@@ -25,7 +25,7 @@ public class EndlessMode : MonoBehaviour
         if (CurrentEnemies.Count == 0)
         {
             //calculate the amount of enemies we need to spawn, and spawn them
-            int enemyCount = 1;
+            int enemyCount = Mathf.CeilToInt(Level * Level / 20);
 
             for (int i = 0; i < enemyCount; i++)
             {
@@ -34,6 +34,8 @@ public class EndlessMode : MonoBehaviour
                     CurrentEnemies.Add(spawner.Spawn(Enemy));
                 }
             }
+
+            Level++;
         }
 
         //remove any destroyed enemies
