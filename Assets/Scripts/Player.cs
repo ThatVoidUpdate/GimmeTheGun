@@ -58,8 +58,14 @@ public class Player : MonoBehaviour
     public float NearDeathLineChance;//Chance to say a line when the player is near death
     public string[] NearDeathLines; //Lines to say when the player is near death
     [Space]
-    public float GunThrowLineChance;//Chance to say a line when the player is near death
-    public string[] GunThrowLines; //Lines to say when the player is near death
+    public float GunThrowLineChance;//Chance to say a line when the player throws the gun
+    public string[] GunThrowLines; //Lines to say when the player throws the gun
+    [Space]
+    public float WaveStartLineChance;//Chance to say a line when the player starts a wave
+    public string[] WaveStartLines; //Lines to say when the player starts a wave
+    [Space]
+    public float WaveEndLineChance;//Chance to say a line when the player ends a wave
+    public string[] WaveEndLines; //Lines to say when the player ends a wave
 
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
@@ -241,5 +247,21 @@ public class Player : MonoBehaviour
         BarkBubble.GetComponent<BarkBubble>().TrackingObject = gameObject;
         yield return new WaitForSeconds(WaitTime);
         BarkBubble.SetActive(false);
+    }
+
+    public void EndWave()
+    {
+        if (Random.Range(0f, 1f) < WaveStartLineChance)
+        {
+            StartCoroutine(ShowBarkLine(WaveStartLines[Random.Range(0, WaveStartLines.Length - 1)], ShowTime));
+        }
+    }
+
+    public void StartWave()
+    {
+        if (Random.Range(0f, 1f) < WaveEndLineChance)
+        {
+            StartCoroutine(ShowBarkLine(WaveEndLines[Random.Range(0, WaveEndLines.Length - 1)], ShowTime));
+        }
     }
 }

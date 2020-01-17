@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BarkBubble : MonoBehaviour
 {
-    public Camera camera;
+    public new Camera camera;
     public GameObject TrackingObject;
 
     public Vector3 Offset;

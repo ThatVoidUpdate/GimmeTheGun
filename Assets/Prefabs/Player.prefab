@@ -220,6 +220,38 @@ MonoBehaviour:
   - Don't lost it!
   - Here we go...
   - Yeet!
+  WaveStartLineChance: 0.5
+  WaveStartLines:
+  - Ah shit. Here we go again
+  - "Don\u2019t these guys ever stop?"
+  - Oh, what now?
+  - Jesus, more?!
+  - How many do they have?!
+  - You want some more?!
+  - Bring it on!
+  - Come get some!
+  - "I ain\u2019t afraid of you!"
+  - The waves get bigger, right?
+  - Triangles inbound!
+  - Are you ready to meet your god?!
+  - "The Devil\u2019s got a lot of paperwork headed his way!"
+  - "Can\u2019t you just isosceleave us alone?"
+  - "Well\u2026 Fuck"
+  WaveEndLineChance: 0.5
+  WaveEndLines:
+  - That all you got?!
+  - Pfft! Piece of cake!
+  - That was the last one, right?
+  - "Why don\u2019t they just send them all at once?"
+  - We did it!
+  - Another one down!
+  - Do I have time to pee before the next one?
+  - "That wasn\u2019t so bad"
+  - "This seems like a lot for just the two of us\u2026"
+  - "We\u2019re TWICE the angles you\u2019ll ever be!"
+  - Time for a breather
+  - Phew, we made it
+  - Can we play Overcooked now?
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4
