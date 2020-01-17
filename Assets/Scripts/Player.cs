@@ -46,11 +46,20 @@ public class Player : MonoBehaviour
     public float DamageSpeed; //How long it takes an enemy to do damage
 
     [Header("Bark lines")]
-    public GameObject BarkBubble;
-    public float ShowTime = 1;
-    public string[] DeathLines;
-    public string[] HalfHealthLines;
-    public string[] NearDeathLines;
+    public GameObject BarkBubble; //The text bubble to pop up when a player wants to say something
+    public float ShowTime = 1; //Time in seconds to show the line for
+    [Space]
+    public float DeathLineChance; //Chance to say a line when the player dies
+    public string[] DeathLines; //Lines to say when the player dies
+    [Space]
+    public float HalfHealthLineChance;//Chance to say a line when the player reaches half health
+    public string[] HalfHealthLines; //Lines to say when the player reaches half health
+    [Space]
+    public float NearDeathLineChance;//Chance to say a line when the player is near death
+    public string[] NearDeathLines; //Lines to say when the player is near death
+    [Space]
+    public float GunThrowLineChance;//Chance to say a line when the player is near death
+    public string[] GunThrowLines; //Lines to say when the player is near death
 
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
@@ -95,6 +104,11 @@ public class Player : MonoBehaviour
 
         if (controller.GetControlDown(Grab) && HeldObject != null && CanDrop)
         {//We are holding a gun, and trying to drop it
+            if (Random.Range(0f, 1f) < GunThrowLineChance)
+            {//Show a gun throw line
+                StartCoroutine(ShowBarkLine(GunThrowLines[Random.Range(0, GunThrowLines.Length - 1)], ShowTime));
+            }
+
             HeldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(ThrowSpeed * Mathf.Cos(theta * 2 * Mathf.PI / 360), ThrowSpeed * Mathf.Sin(theta * 2 * Mathf.PI / 360));
             HeldObject = null;
         }
@@ -159,20 +173,19 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float DamageAmount)
     {
-        
+        //If we are currently above half health, but taking damage would take us below half health
         if (Health > MaxHealth / 2 && Health - DamageAmount <= MaxHealth / 2)
-        {
-            
-            if (Random.Range(0f, 1f) < 0.1f)
+        {//Say a half health line            
+            if (Random.Range(0f, 1f) < HalfHealthLineChance)
             {
                 StartCoroutine(ShowBarkLine(HalfHealthLines[Random.Range(0, HalfHealthLines.Length-1)], ShowTime));
             }
         }
 
+        //If we are currently above 10% health, but taking damage would take us below 10% health
         if (Health > MaxHealth / 10 && Health - DamageAmount <= MaxHealth / 10)
-        {
-            
-            if (Random.Range(0f, 1f) < 0.2f)
+        {//Say a near death line            
+            if (Random.Range(0f, 1f) < NearDeathLineChance)
             {
                 StartCoroutine(ShowBarkLine(NearDeathLines[Random.Range(0, NearDeathLines.Length-1)], ShowTime));
             }
@@ -188,7 +201,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        if (Random.Range(0f,1f)<0.5f)
+        if (Random.Range(0f,1f) < DeathLineChance)
         {
             StartCoroutine(ShowBarkLine(DeathLines[Random.Range(0,DeathLines.Length-1)], ShowTime));
         }

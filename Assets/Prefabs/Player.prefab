@@ -177,6 +177,7 @@ MonoBehaviour:
   DamageSpeed: 1
   BarkBubble: {fileID: 0}
   ShowTime: 1
+  DeathLineChance: 0.5
   DeathLines:
   - "I\u2019ll be back fuckers!"
   - "You ain\u2019t seen the last of me!"
@@ -186,6 +187,7 @@ MonoBehaviour:
   - Agh!
   - Did I... *cough* Did I get a high score?
   - At least I get to see what I unlocked now
+  HalfHealthLineChance: 0.1
   HalfHealthLines:
   - "I\u2019m hit!"
   - Damn!
@@ -197,6 +199,7 @@ MonoBehaviour:
   - "That\u2019s gunna sting"
   - Just a scratch
   - "They\u2019re not messing around "
+  NearDeathLineChance: 0.2
   NearDeathLines:
   - "Can\u2019t take much more of this..."
   - Make it stop!
@@ -208,6 +211,15 @@ MonoBehaviour:
   - "Come on\u2026"
   - I need a heal!
   - "I\u2019m not done yet!"
+  GunThrowLineChance: 0.05
+  GunThrowLines:
+  - Take It!
+  - I want it back
+  - Here!
+  - Catch!
+  - Don't lost it!
+  - Here we go...
+  - Yeet!
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4
