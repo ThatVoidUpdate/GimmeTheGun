@@ -1776,14 +1776,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa13ddca91c40d247ada934e2d9cbba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 1
+  Level: 0
   SpawnPoints:
   - {fileID: 1450745281}
   - {fileID: 537452351}
   Enemy: {fileID: 8048073611069811309, guid: 6ae7e1f932c55dd44ab93051a7157326, type: 3}
   FastEnemy: {fileID: 3464648849592760336, guid: 60c17c60441c0cf468acba4385ec6ce3,
     type: 3}
-  WaveIntervalTime: 0
+  WaveIntervalTime: 1
   CurrentEnemies: []
 --- !u!4 &2050227976
 Transform:
