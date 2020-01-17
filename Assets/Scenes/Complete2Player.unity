@@ -774,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 5909937672650158146, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158146, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
@@ -818,6 +818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
+      propertyPath: EnemyKillLines.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 1684713117}
@@ -831,6 +836,46 @@ PrefabInstance:
       propertyPath: BarkBubble
       value: 
       objectReference: {fileID: 2075839852}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: EnemyKillLineChance
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: EnemyKillLines.Array.data[0]
+      value: Take that!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: EnemyKillLines.Array.data[1]
+      value: Get some!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: EnemyKillLines.Array.data[2]
+      value: Oh yeah!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: EnemyKillLines.Array.data[3]
+      value: Violence is fun!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: EnemyKillLines.Array.data[4]
+      value: HAHAHA!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: EnemyKillLines.Array.data[5]
+      value: Die! Die! DIE!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: EnemyKillLines.Array.data[6]
+      value: Are you watching, kids?
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4990cad1a4f9b43a81ba5dc438eae8, type: 3}
 --- !u!1 &994956705
@@ -924,7 +969,7 @@ PrefabInstance:
     - target: {fileID: 5909937672650158146, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158146, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}

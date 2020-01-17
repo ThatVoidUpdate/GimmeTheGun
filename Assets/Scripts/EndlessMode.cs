@@ -18,7 +18,7 @@ public class EndlessMode : MonoBehaviour
 
     public List<GameObject> CurrentEnemies = new List<GameObject>();
 
-    public void Start()
+    public void Awake()
     {//Spawn an initial wave
         //calculate the amount of enemies we need to spawn, and spawn them
         int EnemyCount = Mathf.CeilToInt(Level * Level / 2);
@@ -36,8 +36,7 @@ public class EndlessMode : MonoBehaviour
     {
         if (CurrentEnemies.Count == 0)
         {//We killed all the enemies
-            StartCoroutine(NewWave());
-            
+            StartCoroutine(NewWave());            
         }
 
         //remove any destroyed enemies

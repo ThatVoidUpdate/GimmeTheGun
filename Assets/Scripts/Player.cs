@@ -66,6 +66,9 @@ public class Player : MonoBehaviour
     [Space]
     public float WaveEndLineChance;//Chance to say a line when the player ends a wave
     public string[] WaveEndLines; //Lines to say when the player ends a wave
+    [Space]
+    public float EnemyKillLineChance;//Chance to say a line when the player kills an enemy
+    public string[] EnemyKillLines; //Lines to say when the player kills an enemy
 
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
@@ -227,16 +230,18 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (!dead)
         {
-            DamageTime += Time.deltaTime;
-        }
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                DamageTime += Time.deltaTime;
+            }
 
-        if (DamageTime > DamageSpeed)
-        {
-            DamageTime = 0;
-            TakeDamage(collision.gameObject.GetComponent<Enemy>().Damage);
+            if (DamageTime > DamageSpeed)
+            {
+                DamageTime = 0;
+                TakeDamage(collision.gameObject.GetComponent<Enemy>().Damage);
+            }
         }
     }
 
@@ -262,6 +267,14 @@ public class Player : MonoBehaviour
         if (Random.Range(0f, 1f) < WaveEndLineChance)
         {
             StartCoroutine(ShowBarkLine(WaveEndLines[Random.Range(0, WaveEndLines.Length - 1)], ShowTime));
+        }
+    }
+
+    public void KillEnemy()
+    {
+        if (Random.Range(0f, 1f) < EnemyKillLineChance)
+        {
+            StartCoroutine(ShowBarkLine(EnemyKillLines[Random.Range(0, EnemyKillLines.Length - 1)], ShowTime));
         }
     }
 }

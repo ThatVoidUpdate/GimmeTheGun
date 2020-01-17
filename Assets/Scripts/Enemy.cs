@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private Player LastDamagedBy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +42,12 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void OnParticleCollision(GameObject other)
+    public void OnParticleCollision(GameObject ParticleSystem)
     {
         List<Vector4> data = new List<Vector4>();
-        other.GetComponent<ParticleSystem>().GetCustomParticleData(data, ParticleSystemCustomData.Custom1);
-        TakeDamage(data[0].x);        
+        ParticleSystem.GetComponent<ParticleSystem>().GetCustomParticleData(data, ParticleSystemCustomData.Custom1);
+        TakeDamage(data[0].x);
+        LastDamagedBy = Physics2D.OverlapCircleAll(ParticleSystem.transform.position, 2f, LayerMask.GetMask("Player"))[0].GetComponent<Player>();
     }
 
     public void TakeDamage(float DamageAmount)
@@ -58,6 +61,8 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        LastDamagedBy.KillEnemy();
+
         if (GetComponent<Smash>())
         {
             GetComponent<Smash>().DoSmash();
