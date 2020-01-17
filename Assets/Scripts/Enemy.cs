@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         List<Vector4> data = new List<Vector4>();
         ParticleSystem.GetComponent<ParticleSystem>().GetCustomParticleData(data, ParticleSystemCustomData.Custom1);
         TakeDamage(data[0].x);
-        LastDamagedBy = Physics2D.OverlapCircleAll(ParticleSystem.transform.position, 2f, LayerMask.GetMask("Player"))[0].GetComponent<Player>();
+        //LastDamagedBy = Physics2D.OverlapCircleAll(GameObject.FindGameObjectWithTag("Gun").transform.position, 2f, LayerMask.GetMask("Player"))[0].GetComponent<Player>();
     }
 
     public void TakeDamage(float DamageAmount)
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        LastDamagedBy.KillEnemy();
+        //LastDamagedBy.KillEnemy();
 
         if (GetComponent<Smash>())
         {
