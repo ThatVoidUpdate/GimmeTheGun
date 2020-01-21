@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     public float Damage;// The damage to do to a player
 
+    public float DamageTakenModifier = 1;
+
     private Rigidbody2D rb;
 
     private Player LastDamagedBy;
@@ -52,7 +54,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float DamageAmount)
     {
-        Health -= DamageAmount;
+        Health -= DamageAmount * DamageTakenModifier;
         if (Health <= 0)
         {
             Die();

@@ -70,6 +70,11 @@ public class Player : MonoBehaviour
     public float EnemyKillLineChance;//Chance to say a line when the player kills an enemy
     public string[] EnemyKillLines; //Lines to say when the player kills an enemy
 
+    [HideInInspector]
+    public bool InvertedControls = false; // Support for drunk powerup
+    [HideInInspector]
+    public bool CanMove = true; // Support for turret powerup
+
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
 
@@ -89,7 +94,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {       
-        rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * HorizontalSpeed, controller.ControlState[MoveVertical] * -VerticalSpeed); //Set the movement speed according to the controller input        
+        rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * (CanMove ? (InvertedControls ? -HorizontalSpeed : HorizontalSpeed) : 0), controller.ControlState[MoveVertical] * (CanMove ? (InvertedControls ? VerticalSpeed : -VerticalSpeed) : 0)); //Set the movement speed according to the controller input        
 
         if (controller.GetControlDown(Grab) && closeGuns.Count > 0 && HeldObject == null && !dead)
         {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun, and we arent currently dead
