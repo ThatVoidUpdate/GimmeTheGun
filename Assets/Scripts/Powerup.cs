@@ -128,7 +128,8 @@ public class Powerup : MonoBehaviour
                     player.GetComponent<Player>().InvertedControls = true;
                 }
                 Time.timeScale = 0.5f;
-                Camera.main.GetComponent<PostProcessVolume>().enabled = true;
+                Camera.main.GetComponent<PostProcessVolume>().enabled = true; 
+                Camera.main.GetComponent<LSD>().enabled = true;
                 break;
 
             case PowerupType.Disco:
@@ -137,6 +138,7 @@ public class Powerup : MonoBehaviour
             case PowerupType.LSD:
                 //Implement some kind of post-processing colour grading
                 Camera.main.GetComponent<PostProcessVolume>().enabled = true;
+                Camera.main.GetComponent<LSD>().enabled = true;
                 break;
 
             default:
@@ -212,6 +214,7 @@ public class Powerup : MonoBehaviour
                 }
                 Time.timeScale = 1;
                 Camera.main.GetComponent<PostProcessVolume>().enabled = false;
+                Camera.main.GetComponent<LSD>().enabled = false;
                 break;
 
             case PowerupType.Disco:
@@ -219,6 +222,7 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupType.LSD:
                 Camera.main.GetComponent<PostProcessVolume>().enabled = false;
+                Camera.main.GetComponent<LSD>().enabled = false;
                 break;
 
             default:
