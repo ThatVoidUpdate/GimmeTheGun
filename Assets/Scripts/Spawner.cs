@@ -6,8 +6,6 @@ public class Spawner : MonoBehaviour
 {
     public GameObject EnemyTarget;
 
-    public List<(GameObject, int)> Wave;
-
     private BoxCollider2D SpawnArea;
     private float MinX;
     private float MaxX;
@@ -27,23 +25,7 @@ public class Spawner : MonoBehaviour
 
     public void Update()
     {
-        if (Wave != null)
-        {
-            time += Time.deltaTime;
-            if (time < 1)
-            {
-                SpawnWave();
-                time += 1;
-            }
-        }
-    }
 
-    public void SpawnWave()
-    {
-        foreach ((GameObject, int) set in Wave)
-        {
-            Spawn(set.Item1, set.Item2);
-        }
     }
 
     public GameObject[] Spawn(GameObject enemy, int amount)

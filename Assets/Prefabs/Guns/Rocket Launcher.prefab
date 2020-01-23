@@ -8497,7 +8497,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -9529,7 +9529,7 @@ GameObject:
   - component: {fileID: 5158029407945611920}
   m_Layer: 12
   m_Name: Rocket Launcher
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9656,11 +9656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5d564035ee0dd4fb98dc8931ea6e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShotsPerSecond: 0
+  ShotsPerSecond: 1
   Shooting: 0
   bullet: {fileID: 0}
   BulletSpeed: 10
-  HeldDistance: 0
+  HeldDistance: 1
   BulletSpawn: {fileID: 0}
 --- !u!82 &5158029407945611920
 AudioSource:

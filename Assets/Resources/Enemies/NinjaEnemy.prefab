@@ -147,10 +147,12 @@ MonoBehaviour:
   Target: {fileID: 0}
   MaxHealth: 20
   Damage: 15
+  DamageTakenModifier: 1
   TeleportTime: 2
   ThrowTime: 0
   TopLeftTeleportZone: {x: -7.8, y: 4.5}
-  BottomRightTeleportZone: {x: -1, y: -4.5}
-  Shuriken: {fileID: 0}
-  ShurikenSpeed: 0
-  ShurikenSpawnDistance: 0
+  BottomRightTeleportZone: {x: 7.8, y: -4.5}
+  Shuriken: {fileID: 6148468784320163288, guid: 98967cde25b55cf46839f46071531666,
+    type: 3}
+  ShurikenSpeed: 10
+  ShurikenSpawnDistance: 1
