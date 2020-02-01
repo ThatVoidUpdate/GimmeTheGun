@@ -13,7 +13,8 @@ public class MenuNavigator : MonoBehaviour
     public MenuNavigator LeftElement;
     public MenuNavigator RightElement;
 
-    [HideInInspector]
+    public bool DefaultElement;
+
     public bool IsSelected;
 
     public MenuItemHighlightType ChangeType;
@@ -22,6 +23,16 @@ public class MenuNavigator : MonoBehaviour
 
     public Sprite SpriteChangeSprite;
     private Sprite OldSprite;
+
+    public void Start()
+    {
+        IsSelected = DefaultElement;
+
+        if (DefaultElement)
+        {
+            OnBecomeSelected();
+        }
+    }
 
     public void GetInput(Direction SelectDirection)
     {
@@ -99,7 +110,7 @@ public class MenuNavigator : MonoBehaviour
         switch (ChangeType)
         {
             case MenuItemHighlightType.ColourChange:
-                GetComponent<Button>().image.color = OldColour;
+                GetComponent<Button>().image.color = GetComponent<Button>().colors.normalColor;
                 break;
             case MenuItemHighlightType.SpriteChange:
                 GetComponent<Button>().image.sprite = OldSprite;
@@ -116,6 +127,14 @@ public class MyScriptEditor : Editor
     public override void OnInspectorGUI()
     {
         var CurrentScript = target as MenuNavigator;
+
+        CurrentScript.UpElement = (MenuNavigator)EditorGUILayout.ObjectField("Up Element", CurrentScript.UpElement, typeof(MenuNavigator), true);
+        CurrentScript.DownElement = (MenuNavigator)EditorGUILayout.ObjectField("Down Element", CurrentScript.DownElement, typeof(MenuNavigator), true);
+        CurrentScript.LeftElement = (MenuNavigator)EditorGUILayout.ObjectField("Left Element", CurrentScript.LeftElement, typeof(MenuNavigator), true);
+        CurrentScript.RightElement = (MenuNavigator)EditorGUILayout.ObjectField("Right Element", CurrentScript.RightElement, typeof(MenuNavigator), true);
+
+        CurrentScript.DefaultElement = EditorGUILayout.Toggle("Default Element", CurrentScript.DefaultElement);
+
 
         CurrentScript.ChangeType = (MenuItemHighlightType)EditorGUILayout.EnumPopup("Highlight Type", CurrentScript.ChangeType);
 
