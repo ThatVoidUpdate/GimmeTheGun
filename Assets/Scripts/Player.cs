@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public enum Direction { Up, Down, Right, Left}
+public enum Direction { Up, Down, Right, Left, None}
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
