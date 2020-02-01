@@ -119,3 +119,6 @@
 .gitignore export-ignore
 README.md export-ignore
 /Logs/ export-ignore
+
+# Tell linguist to ignore tmpro files
+Assets/TextMesh?Pro/* linguist-vendored
