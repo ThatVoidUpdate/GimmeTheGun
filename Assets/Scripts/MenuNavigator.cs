@@ -25,54 +25,57 @@ public class MenuNavigator : MonoBehaviour
 
     public void GetInput(Direction SelectDirection)
     {
-        switch (SelectDirection)
+        if (IsSelected)
         {
-            case Direction.Up:
-                if (UpElement != null)
-                {
-                    UpElement.IsSelected = true;
-                    IsSelected = false;
+            switch (SelectDirection)
+            {
+                case Direction.Up:
+                    if (UpElement != null)
+                    {
+                        UpElement.IsSelected = true;
+                        IsSelected = false;
 
-                    OnBecomeDeselected();
-                    UpElement.OnBecomeSelected();
-                }
-                break;
-            case Direction.Down:
-                if (DownElement != null)
-                {
-                    DownElement.IsSelected = true;
-                    IsSelected = false;
+                        OnBecomeDeselected();
+                        UpElement.OnBecomeSelected();
+                    }
+                    break;
+                case Direction.Down:
+                    if (DownElement != null)
+                    {
+                        DownElement.IsSelected = true;
+                        IsSelected = false;
 
-                    OnBecomeDeselected();
-                    DownElement.OnBecomeSelected();
-                }
-                break;
-            case Direction.Right:
-                if (RightElement != null)
-                {
-                    RightElement.IsSelected = true;
-                    IsSelected = false;
+                        OnBecomeDeselected();
+                        DownElement.OnBecomeSelected();
+                    }
+                    break;
+                case Direction.Right:
+                    if (RightElement != null)
+                    {
+                        RightElement.IsSelected = true;
+                        IsSelected = false;
 
-                    OnBecomeDeselected();
-                    RightElement.OnBecomeSelected();
-                }
-                break;
-            case Direction.Left:
-                if (LeftElement != null)
-                {
-                    LeftElement.IsSelected = true;
-                    IsSelected = false;
+                        OnBecomeDeselected();
+                        RightElement.OnBecomeSelected();
+                    }
+                    break;
+                case Direction.Left:
+                    if (LeftElement != null)
+                    {
+                        LeftElement.IsSelected = true;
+                        IsSelected = false;
 
-                    OnBecomeDeselected();
-                    LeftElement.OnBecomeSelected();
-                }
-                break;
-            case Direction.None:
-                //Selecting element
-                GetComponent<Button>().onClick.Invoke();
-                break;
-            default:
-                break;
+                        OnBecomeDeselected();
+                        LeftElement.OnBecomeSelected();
+                    }
+                    break;
+                case Direction.None:
+                    //Selecting element
+                    GetComponent<Button>().onClick.Invoke();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
