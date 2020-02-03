@@ -34,9 +34,9 @@ public class MenuNavigatorManager : MonoBehaviour
 
         for (int i = 0; i < AllControllers.Count; i++)
         {
-            if (AllControllers[i].ControlState[Control.DPadXAxis] != 0 && ControllersDPadX[i] == 0)
+            if (AllControllers[i].GetControlState(Control.DPadXAxis) != 0 && ControllersDPadX[i] == 0)
             {
-                if (AllControllers[i].ControlState[Control.DPadXAxis] > 0)
+                if (AllControllers[i].GetControlState(Control.DPadXAxis) > 0)
                 {
                     //Moving to the right
                     foreach (MenuNavigator menuitem in MenuItems)
@@ -44,7 +44,7 @@ public class MenuNavigatorManager : MonoBehaviour
                         menuitem.GetInput(Direction.Right);
                     }
                 }
-                else if (AllControllers[i].ControlState[Control.DPadXAxis] < 0)
+                else if (AllControllers[i].GetControlState(Control.DPadXAxis) < 0)
                 {
                     //Moving to the left
                     foreach (MenuNavigator menuitem in MenuItems)
@@ -54,9 +54,9 @@ public class MenuNavigatorManager : MonoBehaviour
                 }
             }
 
-            if (AllControllers[i].ControlState[Control.LeftStickXAxis] != 0 && ControllersStickX[i] == 0)
+            if (AllControllers[i].GetControlState(Control.LeftStickXAxis) != 0 && ControllersStickX[i] == 0)
             {
-                if (AllControllers[i].ControlState[Control.LeftStickXAxis] > 0)
+                if (AllControllers[i].GetControlState(Control.LeftStickXAxis) > 0)
                 {
                     //Moving to the right
                     foreach (MenuNavigator menuitem in MenuItems)
@@ -64,7 +64,7 @@ public class MenuNavigatorManager : MonoBehaviour
                         menuitem.GetInput(Direction.Right);
                     }
                 }
-                else if (AllControllers[i].ControlState[Control.LeftStickXAxis] < 0)
+                else if (AllControllers[i].GetControlState(Control.LeftStickXAxis) < 0)
                 {
                     //Moving to the left
                     foreach (MenuNavigator menuitem in MenuItems)
@@ -74,9 +74,9 @@ public class MenuNavigatorManager : MonoBehaviour
                 }
             }
 
-            if (AllControllers[i].ControlState[Control.DPadYAxis] != 0 && ControllersDPadY[i] == 0)
+            if (AllControllers[i].GetControlState(Control.DPadYAxis) != 0 && ControllersDPadY[i] == 0)
             {
-                if (AllControllers[i].ControlState[Control.DPadYAxis] > 0)
+                if (AllControllers[i].GetControlState(Control.DPadYAxis) > 0)
                 {
                     //Moving to the up
                     foreach (MenuNavigator menuitem in MenuItems)
@@ -84,7 +84,7 @@ public class MenuNavigatorManager : MonoBehaviour
                         menuitem.GetInput(Direction.Up);
                     }
                 }
-                else if (AllControllers[i].ControlState[Control.DPadYAxis] < 0)
+                else if (AllControllers[i].GetControlState(Control.DPadYAxis) < 0)
                 {
                     //Moving to the down
                     foreach (MenuNavigator menuitem in MenuItems)
@@ -94,9 +94,9 @@ public class MenuNavigatorManager : MonoBehaviour
                 }
             }
 
-            if (AllControllers[i].ControlState[Control.LeftStickYAxis] != 0 && ControllersStickY[i] == 0)
+            if (AllControllers[i].GetControlState(Control.LeftStickYAxis) != 0 && ControllersStickY[i] == 0)
             {
-                if (AllControllers[i].ControlState[Control.LeftStickYAxis] > 0)
+                if (AllControllers[i].GetControlState(Control.LeftStickYAxis) > 0)
                 {
                     //Moving to the right
                     foreach (MenuNavigator menuitem in MenuItems)
@@ -104,7 +104,7 @@ public class MenuNavigatorManager : MonoBehaviour
                         menuitem.GetInput(Direction.Down);
                     }
                 }
-                else if (AllControllers[i].ControlState[Control.LeftStickYAxis] < 0)
+                else if (AllControllers[i].GetControlState(Control.LeftStickYAxis) < 0)
                 {
                     //Moving to the left
                     foreach (MenuNavigator menuitem in MenuItems)
@@ -131,11 +131,11 @@ public class MenuNavigatorManager : MonoBehaviour
 
         for (int i = 0; i < AllControllers.Count; i++)
         {
-            ControllersStickX[i] = AllControllers[i].ControlState[Control.LeftStickXAxis];
-            ControllersStickY[i] = AllControllers[i].ControlState[Control.LeftStickYAxis];
+            ControllersStickX[i] = AllControllers[i].GetControlState(Control.LeftStickXAxis);
+            ControllersStickY[i] = AllControllers[i].GetControlState(Control.LeftStickYAxis);
 
-            ControllersDPadX[i] = AllControllers[i].ControlState[Control.DPadXAxis];
-            ControllersDPadY[i] = AllControllers[i].ControlState[Control.DPadYAxis];
+            ControllersDPadX[i] = AllControllers[i].GetControlState(Control.DPadXAxis);
+            ControllersDPadY[i] = AllControllers[i].GetControlState(Control.DPadYAxis);
         }
 
         CurrentTime += Time.deltaTime;

@@ -21,35 +21,59 @@ public class FakeController : Controller
     //public float[] Axes = new float[10];
 
     [Header("Keyboard - Controller assignments")]
-    public KeyCode LeftStickXAxisPositive;
-    public KeyCode LeftStickXAxisNegative;
-    public KeyCode LeftStickYAxisPositive;
-    public KeyCode LeftStickYAxisNegative;
-    public KeyCode RightStickXAxisPositive;
-    public KeyCode RightStickXAxisNegative;
-    public KeyCode RightStickYAxisPositive;
-    public KeyCode RightStickYAxisNegative;
+    [SerializeField]
+    private KeyCode LeftStickXAxisPositive;
+    [SerializeField]
+    private KeyCode LeftStickXAxisNegative;
+    [SerializeField]
+    private KeyCode LeftStickYAxisPositive;
+    [SerializeField]
+    private KeyCode LeftStickYAxisNegative;
+    [SerializeField]
+    private KeyCode RightStickXAxisPositive;
+    [SerializeField]
+    private KeyCode RightStickXAxisNegative;
+    [SerializeField]
+    private KeyCode RightStickYAxisPositive;
+    [SerializeField]
+    private KeyCode RightStickYAxisNegative;
 
-    public KeyCode DPadUp;
-    public KeyCode DPadDown;
-    public KeyCode DPadLeft;
-    public KeyCode DPadRight;
+    [SerializeField]
+    private KeyCode DPadUp;
+    [SerializeField]
+    private KeyCode DPadDown;
+    [SerializeField]
+    private KeyCode DPadLeft;
+    [SerializeField]
+    private KeyCode DPadRight;
 
-    public KeyCode LeftTrigger;
-    public KeyCode RightTrigger;
+    [SerializeField]
+    private KeyCode LeftTrigger;
+    [SerializeField]
+    private KeyCode RightTrigger;
 
-    public KeyCode A;
-    public KeyCode B;
-    public KeyCode X;
-    public KeyCode Y;
+    [SerializeField]
+    private KeyCode A;
+    [SerializeField]
+    private KeyCode B;
+    [SerializeField]
+    private KeyCode X;
+    [SerializeField]
+    private KeyCode Y;
 
-    public KeyCode LeftBumper;
-    public KeyCode RightBumper;
+    [SerializeField]
+    private KeyCode LeftBumper;
+    [SerializeField]
+    private KeyCode RightBumper;
 
-    public KeyCode BackButton;
-    public KeyCode StartButton;
-    public KeyCode LeftStick;
-    public KeyCode RightStick;
+    [SerializeField]
+    private KeyCode BackButton;
+    [SerializeField]
+    private KeyCode StartButton;
+    [SerializeField]
+    private KeyCode LeftStick;
+    [SerializeField]
+    private KeyCode RightStick;
 
     //Used for GetControlDown and GetControlUp.
     private int ControlStateInt;

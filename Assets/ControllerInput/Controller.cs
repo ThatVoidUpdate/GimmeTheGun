@@ -18,13 +18,18 @@ public class Controller : MonoBehaviour
 {
     [Header("Controller ID")]
     [Tooltip("The controller index to listen to, as given by Unity")]
-    public int ControllerID = 0;
+    [SerializeField]
+    [Range(0, 20)]
+    protected int ControllerID = 0;
 
     [Header("Controller State")]
-    public bool[] Buttons = new bool[10];
-    public float[] Axes = new float[10];
+    [SerializeField]
+    protected bool[] Buttons = new bool[10];
+    [SerializeField]
+    protected float[] Axes = new float[10];
 
-    public Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
+
+    protected Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
 
     //Used for GetControlDown and GetControlUp.
     private int ControlStateInt;
@@ -32,17 +37,11 @@ public class Controller : MonoBehaviour
 
     [Space]
     [Tooltip("Enabling this will give a debug log of every button pressed and axis moved, every frame")]
-    public bool Verbose;
+    [SerializeField]
+    private bool Verbose;
 
     public void Start()
     {
-        //We need to check that the controller is in a valid range. We cant listen to a controller below 0.
-        if (ControllerID < 0)
-        {
-            Debug.LogError("ControllerID (" + ControllerID.ToString() + ") is too small, setting to 0");
-            ControllerID = 0;
-        }
-
         //We initialise the output dictionary, with each key being every item in the Control enum (Initialized to 0).
         foreach (Control control in Enum.GetValues(typeof(Control)))
         {
@@ -123,5 +122,36 @@ public class Controller : MonoBehaviour
 
         //Extract the correct bit of the changed controls, and check if it is not 0
         return (ControlsUp & (1 << (int)control)) != 0;
+    }
+
+    /// <summary>
+    /// Returns the private controller id
+    /// </summary>
+    /// <returns>The id of the controller</returns>
+    public int GetControllerID()
+    {
+        return ControllerID;
+    }
+
+    /// <summary>
+    /// Sets the controller id, between 0 and 20
+    /// </summary>
+    /// <param name="_ControllerID">The number to set the id to</param>
+    public void SetControllerID(int _ControllerID)
+    {
+        if (_ControllerID >= 0 && _ControllerID <= 20)
+        {
+            ControllerID = _ControllerID;
+        }
+    }
+
+    /// <summary>
+    /// Returns the state of the selected control
+    /// </summary>
+    /// <param name="_Control">The control to measure</param>
+    /// <returns>The value of the control</returns>
+    public float GetControlState(Control _Control)
+    {
+        return ControlState[_Control];
     }
 }

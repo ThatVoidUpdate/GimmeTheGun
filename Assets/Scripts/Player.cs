@@ -9,71 +9,105 @@ public enum Direction { Up, Down, Right, Left, None}
 public class Player : MonoBehaviour
 {
     [Header("Control Options")]
-    public Controller controller; //The controller that his player is listening to
+    [SerializeField]
+    private Controller controller; //The controller that his player is listening to
 
     [Header("Speeds")]
+    [SerializeField]
     public float HorizontalSpeed;
+    [SerializeField]
     public float VerticalSpeed; //The ohirzontal and vertical speed of the player
 
     [Header("Held object options")]
+    [SerializeField]
     public Gun HeldObject = null; //The object that the player is currently holding
+    [SerializeField]
     public float ThrowSpeed;
 
+    [SerializeField]
     public List<Collider2D> closeGuns = new List<Collider2D>(); //A list of all the guns in the trigger
     private bool CanDrop = true;
 
     [Header("Controls")]
+    [SerializeField]
     public Control MoveHorizontal;
+    [SerializeField]
     public Control MoveVertical;
+    [SerializeField]
     public Control LookHorizontal;
+    [SerializeField]
     public Control LookVertical;
+    [SerializeField]
     public Control Grab;
+    [SerializeField]
     public Control Shoot; //The controls for each of the respective actions
 
     [Header("Graphics")]
+    [SerializeField]
     public Sprite UpSprite;
+    [SerializeField]
     public Sprite DownSprite;
+    [SerializeField]
     public Sprite LeftSprite;
+    [SerializeField]
     public Sprite RightSprite; //The sprites for each of their respective directions
     private SpriteRenderer rend; //The sprite renderer attached to this gameobject
     private Direction CurrentDirection = Direction.Down; //The direction that the player is currently facing
 
     [Header("Health")]
+    [SerializeField]
     public float MaxHealth = 100; //The maximum health of the player
+    [SerializeField]
     public float Health; //The current health of the player
+    [SerializeField]
     public bool dead = false; //Whether the player is dead or not
     private float DamageTime; //How long since the enemy started doing damage
+    [SerializeField]
     public float DamageSpeed; //How long it takes an enemy to do damage
 
     [Header("Bark lines")]
+    [SerializeField]
     public GameObject BarkBubble; //The text bubble to pop up when a player wants to say something
+    [SerializeField]
     public float ShowTime = 1; //Time in seconds to show the line for
     [Space]
+    [SerializeField]
     public float DeathLineChance; //Chance to say a line when the player dies
+    [SerializeField]
     public string[] DeathLines; //Lines to say when the player dies
     [Space]
+    [SerializeField]
     public float HalfHealthLineChance;//Chance to say a line when the player reaches half health
+    [SerializeField]
     public string[] HalfHealthLines; //Lines to say when the player reaches half health
     [Space]
+    [SerializeField]
     public float NearDeathLineChance;//Chance to say a line when the player is near death
+    [SerializeField]
     public string[] NearDeathLines; //Lines to say when the player is near death
     [Space]
+    [SerializeField]
     public float GunThrowLineChance;//Chance to say a line when the player throws the gun
+    [SerializeField]
     public string[] GunThrowLines; //Lines to say when the player throws the gun
     [Space]
+    [SerializeField]
     public float WaveStartLineChance;//Chance to say a line when the player starts a wave
+    [SerializeField]
     public string[] WaveStartLines; //Lines to say when the player starts a wave
     [Space]
+    [SerializeField]
     public float WaveEndLineChance;//Chance to say a line when the player ends a wave
+    [SerializeField]
     public string[] WaveEndLines; //Lines to say when the player ends a wave
     [Space]
+    [SerializeField]
     public float EnemyKillLineChance;//Chance to say a line when the player kills an enemy
+    [SerializeField]
     public string[] EnemyKillLines; //Lines to say when the player kills an enemy
 
-    [HideInInspector]
-    public bool InvertedControls = false; // Support for drunk powerup
-    [HideInInspector]
-    public bool CanMove = true; // Support for turret powerup
+    private bool InvertedControls = false; // Support for drunk powerup
+    private bool CanMove = true; // Support for turret powerup
 
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
@@ -94,7 +128,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {       
-        rb.velocity = new Vector2(controller.ControlState[MoveHorizontal] * (CanMove ? (InvertedControls ? -HorizontalSpeed : HorizontalSpeed) : 0), controller.ControlState[MoveVertical] * (CanMove ? (InvertedControls ? VerticalSpeed : -VerticalSpeed) : 0)); //Set the movement speed according to the controller input        
+        rb.velocity = new Vector2(controller.GetControlState(MoveHorizontal) * (CanMove ? (InvertedControls ? -HorizontalSpeed : HorizontalSpeed) : 0), controller.GetControlState(MoveVertical) * (CanMove ? (InvertedControls ? VerticalSpeed : -VerticalSpeed) : 0)); //Set the movement speed according to the controller input        
 
         if (controller.GetControlDown(Grab) && closeGuns.Count > 0 && HeldObject == null && !dead)
         {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun, and we arent currently dead
@@ -102,16 +136,16 @@ public class Player : MonoBehaviour
             CanDrop = false;
         }
 
-        if (controller.ControlState[Grab] == 0)
+        if (controller.GetControlState(Grab) == 0)
         {//Let the player drop the gun after they release the grab button
             CanDrop = true;
         }
 
-        if (controller.ControlState[Shoot] == 1 && HeldObject != null)
+        if (controller.GetControlState(Shoot) == 1 && HeldObject != null)
         {//We are trying to shoot, and we are holding a gun
             HeldObject.GetComponent<Gun>().Shooting = true;
         }
-        else if (controller.ControlState[Shoot] == 0 && HeldObject != null)
+        else if (controller.GetControlState(Shoot) == 0 && HeldObject != null)
         {//We are trying to not shoot, and we are holding a gun
             HeldObject.GetComponent<Gun>().Shooting = false;
         }
@@ -134,23 +168,23 @@ public class Player : MonoBehaviour
         }
 
         //Maths to get the angle of the stick assigned to rotation
-        if (controller.ControlState[LookVertical] != 0 || controller.ControlState[LookHorizontal] != 0)
+        if (controller.GetControlState(LookVertical) != 0 || controller.GetControlState(LookHorizontal) != 0)
         {
-            if (Mathf.Atan(controller.ControlState[LookVertical] / controller.ControlState[LookHorizontal]) / Mathf.PI == 0.5)
+            if (Mathf.Atan(controller.GetControlState(LookVertical) / controller.GetControlState(LookHorizontal)) / Mathf.PI == 0.5)
             {
                 theta = - Mathf.PI / 2;
             }
-            else if (Mathf.Atan(controller.ControlState[LookVertical] / controller.ControlState[LookHorizontal]) / Mathf.PI == -0.5)
+            else if (Mathf.Atan(controller.GetControlState(LookVertical) / controller.GetControlState(LookHorizontal)) / Mathf.PI == -0.5)
             {
                 theta = Mathf.PI / 2;
             }
             else
             {
-                theta = Mathf.Atan(controller.ControlState[LookVertical] / controller.ControlState[LookHorizontal]);
+                theta = Mathf.Atan(controller.GetControlState(LookVertical) / controller.GetControlState(LookHorizontal));
             }
             
 
-            if (controller.ControlState[LookHorizontal] > 0)
+            if (controller.GetControlState(LookHorizontal) > 0)
             {
                  theta += Mathf.PI;
             }
@@ -213,7 +247,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Die()
+    private void Die()
     {
         if (Random.Range(0f,1f) < DeathLineChance)
         {
@@ -281,6 +315,43 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(ShowBarkLine(EnemyKillLines[Random.Range(0, EnemyKillLines.Length - 1)], ShowTime));
         }
+    }
+
+    /// <summary>
+    /// Returns the controller attached to the player
+    /// </summary>
+    /// <returns>The local controller</returns>
+    public Controller GetController()
+    {
+        return controller;
+    }
+
+    /// <summary>
+    /// Sets the local controller
+    /// </summary>
+    /// <param name="_Controller">The controller to set to</param>
+    public void SetController(Controller _Controller)
+    {
+        controller = _Controller;
+    }
+
+    /// <summary>
+    /// Sets the id of the controller attached to the player
+    /// </summary>
+    /// <param name="ID">The ID to set it to</param>
+    public void SetControllerID(int ID)
+    {
+        controller.SetControllerID(ID);
+    }
+
+    public void SetControlInversion(bool Inverted)
+    {
+        InvertedControls = Inverted;
+    }
+
+    public void SetCanMove(bool _CanMove)
+    {
+        CanMove = _CanMove;
     }
 }
 

@@ -91,7 +91,7 @@ public class Powerup : MonoBehaviour
             case PowerupType.Drunk:
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {
-                    player.GetComponent<Player>().InvertedControls = true;
+                    player.GetComponent<Player>().SetControlInversion(true);
                 }
                 break;
             case PowerupType.Weed:
@@ -117,7 +117,7 @@ public class Powerup : MonoBehaviour
                 {
                     if (collider.gameObject.CompareTag("Player"))
                     {
-                        collider.gameObject.GetComponent<Player>().CanMove = false;
+                        collider.gameObject.GetComponent<Player>().SetCanMove(false);
                     }
                 }
                 break;
@@ -125,7 +125,7 @@ public class Powerup : MonoBehaviour
             case PowerupType.fourTwenty:
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {
-                    player.GetComponent<Player>().InvertedControls = true;
+                    player.GetComponent<Player>().SetControlInversion(true);
                 }
                 Time.timeScale = 0.5f;
                 Camera.main.GetComponent<PostProcessVolume>().enabled = true; 
@@ -188,7 +188,7 @@ public class Powerup : MonoBehaviour
             case PowerupType.Drunk:
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {
-                    player.GetComponent<Player>().InvertedControls = false;
+                    player.GetComponent<Player>().SetControlInversion(false);
                 }
                 break;
             case PowerupType.Weed:
@@ -202,7 +202,7 @@ public class Powerup : MonoBehaviour
                 {
                     if (collider.gameObject.CompareTag("Player"))
                     {
-                        collider.gameObject.GetComponent<Player>().CanMove = true;
+                        collider.gameObject.GetComponent<Player>().SetCanMove(true);
                     }
                 }
                 break;
@@ -210,7 +210,7 @@ public class Powerup : MonoBehaviour
             case PowerupType.fourTwenty:
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {
-                    player.GetComponent<Player>().InvertedControls = false;
+                    player.GetComponent<Player>().SetControlInversion(false);
                 }
                 Time.timeScale = 1;
                 Camera.main.GetComponent<PostProcessVolume>().enabled = false;

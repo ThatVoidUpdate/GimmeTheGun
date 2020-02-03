@@ -20,17 +20,17 @@ public class PlayerSwitcher : MonoBehaviour
     {
         if (controller.GetControlDown(NextPlayer))
         {
-            AllPlayers[CurrentPlayer].controller = null;
+            AllPlayers[CurrentPlayer].SetController(null);
             CurrentPlayer++;
             CurrentPlayer = CurrentPlayer % AllPlayers.Length;
-            AllPlayers[CurrentPlayer].controller = controller;
+            AllPlayers[CurrentPlayer].SetController(controller);
         }
         else if (controller.GetControlDown(PrevPlayer))
         {
-            AllPlayers[CurrentPlayer].controller = null;
+            AllPlayers[CurrentPlayer].SetController(null);
             CurrentPlayer--;
             CurrentPlayer = CurrentPlayer == -1 ? AllPlayers.Length - 1 : CurrentPlayer;
-            AllPlayers[CurrentPlayer].controller = controller;
+            AllPlayers[CurrentPlayer].SetController(controller);
         }
     }
 }
