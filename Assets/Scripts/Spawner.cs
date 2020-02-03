@@ -12,8 +12,6 @@ public class Spawner : MonoBehaviour
     private float MinY;
     private float MaxY;
 
-    private float time = 0;
-
     public void Start()
     {
         SpawnArea = GetComponent<BoxCollider2D>();

@@ -78,7 +78,7 @@ public class MenuNavigatorManager : MonoBehaviour
             {
                 if (AllControllers[i].ControlState[Control.DPadYAxis] > 0)
                 {
-                    //Moving to the right
+                    //Moving to the up
                     foreach (MenuNavigator menuitem in MenuItems)
                     {
                         menuitem.GetInput(Direction.Up);
@@ -86,7 +86,7 @@ public class MenuNavigatorManager : MonoBehaviour
                 }
                 else if (AllControllers[i].ControlState[Control.DPadYAxis] < 0)
                 {
-                    //Moving to the left
+                    //Moving to the down
                     foreach (MenuNavigator menuitem in MenuItems)
                     {
                         menuitem.GetInput(Direction.Down);
