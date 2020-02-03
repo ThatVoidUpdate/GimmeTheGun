@@ -43,7 +43,6 @@ public class MenuNavigator : MonoBehaviour
                 case Direction.Up:
                     if (UpElement != null)
                     {
-                        print("Moving up");
                         UpElement.IsSelected = true;
                         IsSelected = false;
 
