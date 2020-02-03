@@ -43,6 +43,7 @@ public class MenuNavigator : MonoBehaviour
                 case Direction.Up:
                     if (UpElement != null)
                     {
+                        print("Moving up");
                         UpElement.IsSelected = true;
                         IsSelected = false;
 
@@ -95,6 +96,7 @@ public class MenuNavigator : MonoBehaviour
         switch (ChangeType)
         {
             case MenuItemHighlightType.ColourChange:
+                OldColour = GetComponent<Button>().image.color;
                 GetComponent<Button>().image.color = ColourChangeColour;
                 break;
             case MenuItemHighlightType.SpriteChange:
@@ -110,7 +112,7 @@ public class MenuNavigator : MonoBehaviour
         switch (ChangeType)
         {
             case MenuItemHighlightType.ColourChange:
-                GetComponent<Button>().image.color = GetComponent<Button>().colors.normalColor;
+                GetComponent<Button>().image.color = OldColour;
                 break;
             case MenuItemHighlightType.SpriteChange:
                 GetComponent<Button>().image.sprite = OldSprite;
