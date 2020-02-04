@@ -252,6 +252,8 @@ MonoBehaviour:
   - Time for a breather
   - Phew, we made it
   - Can we play Overcooked now?
+  EnemyKillLineChance: 0
+  EnemyKillLines: []
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4
