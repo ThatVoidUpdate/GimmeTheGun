@@ -21,63 +21,37 @@ public class FakeController : Controller
     //public float[] Axes = new float[10];
 
     [Header("Keyboard - Controller assignments")]
-    [SerializeField]
-    private KeyCode LeftStickXAxisPositive;
-    [SerializeField]
-    private KeyCode LeftStickXAxisNegative;
-    [SerializeField]
-    private KeyCode LeftStickYAxisPositive;
-    [SerializeField]
-    private KeyCode LeftStickYAxisNegative;
-    [SerializeField]
-    private KeyCode RightStickXAxisPositive;
-    [SerializeField]
-    private KeyCode RightStickXAxisNegative;
-    [SerializeField]
-    private KeyCode RightStickYAxisPositive;
-    [SerializeField]
-    private KeyCode RightStickYAxisNegative;
-
-    [SerializeField]
-    private KeyCode DPadUp;
-    [SerializeField]
-    private KeyCode DPadDown;
-    [SerializeField]
-    private KeyCode DPadLeft;
-    [SerializeField]
-    private KeyCode DPadRight;
-
-    [SerializeField]
-    private KeyCode LeftTrigger;
-    [SerializeField]
-    private KeyCode RightTrigger;
-
-    [SerializeField]
-    private KeyCode A;
-    [SerializeField]
-    private KeyCode B;
-    [SerializeField]
-    private KeyCode X;
-    [SerializeField]
-    private KeyCode Y;
-
-    [SerializeField]
-    private KeyCode LeftBumper;
-    [SerializeField]
-    private KeyCode RightBumper;
-
-    [SerializeField]
-    private KeyCode BackButton;
-    [SerializeField]
-    private KeyCode StartButton;
-    [SerializeField]
-    private KeyCode LeftStick;
-    [SerializeField]
-    private KeyCode RightStick;
-
+    
+    public KeyCode LeftStickXAxisPositive;    
+    public KeyCode LeftStickXAxisNegative;    
+    public KeyCode LeftStickYAxisPositive;    
+    public KeyCode LeftStickYAxisNegative;    
+    public KeyCode RightStickXAxisPositive;    
+    public KeyCode RightStickXAxisNegative;    
+    public KeyCode RightStickYAxisPositive;    
+    public KeyCode RightStickYAxisNegative;
+    
+    public KeyCode DPadUp;    
+    public KeyCode DPadDown;    
+    public KeyCode DPadLeft;    
+    public KeyCode DPadRight;
+    
+    public KeyCode LeftTrigger;    
+    public KeyCode RightTrigger;
+    
+    public KeyCode A;    
+    public KeyCode B;    
+    public KeyCode X;    
+    public KeyCode Y;
+    
+    public KeyCode LeftBumper;    
+    public KeyCode RightBumper;
+    
+    public KeyCode BackButton;    
+    public KeyCode StartButton;    
+    public KeyCode LeftStick;    
+    public KeyCode RightStick;
     //Used for GetControlDown and GetControlUp.
-    private int ControlStateInt;
-    private int OldControlStateInt;
 
     //public Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
 
