@@ -32,8 +32,8 @@ public class Controller : MonoBehaviour
     protected Dictionary<Control, float> ControlState = new Dictionary<Control, float>();
 
     //Used for GetControlDown and GetControlUp.
-    private int ControlStateInt;
-    private int OldControlStateInt;
+    protected int ControlStateInt;
+    protected int OldControlStateInt;
 
     [Space]
     [Tooltip("Enabling this will give a debug log of every button pressed and axis moved, every frame")]
