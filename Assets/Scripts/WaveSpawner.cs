@@ -44,6 +44,21 @@ public class WaveSpawner : MonoBehaviour
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6), (FastEnemy, 6), (NinjaEnemy, 6) });
 
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6), (FastEnemy, 12), (NinjaEnemy, 6) });
+
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (FastEnemy, 5), (NinjaEnemy, 10) });
+
+        Waves.Add(new (GameObject, int)[] { (FastEnemy, 20), (NinjaEnemy, 12) });
+
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 10), (FastEnemy, 8), (NinjaEnemy, 6) });
+
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 12), (FastEnemy, 8), (NinjaEnemy, 8) });
+
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 15), (FastEnemy, 10), (NinjaEnemy, 5) });
+
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 5), (FastEnemy, 25), (NinjaEnemy, 10) });
+
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 20), (NinjaEnemy, 20) });
 
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
     }
