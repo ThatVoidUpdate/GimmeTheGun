@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GunType {Pistol, RocketLauncher, Flamethrower, Shotgun}
+
+
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
@@ -18,6 +21,9 @@ public class Gun : MonoBehaviour
     [Space]
     public float HeldDistance;
     public GameObject BulletSpawn;
+
+    [Space]
+    public GunType type;
 
     private float TimeSinceShot = 999;
     private SpriteRenderer rend;
