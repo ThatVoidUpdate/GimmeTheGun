@@ -97,7 +97,7 @@ MonoBehaviour:
   Speed: 1
   Target: {fileID: 0}
   MaxHealth: 75
-  Damage: 10
+  Damage: 8
   DamageTakenModifier: 1
 --- !u!60 &3032010844547566131
 PolygonCollider2D:

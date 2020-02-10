@@ -146,7 +146,7 @@ MonoBehaviour:
   Speed: 10
   Target: {fileID: 0}
   MaxHealth: 20
-  Damage: 15
+  Damage: 10
   DamageTakenModifier: 1
   TeleportTime: 2
   ThrowTime: 0
