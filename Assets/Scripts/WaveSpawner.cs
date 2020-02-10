@@ -28,7 +28,7 @@ public class WaveSpawner : MonoBehaviour
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 10), (FastEnemy, 3) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 11), (FastEnemy, 3) });
+        Waves.Add(new (GameObject, int)[] { (FastEnemy, 10) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 11), (FastEnemy, 3) });
 
@@ -38,7 +38,7 @@ public class WaveSpawner : MonoBehaviour
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 16), (FastEnemy, 3), (NinjaEnemy, 3) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 16), (FastEnemy, 3), (NinjaEnemy, 3) });
+        Waves.Add(new (GameObject, int)[] { (FastEnemy, 12), (NinjaEnemy, 4) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8), (FastEnemy, 5), (NinjaEnemy, 2) });
 
