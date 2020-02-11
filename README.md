@@ -1,2 +1,2 @@
 # Gimme The Gun!
-A game by White Flag Games
+A game by Lettuce Play Games
