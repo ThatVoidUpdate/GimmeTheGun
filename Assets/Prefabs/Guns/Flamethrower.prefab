@@ -118,18 +118,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0061790943, y: 0.008238733}
+  m_Offset: {x: 0.015494823, y: 0.004512489}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.1014285, y: 0.92714286}
+    oldSize: {x: 2.1257143, y: 0.9057143}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.093758, y: 0.93187743}
+  m_Size: {x: 2.0751266, y: 0.9020675}
   m_EdgeRadius: 0
 --- !u!114 &1292359383158253062
 MonoBehaviour:
@@ -149,6 +149,8 @@ MonoBehaviour:
   BulletSpeed: 10
   HeldDistance: 1
   BulletSpawn: {fileID: 0}
+  type: 0
+  OnLeftSideOfScreen: 0
 --- !u!82 &6111948976387259139
 AudioSource:
   m_ObjectHideFlags: 0
@@ -271,7 +273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4287814312796958730}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.965, y: -0.032, z: 0.059}
+  m_LocalPosition: {x: 0.995, y: -0.006, z: 0.059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6102127357936305523}

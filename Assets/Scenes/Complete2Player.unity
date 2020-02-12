@@ -2009,6 +2009,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1292359383158253062, guid: f915ebb8a18a7a84fa5dc31fb21faf36,
+        type: 3}
+      propertyPath: BulletSpawn
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f915ebb8a18a7a84fa5dc31fb21faf36, type: 3}
 --- !u!114 &1684713117 stripped
