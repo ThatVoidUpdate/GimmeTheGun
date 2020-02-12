@@ -27,11 +27,11 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //transform.LookAt(Target.transform);
         //transform.Translate((Target.transform.position - transform.position).normalized * Speed * Time.deltaTime);]
-        rb.MovePosition(transform.position + (Target.transform.position - transform.position).normalized * Speed * Time.deltaTime);
+        rb.MovePosition(transform.position + (Target.transform.position - transform.position).normalized * Speed);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
