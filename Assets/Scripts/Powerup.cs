@@ -17,25 +17,40 @@ public class Powerup : MonoBehaviour
     public float PowerupLength;
     [Space]
     public float BombRadius;
+    [Space]
+    [Tooltip("All the guns in the game, to be used for the ChangeWeapons powerup")]
+    public GameObject[] Guns;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            ActivatePowerup();
+            StartCoroutine(DoPowerup());
         }
-    }
-
-    public void ActivatePowerup()
-    {
-        StartCoroutine(DoPowerup());
     }
 
     IEnumerator DoPowerup()
     {
+        print("Collected powerup: " + type);
         //modify variables
         switch (type)
         {
             case PowerupType.ChangeWeapon:
+                GameObject oldGun = GameObject.FindObjectOfType<Gun>().gameObject;
+                GameObject newGunPrefab = Guns[Random.Range(0, Guns.Length)];
+                GameObject newGun = Instantiate(newGunPrefab, oldGun.transform.position, oldGun.transform.rotation);
+                foreach (Player player in GameObject.FindObjectsOfType<Player>())
+                {
+                    if (player.HeldObject != null)
+                    {
+                        player.HeldObject = newGun.GetComponent<Gun>();
+                        player.closeGuns.Clear();
+                        player.closeGuns.Add(newGun.GetComponent<Collider2D>());
+
+                        break;
+                    }
+                }
+                Destroy(oldGun);
+
                 break;
 
             case PowerupType.DestroyAllEnemies:
@@ -82,10 +97,14 @@ public class Powerup : MonoBehaviour
                 break;
 
             case PowerupType.Bomb:
-                foreach (Collider2D enemy in Physics2D.OverlapCircleAll(transform.position, BombRadius))
+                try
                 {
-                    enemy.GetComponent<Enemy>().TakeDamage(999999999999999);//ITS OVER 9000!!!
+                    foreach (Collider2D enemy in Physics2D.OverlapCircleAll(transform.position, BombRadius))
+                    {
+                        enemy.GetComponent<Enemy>().TakeDamage(999999999999999);//ITS OVER 9000!!!
+                    }
                 }
+                catch { }
                 break;
 
             case PowerupType.Drunk:
@@ -233,6 +252,7 @@ public class Powerup : MonoBehaviour
     }
     public void HidePowerup()
     {
+        print("Hiding powerup");
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
     }

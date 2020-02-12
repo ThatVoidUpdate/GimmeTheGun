@@ -167,10 +167,10 @@ MonoBehaviour:
   LookVertical: 4
   Grab: 8
   Shoot: 9
-  UpSprite: {fileID: 21300000, guid: 4bd9a0be559112d49872b7bf83a8c227, type: 3}
-  DownSprite: {fileID: 21300000, guid: 58b99274dfdf30b4fa89687f8ac8f873, type: 3}
-  LeftSprite: {fileID: 21300000, guid: b02c524b6ebf2174c9227b5006a42285, type: 3}
-  RightSprite: {fileID: 21300000, guid: a0437aebafb456d4d9f6dc9a1faa1649, type: 3}
+  UpSprite: {fileID: 21300000, guid: d40e87aed092115459cbf882bd8e989f, type: 3}
+  DownSprite: {fileID: 21300000, guid: bd94c093e6681b941ac3cd16a5674269, type: 3}
+  LeftSprite: {fileID: 21300000, guid: e15899593891a184ba6a8ea3a883c80d, type: 3}
+  RightSprite: {fileID: 21300000, guid: f88a00e515b5e9e48bf0f73e7bf0244d, type: 3}
   MaxHealth: 100
   Health: 0
   dead: 0
@@ -252,8 +252,15 @@ MonoBehaviour:
   - Time for a breather
   - Phew, we made it
   - Can we play Overcooked now?
-  EnemyKillLineChance: 0
-  EnemyKillLines: []
+  EnemyKillLineChance: 0.2
+  EnemyKillLines:
+  - Take that!
+  - Get some!
+  - Oh yeah!
+  - Violence is fun!
+  - HAHAHA!
+  - Die! Die! DIE!
+  - Are you watching, kids?
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4

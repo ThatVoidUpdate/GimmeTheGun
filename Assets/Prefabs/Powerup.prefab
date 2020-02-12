@@ -96,6 +96,12 @@ MonoBehaviour:
   type: 16
   PowerupLength: 5
   BombRadius: 5
+  Guns:
+  - {fileID: 3948224785865350264, guid: f915ebb8a18a7a84fa5dc31fb21faf36, type: 3}
+  - {fileID: 4930244215034406838, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac, type: 3}
+  - {fileID: 7936850611515429369, guid: 5da054e9c9388f14ea68ff95c3b6dfe6, type: 3}
+  - {fileID: 8921713980261713552, guid: 3f8f1e4d057ab344bbf9a6c2f25dd5ed, type: 3}
+  - {fileID: 2173843671996048290, guid: 594ad0bab70a21043ae586c43c05cb0c, type: 3}
 --- !u!61 &2572642574169539103
 BoxCollider2D:
   m_ObjectHideFlags: 0

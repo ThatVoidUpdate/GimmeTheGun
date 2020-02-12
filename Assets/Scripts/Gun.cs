@@ -48,11 +48,7 @@ public class Gun : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        print("X position: " + transform.position.x + ", picked up on left side: " + OnLeftSideOfScreen + ", Current particle system position: " + system.transform.position.x);
-        //Debug.DrawLine(Vector3.zero, system.transform.localPosition);
-        Debug.Log(system + " " + system.transform.localPosition);
-        
+    {        
         if (Shooting && (system.transform.position.x < 0) == OnLeftSideOfScreen)
         {
             if (TimeSinceShot > (1/ShotsPerSecond))
