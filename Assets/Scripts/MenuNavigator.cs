@@ -121,7 +121,7 @@ public class MenuNavigator : MonoBehaviour
         }
     }
 }
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(MenuNavigator))]
 public class MyScriptEditor : Editor
 {
@@ -150,3 +150,4 @@ public class MyScriptEditor : Editor
 
     }
 }
+#endif

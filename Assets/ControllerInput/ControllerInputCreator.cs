@@ -3,6 +3,7 @@ using UnityEditor;
 using System.IO;
 using System.Text;
 
+#if UNITY_EDITOR
 public class ControllerInputCreator : EditorWindow
 {
     int MaxControllers;
@@ -58,3 +59,4 @@ public class ControllerInputCreator : EditorWindow
         }
     }
 }
+#endif
