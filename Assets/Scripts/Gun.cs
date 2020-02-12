@@ -31,11 +31,16 @@ public class Gun : MonoBehaviour
     private bool UsingParticleSystem = false;
     private bool GunSide; //Left is true, right is false
 
+    private ParticleSystem system;
+
+    [HideInInspector]
+    public bool OnLeftSideOfScreen;
+
     public void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-
-        if (GetComponentInChildren<ParticleSystem>())
+        system = GetComponentInChildren<ParticleSystem>();
+        if (system != null)
         {//We are using a particle system, so switch over to particle systems
             UsingParticleSystem = true;
         }
@@ -44,7 +49,11 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Shooting)
+        print("X position: " + transform.position.x + ", picked up on left side: " + OnLeftSideOfScreen + ", Current particle system position: " + system.transform.position.x);
+        //Debug.DrawLine(Vector3.zero, system.transform.localPosition);
+        Debug.Log(system + " " + system.transform.localPosition);
+        
+        if (Shooting && (system.transform.position.x < 0) == OnLeftSideOfScreen)
         {
             if (TimeSinceShot > (1/ShotsPerSecond))
             {

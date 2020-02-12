@@ -55,55 +55,35 @@ public class Player : MonoBehaviour
     private Direction CurrentDirection = Direction.Down; //The direction that the player is currently facing
 
     [Header("Health")]
-    [SerializeField]
     public float MaxHealth = 100; //The maximum health of the player
-    [SerializeField]
     public float Health; //The current health of the player
-    [SerializeField]
     public bool dead = false; //Whether the player is dead or not
     private float DamageTime; //How long since the enemy started doing damage
-    [SerializeField]
     public float DamageSpeed; //How long it takes an enemy to do damage
 
     [Header("Bark lines")]
-    [SerializeField]
     public GameObject BarkBubble; //The text bubble to pop up when a player wants to say something
-    [SerializeField]
     public float ShowTime = 1; //Time in seconds to show the line for
     [Space]
-    [SerializeField]
     public float DeathLineChance; //Chance to say a line when the player dies
-    [SerializeField]
     public string[] DeathLines; //Lines to say when the player dies
     [Space]
-    [SerializeField]
     public float HalfHealthLineChance;//Chance to say a line when the player reaches half health
-    [SerializeField]
     public string[] HalfHealthLines; //Lines to say when the player reaches half health
     [Space]
-    [SerializeField]
     public float NearDeathLineChance;//Chance to say a line when the player is near death
-    [SerializeField]
     public string[] NearDeathLines; //Lines to say when the player is near death
     [Space]
-    [SerializeField]
     public float GunThrowLineChance;//Chance to say a line when the player throws the gun
-    [SerializeField]
     public string[] GunThrowLines; //Lines to say when the player throws the gun
     [Space]
-    [SerializeField]
     public float WaveStartLineChance;//Chance to say a line when the player starts a wave
-    [SerializeField]
     public string[] WaveStartLines; //Lines to say when the player starts a wave
     [Space]
-    [SerializeField]
     public float WaveEndLineChance;//Chance to say a line when the player ends a wave
-    [SerializeField]
     public string[] WaveEndLines; //Lines to say when the player ends a wave
     [Space]
-    [SerializeField]
     public float EnemyKillLineChance;//Chance to say a line when the player kills an enemy
-    [SerializeField]
     public string[] EnemyKillLines; //Lines to say when the player kills an enemy
 
     private bool InvertedControls = false; // Support for drunk powerup
@@ -134,6 +114,14 @@ public class Player : MonoBehaviour
         {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun, and we arent currently dead
             HeldObject = closeGuns[0].GetComponent<Gun>();
             CanDrop = false;
+            if (transform.position.x < 0)
+            {
+                closeGuns[0].GetComponent<Gun>().OnLeftSideOfScreen = true;
+            }
+            else
+            {
+                closeGuns[0].GetComponent<Gun>().OnLeftSideOfScreen = false;
+            }
         }
 
         if (controller.GetControlState(Grab) == 0)
