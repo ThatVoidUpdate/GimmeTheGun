@@ -49,4 +49,4 @@ MonoBehaviour:
     type: 3}
   FastEnemy: {fileID: 3464648849592760336, guid: 60c17c60441c0cf468acba4385ec6ce3,
     type: 3}
-  Boss: {fileID: 0}
+  Boss: {fileID: 8034868220926690958, guid: c850d868402502e46bfad2c3cb8f6bc2, type: 3}
