@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3382940918426874534}
   m_Layer: 8
   m_Name: NinjaEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,9 +146,9 @@ MonoBehaviour:
   Speed: 10
   Target: {fileID: 0}
   MaxHealth: 20
-  Damage: 10
+  Damage: 5
   DamageTakenModifier: 1
-  TeleportTime: 2
+  TeleportTime: 1
   ThrowTime: 0
   TopLeftTeleportZone: {x: -7.8, y: 4.5}
   BottomRightTeleportZone: {x: 7.8, y: -4.5}

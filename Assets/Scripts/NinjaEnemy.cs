@@ -18,7 +18,7 @@ public class NinjaEnemy : Enemy
     public float ShurikenSpeed;
     public float ShurikenSpawnDistance;
 
-   public void Update()
+   public void FixedUpdate()
     {
         CurrentTime += Time.deltaTime;
 
