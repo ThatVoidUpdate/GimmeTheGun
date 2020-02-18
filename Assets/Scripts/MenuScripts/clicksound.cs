@@ -21,6 +21,6 @@ public class ClickSound : MonoBehaviour
         soundPlay.clip = sound;
         soundPlay.playOnAwake = false;
         soundPlay.PlayOneShot(sound);
-        DestroyObject(soundPlay, 1f);
+        Destroy(soundPlay);
     }
 }
