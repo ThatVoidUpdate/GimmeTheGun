@@ -94,12 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e746e8730212b17449de825de869f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.17
+  Speed: 0.1
   Target: {fileID: 0}
   MaxHealth: 20
   Damage: 15
   DamageTakenModifier: 1
-  debug: {fileID: 0}
 --- !u!50 &362952281243813151
 Rigidbody2D:
   serializedVersion: 4
