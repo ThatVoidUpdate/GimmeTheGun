@@ -20,7 +20,7 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
     
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4),  (FastEnemy, 2) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4),  (Boss, 1) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6) });
 
