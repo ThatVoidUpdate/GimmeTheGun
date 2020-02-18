@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4619281499060982928}
   - component: {fileID: 6831750059705638535}
   - component: {fileID: 3749009157216313503}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HexagonBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e746e8730212b17449de825de869f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1.5
+  Speed: 0.005
   Target: {fileID: 0}
   MaxHealth: 200
   Damage: 25

@@ -7,6 +7,7 @@ public class WaveSpawner : MonoBehaviour
     public GameObject StandardEnemy;
     public GameObject NinjaEnemy;
     public GameObject FastEnemy;
+    public GameObject HexagonBoss;
 
     public GameObject Boss;
 
@@ -19,8 +20,12 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+
+        
+
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4)});
+
+        Waves.Add(new (GameObject, int)[] { (HexagonBoss, 4) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6) });
 
@@ -74,6 +79,7 @@ public class WaveSpawner : MonoBehaviour
             {//We defeated all waves. time for the boss battle
                 Boss.SetActive(true);
             }
+
 
             foreach (GameObject spawner in spawners)
             {
