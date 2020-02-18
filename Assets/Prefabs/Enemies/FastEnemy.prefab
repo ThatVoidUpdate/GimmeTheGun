@@ -97,7 +97,7 @@ MonoBehaviour:
   Speed: 0.1
   Target: {fileID: 0}
   MaxHealth: 20
-  Damage: 15
+  Damage: 10
   DamageTakenModifier: 1
 --- !u!50 &362952281243813151
 Rigidbody2D:
