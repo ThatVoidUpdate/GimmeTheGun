@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
         {//We are holding a gun, and trying to drop it
             if (Random.Range(0f, 1f) < GunThrowLineChance)
             {//Show a gun throw line
-                StartCoroutine(ShowBarkLine(GunThrowLines[Random.Range(0, GunThrowLines.Length - 1)], ShowTime));
+                FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
             }
 
             HeldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(ThrowSpeed * Mathf.Cos(theta * 2 * Mathf.PI / 360), ThrowSpeed * Mathf.Sin(theta * 2 * Mathf.PI / 360));
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
         {//Say a half health line            
             if (Random.Range(0f, 1f) < HalfHealthLineChance)
             {
-                StartCoroutine(ShowBarkLine(HalfHealthLines[Random.Range(0, HalfHealthLines.Length-1)], ShowTime));
+                FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.HalfHealth, gameObject);
             }
         }
 
@@ -223,7 +223,7 @@ public class Player : MonoBehaviour
         {//Say a near death line            
             if (Random.Range(0f, 1f) < NearDeathLineChance)
             {
-                StartCoroutine(ShowBarkLine(NearDeathLines[Random.Range(0, NearDeathLines.Length-1)], ShowTime));
+                FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NearDeath, gameObject);
             }
         }
 
@@ -239,7 +239,7 @@ public class Player : MonoBehaviour
     {
         if (Random.Range(0f,1f) < DeathLineChance)
         {
-            StartCoroutine(ShowBarkLine(DeathLines[Random.Range(0,DeathLines.Length-1)], ShowTime));
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Death, gameObject);
         }
         
         rend.color = new Color(1, 1, 1, 0.5f);
@@ -272,20 +272,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator ShowBarkLine(string Line, float WaitTime)
-    {
-        BarkBubble.SetActive(true);
-        BarkBubble.GetComponentInChildren<TextMeshProUGUI>().text = Line;
-        BarkBubble.GetComponent<BarkBubble>().TrackingObject = gameObject;
-        yield return new WaitForSeconds(WaitTime);
-        BarkBubble.SetActive(false);
-    }
+
 
     public void EndWave()
     {
         if (Random.Range(0f, 1f) < WaveStartLineChance)
         {
-            StartCoroutine(ShowBarkLine(WaveStartLines[Random.Range(0, WaveStartLines.Length - 1)], ShowTime));
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.WaveCleared, gameObject);
         }
     }
 
@@ -293,7 +286,7 @@ public class Player : MonoBehaviour
     {
         if (Random.Range(0f, 1f) < WaveEndLineChance)
         {
-            StartCoroutine(ShowBarkLine(WaveEndLines[Random.Range(0, WaveEndLines.Length - 1)], ShowTime));
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NewRound, gameObject);
         }
     }
 
@@ -301,7 +294,7 @@ public class Player : MonoBehaviour
     {
         if (Random.Range(0f, 1f) < EnemyKillLineChance)
         {
-            StartCoroutine(ShowBarkLine(EnemyKillLines[Random.Range(0, EnemyKillLines.Length - 1)], ShowTime));
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.KillEnemy, gameObject);
         }
     }
 

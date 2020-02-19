@@ -3,13 +3,17 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 using System;
+using TMPro;
+using System.Collections;
 
-public enum BarkEventTypes {PowerupPickup, KillEnemy, NewRound, HalfHealth, NearDeath, Death, WaveCleared, NewWeapon, ThrowGun, NewSkin, NewPowerup, Achievement, Boss}
+public enum BarkEventTypes {Error, PowerupPickup, KillEnemy, NewRound, HalfHealth, NearDeath, Death, WaveCleared, NewWeapon, ThrowGun, NewSkin, NewPowerup, Achievement, Boss}
 
 public class BarkEvents : MonoBehaviour
 {
     public string BarkLinesFile;
     private Dictionary<BarkEventTypes, List<string>> AllLines = new Dictionary<BarkEventTypes, List<string>>();
+
+    public BarkBubble bubble;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +22,7 @@ public class BarkEvents : MonoBehaviour
         lines = (from line in lines where !line.StartsWith("#") select line).ToArray();
         lines = (from line in lines where line!="" select line).ToArray();
 
-        BarkEventTypes currentType = BarkEventTypes.PowerupPickup;
+        BarkEventTypes currentType = BarkEventTypes.Error;
 
         foreach (BarkEventTypes type in Enum.GetValues(typeof(BarkEventTypes)))
         {
@@ -71,6 +75,8 @@ public class BarkEvents : MonoBehaviour
                         currentType = BarkEventTypes.Boss;
                         break;
                     default:
+                        Debug.LogError("Invalid event in Bark Event Parser file: " + BarkLinesFile + ", \"" + line + "\"");
+                        currentType = BarkEventTypes.Error;
                         break;
                 }
             }
@@ -79,15 +85,23 @@ public class BarkEvents : MonoBehaviour
                 AllLines[currentType].Add(line);
             }
         }
+    }
 
-        foreach (string line in AllLines[BarkEventTypes.NewWeapon])
+    public void TriggerBarkLine(BarkEventTypes type, GameObject Player)
+    {
+        if (AllLines[type].Count > 0)
         {
-            print(line);
+            string DisplayLine = AllLines[type][UnityEngine.Random.Range(0, AllLines[type].Count)];
+            StartCoroutine(ShowBarkLine(DisplayLine, 2, Player));
         }
     }
 
-    public static void TriggerBarkLine(BarkEventTypes type)
+    IEnumerator ShowBarkLine(string Line, float WaitTime, GameObject Player)
     {
-
+        bubble.gameObject.SetActive(true);
+        bubble.GetComponentInChildren<TextMeshProUGUI>().text = Line;
+        bubble.TrackingObject = Player;
+        yield return new WaitForSeconds(WaitTime);
+        bubble.gameObject.SetActive(false);
     }
 }

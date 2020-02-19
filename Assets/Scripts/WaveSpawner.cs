@@ -70,6 +70,11 @@ public class WaveSpawner : MonoBehaviour
         {//All enemies have been killed. MOAR ENEMIES
             CurrentWave++;
 
+            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                player.GetComponent<Player>().StartWave();
+            }
+
             if (CurrentWave > Waves.Count && Boss != null)
             {//We defeated all waves. time for the boss battle
                 Boss.SetActive(true);
