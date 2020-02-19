@@ -1,9 +1,9 @@
 #File for implementing bark lines into the game
 #To create a set of lines, write something like this:
-#[EVENTNAME]
-#Oh No!
-#Hell Yeah!
-[NewRound]
+#[EVENTNAME]PROBABILITY
+#BARK LINE
+#BARK LINE
+[NewRound]0.5
 Ah shit. Here we go again
 Don’t these guys ever stop?
 Oh, what now?
@@ -20,7 +20,7 @@ The Devil’s got a lot of paperwork headed his way!
 Can’t you just isosceleave us alone?
 When you meet Ivan the Terriangle, tell him I said hi!
 Well… Fuck
-[NewWeapon]
+[NewWeapon]0.5
 Ooo shiny!
 What does this do?
 I’ve always wanted one of these!

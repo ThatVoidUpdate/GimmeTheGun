@@ -61,31 +61,6 @@ public class Player : MonoBehaviour
     private float DamageTime; //How long since the enemy started doing damage
     public float DamageSpeed; //How long it takes an enemy to do damage
 
-    [Header("Bark lines")]
-    public GameObject BarkBubble; //The text bubble to pop up when a player wants to say something
-    public float ShowTime = 1; //Time in seconds to show the line for
-    [Space]
-    public float DeathLineChance; //Chance to say a line when the player dies
-    public string[] DeathLines; //Lines to say when the player dies
-    [Space]
-    public float HalfHealthLineChance;//Chance to say a line when the player reaches half health
-    public string[] HalfHealthLines; //Lines to say when the player reaches half health
-    [Space]
-    public float NearDeathLineChance;//Chance to say a line when the player is near death
-    public string[] NearDeathLines; //Lines to say when the player is near death
-    [Space]
-    public float GunThrowLineChance;//Chance to say a line when the player throws the gun
-    public string[] GunThrowLines; //Lines to say when the player throws the gun
-    [Space]
-    public float WaveStartLineChance;//Chance to say a line when the player starts a wave
-    public string[] WaveStartLines; //Lines to say when the player starts a wave
-    [Space]
-    public float WaveEndLineChance;//Chance to say a line when the player ends a wave
-    public string[] WaveEndLines; //Lines to say when the player ends a wave
-    [Space]
-    public float EnemyKillLineChance;//Chance to say a line when the player kills an enemy
-    public string[] EnemyKillLines; //Lines to say when the player kills an enemy
-
     private bool InvertedControls = false; // Support for drunk powerup
     private bool CanMove = true; // Support for turret powerup
 
@@ -140,10 +115,7 @@ public class Player : MonoBehaviour
 
         if (controller.GetControlDown(Grab) && HeldObject != null && CanDrop)
         {//We are holding a gun, and trying to drop it
-            if (Random.Range(0f, 1f) < GunThrowLineChance)
-            {//Show a gun throw line
-                FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
-            }
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
 
             HeldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(ThrowSpeed * Mathf.Cos(theta * 2 * Mathf.PI / 360), ThrowSpeed * Mathf.Sin(theta * 2 * Mathf.PI / 360));
             HeldObject = null;
@@ -169,8 +141,7 @@ public class Player : MonoBehaviour
             else
             {
                 theta = Mathf.Atan(controller.GetControlState(LookVertical) / controller.GetControlState(LookHorizontal));
-            }
-            
+            }            
 
             if (controller.GetControlState(LookHorizontal) > 0)
             {
@@ -178,9 +149,7 @@ public class Player : MonoBehaviour
             }
 
             theta += Mathf.PI;
-            theta = theta * -360 / (2 * Mathf.PI);
-
-            
+            theta = theta * -360 / (2 * Mathf.PI);            
         }
 
         //Set the current sprite to the correct one for the looking angle
@@ -211,22 +180,15 @@ public class Player : MonoBehaviour
     {
         //If we are currently above half health, but taking damage would take us below half health
         if (Health > MaxHealth / 2 && Health - DamageAmount <= MaxHealth / 2)
-        {//Say a half health line            
-            if (Random.Range(0f, 1f) < HalfHealthLineChance)
-            {
-                FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.HalfHealth, gameObject);
-            }
+        {//Say a half health line
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.HalfHealth, gameObject);
         }
 
         //If we are currently above 10% health, but taking damage would take us below 10% health
         if (Health > MaxHealth / 10 && Health - DamageAmount <= MaxHealth / 10)
-        {//Say a near death line            
-            if (Random.Range(0f, 1f) < NearDeathLineChance)
-            {
-                FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NearDeath, gameObject);
-            }
+        {//Say a near death line   
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NearDeath, gameObject);            
         }
-
 
         Health -= DamageAmount;
         if (Health <= 0)
@@ -237,10 +199,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        if (Random.Range(0f,1f) < DeathLineChance)
-        {
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Death, gameObject);
-        }
+        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Death, gameObject);        
         
         rend.color = new Color(1, 1, 1, 0.5f);
         dead = true;
@@ -276,26 +235,18 @@ public class Player : MonoBehaviour
 
     public void EndWave()
     {
-        if (Random.Range(0f, 1f) < WaveStartLineChance)
-        {
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.WaveCleared, gameObject);
-        }
+        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.WaveCleared, gameObject);
     }
 
     public void StartWave()
     {
-        if (Random.Range(0f, 1f) < WaveEndLineChance)
-        {
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NewRound, gameObject);
-        }
+        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NewRound, gameObject);
+        
     }
 
     public void KillEnemy()
     {
-        if (Random.Range(0f, 1f) < EnemyKillLineChance)
-        {
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.KillEnemy, gameObject);
-        }
+        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.KillEnemy, gameObject);
     }
 
     /// <summary>

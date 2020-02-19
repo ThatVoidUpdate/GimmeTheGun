@@ -11,7 +11,7 @@ public enum BarkEventTypes {Error, PowerupPickup, KillEnemy, NewRound, HalfHealt
 public class BarkEvents : MonoBehaviour
 {
     public string BarkLinesFile;
-    private Dictionary<BarkEventTypes, List<string>> AllLines = new Dictionary<BarkEventTypes, List<string>>();
+    private Dictionary<BarkEventTypes, (float, List<string>)> AllLines = new Dictionary<BarkEventTypes, (float, List<string>)>();
 
     public BarkBubble bubble;
 
@@ -26,14 +26,14 @@ public class BarkEvents : MonoBehaviour
 
         foreach (BarkEventTypes type in Enum.GetValues(typeof(BarkEventTypes)))
         {
-            AllLines.Add(type, new List<string>());
+            AllLines.Add(type, (0, new List<string>()));
         }
 
         foreach (string line in lines)
         {
-            if (line.StartsWith("[") && line.EndsWith("]"))
-            {
-                switch (line.Substring(1, line.Length - 2))
+            if (line.StartsWith("[") && line.Contains("]"))
+            {               
+                switch (line.Split(']')[0].Substring(1, line.Split(']')[0].Length - 1))
                 {
                     case "PowerupPickup":
                         currentType = BarkEventTypes.PowerupPickup;
@@ -79,20 +79,25 @@ public class BarkEvents : MonoBehaviour
                         currentType = BarkEventTypes.Error;
                         break;
                 }
+                AllLines[currentType] = ((float)Convert.ToDouble(line.Split(']')[1]), AllLines[currentType].Item2);
             }
             else
             {
-                AllLines[currentType].Add(line);
+                AllLines[currentType].Item2.Add(line);
             }
         }
     }
 
     public void TriggerBarkLine(BarkEventTypes type, GameObject Player)
     {
-        if (AllLines[type].Count > 0)
+        if (AllLines[type].Item2.Count > 0)
         {
-            string DisplayLine = AllLines[type][UnityEngine.Random.Range(0, AllLines[type].Count)];
-            StartCoroutine(ShowBarkLine(DisplayLine, 2, Player));
+            if (UnityEngine.Random.Range(0.0f, 1.0f) < AllLines[type].Item1)
+            {
+                string DisplayLine = AllLines[type].Item2[UnityEngine.Random.Range(0, AllLines[type].Item2.Count)];
+                StartCoroutine(ShowBarkLine(DisplayLine, 2, Player));
+            }
+            
         }
     }
 
