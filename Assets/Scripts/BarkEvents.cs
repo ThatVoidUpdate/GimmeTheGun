@@ -15,6 +15,7 @@ public class BarkEvents : MonoBehaviour
     {
         string[] lines = File.ReadAllLines(BarkLinesFile);
         lines = (from line in lines where !line.StartsWith("#") select line).ToArray();
+        lines = (from line in lines where line!="" select line).ToArray();
         foreach (string line in lines)
         {
             print(line);
