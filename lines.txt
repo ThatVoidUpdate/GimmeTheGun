@@ -3,8 +3,7 @@
 #[EVENTNAME]
 #Oh No!
 #Hell Yeah!
-[NewWave]
-For Threedom! - Triangles
+[NewRound]
 Ah shit. Here we go again
 Don’t these guys ever stop?
 Oh, what now?
