@@ -3,6 +3,10 @@
 #[EVENTNAME]PROBABILITY
 #BARK LINE
 #BARK LINE
+#List of events:
+#PowerupPickup, KillEnemy, NewRound, HalfHealth, NearDeath, Death, WaveCleared, NewWeapon, ThrowGun, NewSkin, NewPowerup, Achievement, Boss, GunPickup
+#NEWWEAPON, NEWSKIN, NEWPOWERUP, ACHIEVEMENT ARE NOT IMPLEMENTED YET
+
 [NewRound]0.5
 Ah shit. Here we go again
 Don’t these guys ever stop?
@@ -20,6 +24,7 @@ The Devil’s got a lot of paperwork headed his way!
 Can’t you just isosceleave us alone?
 When you meet Ivan the Terriangle, tell him I said hi!
 Well… Fuck
+
 [NewWeapon]0.5
 Ooo shiny!
 What does this do?

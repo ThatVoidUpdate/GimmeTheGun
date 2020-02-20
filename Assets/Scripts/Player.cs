@@ -97,6 +97,8 @@ public class Player : MonoBehaviour
             {
                 closeGuns[0].GetComponent<Gun>().OnLeftSideOfScreen = false;
             }
+
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.GunPickup, gameObject);
         }
 
         if (controller.GetControlState(Grab) == 0)

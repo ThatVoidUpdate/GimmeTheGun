@@ -75,9 +75,13 @@ public class WaveSpawner : MonoBehaviour
                 player.GetComponent<Player>().StartWave();
             }
 
-            if (CurrentWave > Waves.Count && Boss != null)
+            if (CurrentWave > Waves.Count && Boss != null && Boss.activeSelf == false)
             {//We defeated all waves. time for the boss battle
                 Boss.SetActive(true);
+                foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Boss, player);
+                }
             }
 
             foreach (GameObject spawner in spawners)

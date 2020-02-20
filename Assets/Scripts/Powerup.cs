@@ -24,6 +24,7 @@ public class Powerup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.PowerupPickup, collision.gameObject);
             StartCoroutine(DoPowerup());
         }
     }
