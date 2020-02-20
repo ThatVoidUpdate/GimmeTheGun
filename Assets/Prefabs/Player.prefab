@@ -167,6 +167,7 @@ MonoBehaviour:
   LookVertical: 4
   Grab: 8
   Shoot: 9
+  SummonGun: 14
   UpSprite: {fileID: 21300000, guid: d40e87aed092115459cbf882bd8e989f, type: 3}
   DownSprite: {fileID: 21300000, guid: bd94c093e6681b941ac3cd16a5674269, type: 3}
   LeftSprite: {fileID: 21300000, guid: e15899593891a184ba6a8ea3a883c80d, type: 3}

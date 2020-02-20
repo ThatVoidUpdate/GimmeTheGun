@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BarkLinesFile: lines.txt
+  bubble: {fileID: 2075839854}
 --- !u!4 &321057958
 Transform:
   m_ObjectHideFlags: 0
@@ -1418,6 +1419,11 @@ PrefabInstance:
       propertyPath: LeftStickYAxisNegative
       value: 119
       objectReference: {fileID: 0}
+    - target: {fileID: 1929977944275626617, guid: 00d7c9e34a295ec4f9ca6d2d5fc48a56,
+        type: 3}
+      propertyPath: A
+      value: 32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00d7c9e34a295ec4f9ca6d2d5fc48a56, type: 3}
 --- !u!224 &1232809541 stripped
@@ -2169,7 +2175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7e09a6d1b627a40b9a4a06b19e30dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: 1
+  background: 0
 --- !u!1 &2020723973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5909937672650158144, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
@@ -2982,6 +2988,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155715651085213128, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac,
+        type: 3}
+      propertyPath: HeldDistance
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac, type: 3}

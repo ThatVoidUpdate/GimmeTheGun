@@ -13,43 +13,29 @@ public class Player : MonoBehaviour
     private Controller controller; //The controller that his player is listening to
 
     [Header("Speeds")]
-    [SerializeField]
     public float HorizontalSpeed;
-    [SerializeField]
     public float VerticalSpeed; //The ohirzontal and vertical speed of the player
 
     [Header("Held object options")]
-    [SerializeField]
     public Gun HeldObject = null; //The object that the player is currently holding
-    [SerializeField]
     public float ThrowSpeed;
 
-    [SerializeField]
     public List<Collider2D> closeGuns = new List<Collider2D>(); //A list of all the guns in the trigger
     private bool CanDrop = true;
 
     [Header("Controls")]
-    [SerializeField]
     public Control MoveHorizontal;
-    [SerializeField]
     public Control MoveVertical;
-    [SerializeField]
     public Control LookHorizontal;
-    [SerializeField]
     public Control LookVertical;
-    [SerializeField]
     public Control Grab;
-    [SerializeField]
     public Control Shoot; //The controls for each of the respective actions
+    public Control SummonGun;
 
     [Header("Graphics")]
-    [SerializeField]
     public Sprite UpSprite;
-    [SerializeField]
     public Sprite DownSprite;
-    [SerializeField]
     public Sprite LeftSprite;
-    [SerializeField]
     public Sprite RightSprite; //The sprites for each of their respective directions
     private SpriteRenderer rend; //The sprite renderer attached to this gameobject
     private Direction CurrentDirection = Direction.Down; //The direction that the player is currently facing
@@ -175,6 +161,25 @@ public class Player : MonoBehaviour
             CurrentDirection = Direction.Down;
             rend.sprite = DownSprite;
         }
+
+
+        if (controller.GetControlState(SummonGun) == 1)
+        {
+            Gun gun = FindObjectOfType<Gun>();
+            if (gun.transform.position.x < 0 && transform.position.x < 0) 
+            {
+                Vector3 direction = (transform.position - gun.transform.position).normalized*2;
+                gun.GetComponent<Rigidbody2D>().velocity = direction;
+
+            }
+            if (gun.transform.position.x > 0 && transform.position.x > 0)
+            {
+                Vector3 direction = (transform.position - gun.transform.position).normalized * 2;
+                gun.GetComponent<Rigidbody2D>().velocity = direction;
+
+            }
+        }
+
     }
 
 
