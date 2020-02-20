@@ -32,6 +32,9 @@ public class Powerup : MonoBehaviour
     IEnumerator DoPowerup()
     {
         print("Collected powerup: " + type);
+
+        StartCoroutine(FindObjectOfType<TitlePowerUps>().TitlePowerUp(type)); 
+
         //modify variables
         switch (type)
         {
