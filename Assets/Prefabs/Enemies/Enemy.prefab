@@ -99,7 +99,6 @@ MonoBehaviour:
   MaxHealth: 75
   Damage: 8
   DamageTakenModifier: 1
-  debug: {fileID: 0}
 --- !u!60 &3032010844547566131
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -117,7 +116,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1054546, y: 1.3763636}
+    oldSize: {x: 0.60800004, y: 0.75699997}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -125,9 +124,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.7708676}
-      - {x: -0.581007, y: -0.6785495}
-      - {x: 0.581007, y: -0.6785495}
+    - - {x: 0, y: 0.42397952}
+      - {x: -0.32169104, y: -0.37345767}
+      - {x: 0.32237434, y: -0.3737688}
 --- !u!50 &7144412196540976141
 Rigidbody2D:
   serializedVersion: 4

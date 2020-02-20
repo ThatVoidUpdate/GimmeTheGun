@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.13
+  m_Radius: 0.6
 --- !u!114 &2692927192091727928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,92 +175,6 @@ MonoBehaviour:
   Health: 0
   dead: 0
   DamageSpeed: 1
-  BarkBubble: {fileID: 0}
-  ShowTime: 1
-  DeathLineChance: 0.5
-  DeathLines:
-  - "I\u2019ll be back fuckers!"
-  - "You ain\u2019t seen the last of me!"
-  - "So this is it\u2026"
-  - "I couldn\u2019t square less\u2026"
-  - They got me!
-  - Agh!
-  - Did I... *cough* Did I get a high score?
-  - At least I get to see what I unlocked now
-  HalfHealthLineChance: 0.1
-  HalfHealthLines:
-  - "I\u2019m hit!"
-  - Damn!
-  - "They\u2019re getting through!"
-  - Ah! Fuck!
-  - Pointy pricks!
-  - Ouch!
-  - Watch out for those pointy bits!
-  - "That\u2019s gunna sting"
-  - Just a scratch
-  - "They\u2019re not messing around "
-  NearDeathLineChance: 0.2
-  NearDeathLines:
-  - "Can\u2019t take much more of this..."
-  - Make it stop!
-  - No!
-  - "I\u2019m going down\u2026"
-  - Not like this!
-  - "Don\u2019t give up!"
-  - Keep going!
-  - "Come on\u2026"
-  - I need a heal!
-  - "I\u2019m not done yet!"
-  GunThrowLineChance: 0.05
-  GunThrowLines:
-  - Take It!
-  - I want it back
-  - Here!
-  - Catch!
-  - Don't lost it!
-  - Here we go...
-  - Yeet!
-  WaveStartLineChance: 0.5
-  WaveStartLines:
-  - Ah shit. Here we go again
-  - "Don\u2019t these guys ever stop?"
-  - Oh, what now?
-  - Jesus, more?!
-  - How many do they have?!
-  - You want some more?!
-  - Bring it on!
-  - Come get some!
-  - "I ain\u2019t afraid of you!"
-  - The waves get bigger, right?
-  - Triangles inbound!
-  - Are you ready to meet your god?!
-  - "The Devil\u2019s got a lot of paperwork headed his way!"
-  - "Can\u2019t you just isosceleave us alone?"
-  - "Well\u2026 Fuck"
-  WaveEndLineChance: 0.5
-  WaveEndLines:
-  - That all you got?!
-  - Pfft! Piece of cake!
-  - That was the last one, right?
-  - "Why don\u2019t they just send them all at once?"
-  - We did it!
-  - Another one down!
-  - Do I have time to pee before the next one?
-  - "That wasn\u2019t so bad"
-  - "This seems like a lot for just the two of us\u2026"
-  - "We\u2019re TWICE the angles you\u2019ll ever be!"
-  - Time for a breather
-  - Phew, we made it
-  - Can we play Overcooked now?
-  EnemyKillLineChance: 0.2
-  EnemyKillLines:
-  - Take that!
-  - Get some!
-  - Oh yeah!
-  - Violence is fun!
-  - HAHAHA!
-  - Die! Die! DIE!
-  - Are you watching, kids?
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4
@@ -295,16 +209,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.026106834, y: 0.008702159}
+  m_Offset: {x: 0.016136408, y: 0.0020554066}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3818182, y: 1.4709091}
+    oldSize: {x: 0.76, y: 0.809}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1412973, y: 1.4374043}
+  m_Size: {x: 0.6294913, y: 0.7860149}
   m_EdgeRadius: 0
