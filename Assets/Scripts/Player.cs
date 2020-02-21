@@ -53,6 +53,9 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb; //The rigidbody2d attached to this gameobject
     private float theta = 90; //The current angle of the rotation stick
 
+    public float RespawnTime;
+    private float DeathTime;
+
     
 
     // Start is called before the first frame update
@@ -180,6 +183,16 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (dead)
+        {
+            DeathTime += Time.deltaTime;
+            
+        }
+        if (dead&& DeathTime>RespawnTime)
+        {
+            Respawn();
+            DeathTime = 0;
+        }
     }
 
 
@@ -211,6 +224,15 @@ public class Player : MonoBehaviour
         rend.color = new Color(1, 1, 1, 0.5f);
         dead = true;
         HeldObject = null;
+    }
+
+    private void Respawn()
+    {
+       // FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Death, gameObject);
+
+        rend.color = new Color(1, 1, 1, 1);
+        dead = false;
+        Health = MaxHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

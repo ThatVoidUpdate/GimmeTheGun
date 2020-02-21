@@ -176,6 +176,7 @@ MonoBehaviour:
   Health: 0
   dead: 0
   DamageSpeed: 1
+  RespawnTime: 5
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4
