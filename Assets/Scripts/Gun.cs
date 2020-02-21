@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
     private SpriteRenderer rend;
 
     private bool UsingParticleSystem = false;
-    private bool GunSide; //Left is true, right is false
+    private Direction GunSide; //Left is true, right is false
 
     private ParticleSystem system;
 
@@ -64,23 +64,23 @@ public class Gun : MonoBehaviour
     public void SetAngle(float angle, Vector2 PlayerPosition)
     {
 
-        if (angle < -270 - 45 && GunSide)
+        if (angle < -270 - 45 && GunSide != Direction.Right)
         {//gun is pointing more clockwise than up-right. if its on the left side, it needs to be on the right
-            GunSide = false;
+            GunSide = Direction.Right;
         }
 
-        if (angle > -270 + 45 && !GunSide)
+        if (angle > -270 + 45 && GunSide != Direction.Left)
         {//gun is pointing more anticlockwise than up-left. if its on the right side, it needs to be on the left
-            GunSide = true;
+            GunSide = Direction.Left;
         }
 
-        if (GunSide)
+        if (GunSide == Direction.Left)
         {//gun is on the left side of the player
             transform.position = PlayerPosition + new Vector2(-HeldDistance, 0);
             transform.eulerAngles = new Vector3(0, 0, angle);
             transform.localScale = new Vector2(1, -1);
         }
-        else
+        else if(GunSide == Direction.Right)
         {//gun is on the right side of hte player
             transform.position = PlayerPosition + new Vector2(HeldDistance, 0);
             transform.eulerAngles = new Vector3(0, 0, angle);
