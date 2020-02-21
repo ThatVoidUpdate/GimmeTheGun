@@ -3204,7 +3204,7 @@ PrefabInstance:
     - target: {fileID: 3964040267553139660, guid: c91c487733ad21b448cf9a2a9ef17978,
         type: 3}
       propertyPath: m_Name
-      value: Pistol Bullet
+      value: PistolBullet
       objectReference: {fileID: 0}
     - target: {fileID: 7935874172658075618, guid: c91c487733ad21b448cf9a2a9ef17978,
         type: 3}
