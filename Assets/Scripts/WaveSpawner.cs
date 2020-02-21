@@ -20,36 +20,36 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4),  (PoisonEnemy, 1) });
+   
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8),  (FastEnemy, 2) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8),  (FastEnemy, 2), (PoisonEnemy, 1) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 10), (FastEnemy, 3) });
 
         Waves.Add(new (GameObject, int)[] { (FastEnemy, 10) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 11), (FastEnemy, 3) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 11), (FastEnemy, 3), (PoisonEnemy, 3) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 12), (FastEnemy, 3), (NinjaEnemy, 2) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 14), (FastEnemy, 4) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 14), (FastEnemy, 4), (PoisonEnemy, 4) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 16), (FastEnemy, 3), (NinjaEnemy, 3) });
 
         Waves.Add(new (GameObject, int)[] { (FastEnemy, 12), (NinjaEnemy, 4) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8), (FastEnemy, 5), (NinjaEnemy, 2) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8), (FastEnemy, 5), (NinjaEnemy, 2), (PoisonEnemy, 2) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6), (FastEnemy, 6), (NinjaEnemy, 6) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6), (FastEnemy, 12), (NinjaEnemy, 6) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6), (FastEnemy, 8), (NinjaEnemy, 6), (PoisonEnemy, 4) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (FastEnemy, 5), (NinjaEnemy, 10) });
 
-        Waves.Add(new (GameObject, int)[] { (FastEnemy, 20), (NinjaEnemy, 12) });
+        Waves.Add(new (GameObject, int)[] { (PoisonEnemy, 20) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 10), (FastEnemy, 8), (NinjaEnemy, 6) });
 
