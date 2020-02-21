@@ -878,11 +878,6 @@ PrefabInstance:
       propertyPath: BarkBubble
       value: 
       objectReference: {fileID: 2075839852}
-    - target: {fileID: 5909937672650158149, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
-        type: 3}
-      propertyPath: m_Mass
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6902941829578681647, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1027,6 +1022,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158149, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: m_Mass
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4990cad1a4f9b43a81ba5dc438eae8, type: 3}
@@ -1202,11 +1202,6 @@ PrefabInstance:
       propertyPath: BarkBubble
       value: 
       objectReference: {fileID: 715897232}
-    - target: {fileID: 5909937672650158149, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
-        type: 3}
-      propertyPath: m_Mass
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6902941829578681647, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1321,6 +1316,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158149, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: m_Mass
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4990cad1a4f9b43a81ba5dc438eae8, type: 3}
