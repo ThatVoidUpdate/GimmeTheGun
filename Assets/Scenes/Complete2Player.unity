@@ -2460,7 +2460,7 @@ PrefabInstance:
     - target: {fileID: 6816607993779277779, guid: 86edb24bb3b47444a8c277aad49a0312,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.77829
+      value: -8.778259
       objectReference: {fileID: 0}
     - target: {fileID: 6816607993779277779, guid: 86edb24bb3b47444a8c277aad49a0312,
         type: 3}
@@ -2971,7 +2971,7 @@ PrefabInstance:
     - target: {fileID: 6816607993779277779, guid: 86edb24bb3b47444a8c277aad49a0312,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.77829
+      value: -8.778259
       objectReference: {fileID: 0}
     - target: {fileID: 6816607993779277779, guid: 86edb24bb3b47444a8c277aad49a0312,
         type: 3}
@@ -3112,6 +3112,12 @@ PrefabInstance:
       propertyPath: debug
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: PoisonEnemy
+      value: 
+      objectReference: {fileID: 6675327735767854975, guid: cb3d7cfe29b0f6d4f940ff58e1f758fe,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44a8c764ad3ad1a44a3cb4dcb2080336, type: 3}
 --- !u!1001 &3048626240635882583
