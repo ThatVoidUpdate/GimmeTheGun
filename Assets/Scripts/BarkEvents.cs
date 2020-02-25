@@ -32,59 +32,12 @@ public class BarkEvents : MonoBehaviour
         foreach (string line in lines)
         {
             if (line.StartsWith("[") && line.Contains("]"))
-            {               
-                switch (line.Split(']')[0].Substring(1, line.Split(']')[0].Length - 1))
+            {
+                if (!Enum.TryParse(line.Split(']')[0].Substring(1, line.Split(']')[0].Length - 1), out currentType))
                 {
-                    case "PowerupPickup":
-                        currentType = BarkEventTypes.PowerupPickup;
-                        break;
-                    case "KillEnemy":
-                        currentType = BarkEventTypes.KillEnemy;
-                        break;
-                    case "NewRound":
-                        currentType = BarkEventTypes.NewRound;
-                        break;
-                    case "HalfHealth":
-                        currentType = BarkEventTypes.HalfHealth;
-                        break;
-                    case "NearDeath":
-                        currentType = BarkEventTypes.NearDeath;
-                        break;
-                    case "Death":
-                        currentType = BarkEventTypes.Death;
-                        break;
-                    case "WaveCleared":
-                        currentType = BarkEventTypes.WaveCleared;
-                        break;
-                    case "NewWeapon":
-                        currentType = BarkEventTypes.NewWeapon;
-                        break;
-                    case "ThrowGun":
-                        currentType = BarkEventTypes.ThrowGun;
-                        break;
-                    case "NewSkin":
-                        currentType = BarkEventTypes.NewSkin;
-                        break;
-                    case "NewPowerup":
-                        currentType = BarkEventTypes.NewPowerup;
-                        break;
-                    case "Achievement":
-                        currentType = BarkEventTypes.Achievement;
-                        break;
-                    case "Boss":
-                        currentType = BarkEventTypes.Boss;
-                        break;
-                    case "GunPickup":
-                        currentType = BarkEventTypes.GunPickup;
-                        break;
-                    case "Respawn":
-                        currentType = BarkEventTypes.Respawn;
-                        break;
-                    default:
-                        Debug.LogError("Invalid event in Bark Event Parser file: " + BarkLinesFile + ", \"" + line + "\"");
-                        currentType = BarkEventTypes.Error;
-                        break;
+                    Debug.LogWarning("Event " + line.Split(']')[0].Substring(1, line.Split(']')[0].Length - 1) + " does not exist (" + BarkLinesFile + ")");
                 }
+
                 AllLines[currentType] = ((float)Convert.ToDouble(line.Split(']')[1]), AllLines[currentType].Item2);
             }
             else
