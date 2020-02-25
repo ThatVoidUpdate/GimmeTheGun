@@ -15,7 +15,7 @@ public class WaveSpawner : MonoBehaviour
 
     private List<GameObject> CurrentEnemies = new List<GameObject>();
     private GameObject[] spawners;
-    private int CurrentWave = -1;
+    public int CurrentWave = -1;
 
     // Start is called before the first frame update
     void Start()
