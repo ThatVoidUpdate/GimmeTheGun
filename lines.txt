@@ -117,3 +117,6 @@ I’ve always wanted one of these!
 Thanks Devs!
 You’re in for it now!
 Nice!
+
+[EatBurger]
+#MMM, that *is* a tasty burger!
