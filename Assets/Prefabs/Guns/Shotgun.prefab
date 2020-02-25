@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396259564654071760}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.719, y: 0.036, z: 0.059}
+  m_LocalPosition: {x: 0.36, y: 0.01, z: 0.059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8957376307291175593}
@@ -4199,7 +4199,7 @@ ParticleSystem:
     vector0_0:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 30
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4899,11 +4899,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5d564035ee0dd4fb98dc8931ea6e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShotsPerSecond: 0.5
+  ShotsPerSecond: 1
   Shooting: 0
   bullet: {fileID: 8585553154183444644, guid: 64775e72051d38b4882d7f152135aa73, type: 3}
   BulletSpeed: 10
-  HeldDistance: 1
+  HeldDistance: 0.5
   BulletSpawn: {fileID: 0}
   type: 0
   OnLeftSideOfScreen: 0
@@ -4917,7 +4917,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b47ab5fd60f6e1e45ac856fc2ac5face, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
