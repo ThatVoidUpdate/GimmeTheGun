@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
 
 public enum Direction { Up, Down, Right, Left, None}
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+    #region Variables
     [Header("Control Options")]
     [SerializeField]
     private Controller controller; //The controller that his player is listening to
@@ -55,8 +56,8 @@ public class Player : MonoBehaviour
 
     public float RespawnTime;
     private float DeathTime;
+    #endregion Variables
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -221,9 +222,20 @@ public class Player : MonoBehaviour
     {
         FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Death, gameObject);        
         
-        rend.color = new Color(1, 1, 1, 0.5f);
+        rend.color = new Color(1, 0.5f, 0.5f, 0.5f);
         dead = true;
         HeldObject = null;
+        foreach (Player player in FindObjectsOfType<Player>())
+        {
+            if (player.dead == false)
+            {
+                return;
+            }
+        }
+        //both players are dead, hopefully
+        print("All players dead");
+        SceneManager.LoadScene("Menu");
+        
     }
 
     private void Respawn()
