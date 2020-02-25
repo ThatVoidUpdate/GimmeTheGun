@@ -75,6 +75,7 @@ public class Powerup : MonoBehaviour
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {
                     player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
+                    player.GetComponent<Player>().dead = false;
                 }
                 break;
 
