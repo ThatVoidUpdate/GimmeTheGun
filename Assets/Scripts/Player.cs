@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
 
     private void Respawn()
     {
-       // FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Death, gameObject);
+       FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Respawn, gameObject);
 
         rend.color = new Color(1, 1, 1, 1);
         dead = false;

@@ -6,7 +6,7 @@ using System;
 using TMPro;
 using System.Collections;
 
-public enum BarkEventTypes {Error, PowerupPickup, KillEnemy, NewRound, HalfHealth, NearDeath, Death, WaveCleared, NewWeapon, ThrowGun, NewSkin, NewPowerup, Achievement, Boss, GunPickup}
+public enum BarkEventTypes {Error, PowerupPickup, KillEnemy, NewRound, HalfHealth, NearDeath, Death, WaveCleared, NewWeapon, ThrowGun, NewSkin, NewPowerup, Achievement, Boss, GunPickup, Respawn}
 
 public class BarkEvents : MonoBehaviour
 {
@@ -76,6 +76,9 @@ public class BarkEvents : MonoBehaviour
                         break;
                     case "GunPickup":
                         currentType = BarkEventTypes.GunPickup;
+                        break;
+                    case "Respawn":
+                        currentType = BarkEventTypes.Respawn;
                         break;
                     default:
                         Debug.LogError("Invalid event in Bark Event Parser file: " + BarkLinesFile + ", \"" + line + "\"");
