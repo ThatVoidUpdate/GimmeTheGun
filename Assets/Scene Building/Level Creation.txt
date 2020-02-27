@@ -1,7 +1,0 @@
-Level Creation:
-Level creation is currently very easy. Create a new scene with a camera, and drag in the LevelManager prefab, which is in this folder
-To set it up correctly, set the amount of players that will be playing in this scene on the LevelManager's "Player Count" variable, and if needed, change the enemy prefabs in the Prefabs section of the manager.
-All the other prefabs should be set up exactly how they are needed for the scene to initialise itself correctly.
-
-To start setting up the waves, drag in a WaveManager from this folder. Then, go to the Animation window. At the top, there should be a dark grey bar, with a button next to it. If you click that button, a small white rectangel will appear. This signifies 1 enemy spawn for every player.
-Whenever you wish for an enemy to spawn, create a new event by clicking the button, and drag it to the correct position on the bar. Then, at the right, the inspector will show an Animation Event. Set the function to WaveTrigger (GameObject), and drag in the enemy you wish to spawn at that time. Then, create a new event at the end of the clip, and don't assign it an enemy. This signifies the end of the wave to the WaveManager.
