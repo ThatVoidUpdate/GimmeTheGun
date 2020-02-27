@@ -15,12 +15,7 @@ public class Gun : MonoBehaviour
     public bool Shooting;
 
     [Space]
-    public GameObject bullet;
-    public float BulletSpeed = 10;
-
-    [Space]
     public float HeldDistance;
-    public GameObject BulletSpawn;
 
     [Space]
     public GunType type;
@@ -28,7 +23,6 @@ public class Gun : MonoBehaviour
     private float TimeSinceShot = 999;
     private SpriteRenderer rend;
 
-    private bool UsingParticleSystem = false;
     private Direction GunSide; //Left is true, right is false
 
     private ParticleSystem system;
@@ -40,10 +34,6 @@ public class Gun : MonoBehaviour
     {
         rend = GetComponent<SpriteRenderer>();
         system = GetComponentInChildren<ParticleSystem>();
-        if (system != null)
-        {//We are using a particle system, so switch over to particle systems
-            UsingParticleSystem = true;
-        }
     }
 
     // Update is called once per frame
@@ -58,7 +48,9 @@ public class Gun : MonoBehaviour
             }
         }      
 
-        TimeSinceShot += Time.deltaTime;        
+        TimeSinceShot += Time.deltaTime;
+
+        system.startRotation =  - (transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
     }
 
     public void SetAngle(float angle, Vector2 PlayerPosition)
@@ -91,15 +83,6 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         GetComponent<AudioSource>().Play();
-
-        if (UsingParticleSystem)
-        {
-            GetComponentInChildren<ParticleSystem>().Play();
-        }
-        else
-        {
-            GameObject currentBullet = Instantiate(bullet, BulletSpawn.transform.position, transform.rotation);
-            currentBullet.GetComponent<Rigidbody2D>().velocity = currentBullet.transform.right * BulletSpeed;
-        }
+        GetComponentInChildren<ParticleSystem>().Play();
     }
 }

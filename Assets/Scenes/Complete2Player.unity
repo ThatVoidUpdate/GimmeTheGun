@@ -2418,7 +2418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7e09a6d1b627a40b9a4a06b19e30dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: 2
+  background: 1
 --- !u!1 &2020723973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5909937672650158144, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
@@ -3362,15 +3362,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machine Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 4930244215034406838, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2742212767679643325, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.43
+      value: 2.67
       objectReference: {fileID: 0}
     - target: {fileID: 2742212767679643325, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.74
+      value: -1.32
       objectReference: {fileID: 0}
     - target: {fileID: 2742212767679643325, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac,
         type: 3}

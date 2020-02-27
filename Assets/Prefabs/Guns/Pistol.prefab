@@ -46,7 +46,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -105,8 +105,8 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithTransform: 2
+  moveWithCustomTransform: {fileID: 1368901634106867579}
   scalingMode: 1
   randomSeed: 0
   InitialModule:
@@ -549,7 +549,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5707963
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4901,10 +4901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotsPerSecond: 6
   Shooting: 0
-  bullet: {fileID: 3964040267553139660, guid: c91c487733ad21b448cf9a2a9ef17978, type: 3}
-  BulletSpeed: 10
   HeldDistance: 1
-  BulletSpawn: {fileID: 0}
   type: 0
   OnLeftSideOfScreen: 0
 --- !u!82 &882058071357159042
