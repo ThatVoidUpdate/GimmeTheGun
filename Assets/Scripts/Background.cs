@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Backgrounds {Rocky, Lava}
+public enum Backgrounds {Rocky, Lava, Arctic}
 public class Background : MonoBehaviour
 {
     public Backgrounds background;
@@ -16,6 +16,9 @@ public class Background : MonoBehaviour
                 break;
             case Backgrounds.Lava:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Lava");
+                break;
+            case Backgrounds.Arctic:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Arctic");
                 break;
             default:
                 break;
