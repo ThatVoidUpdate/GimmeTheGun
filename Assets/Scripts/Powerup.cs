@@ -20,6 +20,63 @@ public class Powerup : MonoBehaviour
     [Space]
     [Tooltip("All the guns in the game, to be used for the ChangeWeapons powerup")]
     public GameObject[] Guns;
+
+    void Start()
+    {
+        switch (type)
+        {
+            case PowerupType.ChangeWeapon:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/WeaponSwitch");
+                break;
+            case PowerupType.DestroyAllEnemies:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            case PowerupType.SwitchEnemies:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            case PowerupType.HealthUp:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/HealthUp");
+                break;
+            case PowerupType.DamageUp:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/DamageUp");
+                break;
+            case PowerupType.SlowEnemy:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            case PowerupType.FastPlayer:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            case PowerupType.Bomb:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bomb");
+                break;
+            case PowerupType.Drunk:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/DrunkMode");
+                break;
+            case PowerupType.Weed:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            case PowerupType.Cocaine:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            case PowerupType.HotPotato:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/HotPotato");
+                break;
+            case PowerupType.StickyGun:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            case PowerupType.fourTwenty:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Partyhat");
+                break;
+            case PowerupType.Disco:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            case PowerupType.LSD:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                break;
+            default:
+                break;
+        }
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
