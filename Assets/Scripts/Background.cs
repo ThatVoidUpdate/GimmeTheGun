@@ -31,6 +31,7 @@ public class Background : MonoBehaviour
             default:
                 break;
         }
+        source.Play();
     }
 
     // Update is called once per frame
