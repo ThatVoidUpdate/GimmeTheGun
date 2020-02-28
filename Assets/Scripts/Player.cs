@@ -220,8 +220,8 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Death, gameObject);        
-        
+        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Death, gameObject);
+        CanMove = false;
         rend.color = new Color(1, 0.5f, 0.5f, 0.5f);
         dead = true;
         HeldObject = null;
@@ -244,6 +244,7 @@ public class Player : MonoBehaviour
 
         rend.color = new Color(1, 1, 1, 1);
         dead = false;
+        CanMove = true;
         Health = MaxHealth;
     }
 
