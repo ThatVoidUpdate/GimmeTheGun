@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213c502fae4799e4d92379485441d371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BarkLinesFile: lines.txt
+  BarkLinesFile: Assets/lines.txt
   bubble: {fileID: 2075839854}
 --- !u!4 &321057958
 Transform:
