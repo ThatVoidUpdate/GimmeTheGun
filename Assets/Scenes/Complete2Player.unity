@@ -1927,6 +1927,11 @@ PrefabInstance:
       propertyPath: EnemyTarget
       value: 
       objectReference: {fileID: 1182552350}
+    - target: {fileID: 7180134694829683238, guid: e8ab5e1255b84f640b6b1b8fb364ed3c,
+        type: 3}
+      propertyPath: SpawnDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8ab5e1255b84f640b6b1b8fb364ed3c, type: 3}
 --- !u!1 &1525723963
@@ -2180,6 +2185,11 @@ PrefabInstance:
       propertyPath: EnemyTarget
       value: 
       objectReference: {fileID: 2020723973}
+    - target: {fileID: 7180134694829683238, guid: e8ab5e1255b84f640b6b1b8fb364ed3c,
+        type: 3}
+      propertyPath: SpawnDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3753325417347124420, guid: e8ab5e1255b84f640b6b1b8fb364ed3c,
         type: 3}
       propertyPath: m_IsTrigger
@@ -3509,7 +3519,24 @@ PrefabInstance:
       propertyPath: CurrentWave
       value: -1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4768074863980927775, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: spawnee
+      value: 
+      objectReference: {fileID: 8048073611069811309, guid: 6ae7e1f932c55dd44ab93051a7157326,
+        type: 3}
+    - target: {fileID: 4768074863980927775, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: spawnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768074863980927775, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: spawnDelay
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4768074863980927775, guid: 44a8c764ad3ad1a44a3cb4dcb2080336, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 44a8c764ad3ad1a44a3cb4dcb2080336, type: 3}
 --- !u!1001 &3048626240635882583
 PrefabInstance:
