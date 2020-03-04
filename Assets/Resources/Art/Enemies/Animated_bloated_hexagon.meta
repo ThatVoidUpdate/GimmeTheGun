@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Art/Enemies/Animated_bloated_hexagon.meta
 guid: 0663979f833c4514b85f1afc0c960e50
+=======
+guid: 041413dbf383a744f85ef2d61ff69533
+>>>>>>> 1f931b496fefd7a5c8b10d97247f8bd76ad5a862:Assets/Resources/Art/Triangles.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

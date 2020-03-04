@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Art/Enemies.meta
 guid: 3d325751d6e6912419761e11e69307ab
+=======
+guid: be796fcf0764348439e9f5d6636291cb
+>>>>>>> 1f931b496fefd7a5c8b10d97247f8bd76ad5a862:Assets/Prefabs/PowerUpsArt.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

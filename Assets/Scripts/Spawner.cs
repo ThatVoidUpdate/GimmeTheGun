@@ -12,6 +12,8 @@ public class Spawner : MonoBehaviour
     private float MinY;
     private float MaxY;
 
+    public float SpawnDelay;
+
     public void Start()
     {
         SpawnArea = GetComponent<BoxCollider2D>();
@@ -21,21 +23,21 @@ public class Spawner : MonoBehaviour
         MaxY = transform.position.y + SpawnArea.offset.y + SpawnArea.size.y / 2;
     }
 
-    public void Update()
-    {
-
-    }
-
     public GameObject[] Spawn(GameObject enemy, int amount)
     {
         GameObject[] ret = new GameObject[amount];
+        StartCoroutine(SpawnEnemiesWithDelay(enemy, amount, SpawnDelay, ret));
+        return ret;
+    }
+
+    public IEnumerator SpawnEnemiesWithDelay(GameObject enemy, int amount, float SpawnDelay, GameObject[] returnArray)
+    {
         for (int i = 0; i < amount; i++)
         {
             GameObject SpawnedEnemy = Instantiate(enemy, new Vector2(Random.Range(MinX, MaxX), Random.Range(MinY, MaxY)), Quaternion.identity);
             SpawnedEnemy.GetComponent<Enemy>().Target = EnemyTarget;
-            ret[i] = SpawnedEnemy;
+            returnArray[i] = SpawnedEnemy;
+            yield return new WaitForSeconds(SpawnDelay);
         }
-
-        return ret;
     }
 }
