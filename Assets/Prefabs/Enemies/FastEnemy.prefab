@@ -73,7 +73,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4545455, y: 1.6363636}
+  m_Size: {x: 0.854, y: 0.793}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.4545455, y: 1.6363636}
+  m_Size: {x: 0.854, y: 0.793}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -180,6 +180,7 @@ MonoBehaviour:
   MaxHealth: 40
   Damage: 10
   DamageTakenModifier: 1
+  SpinSpeed: 10
 --- !u!50 &362952281243813151
 Rigidbody2D:
   serializedVersion: 4

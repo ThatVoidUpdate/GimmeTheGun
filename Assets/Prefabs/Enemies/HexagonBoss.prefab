@@ -73,7 +73,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.8181819, y: 1.6363636}
+  m_Size: {x: 0.953, y: 0.641}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.8181819, y: 1.6363636}
+  m_Size: {x: 0.953, y: 0.641}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -180,6 +180,7 @@ MonoBehaviour:
   MaxHealth: 200
   Damage: 35
   DamageTakenModifier: 1
+  SpinSpeed: 10
 --- !u!50 &6831750059705638535
 Rigidbody2D:
   serializedVersion: 4
@@ -219,7 +220,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.953, y: 0.641}
-    newSize: {x: 1.8181819, y: 1.6363636}
+    newSize: {x: 0.953, y: 0.641}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
