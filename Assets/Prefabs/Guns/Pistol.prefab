@@ -4901,7 +4901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotsPerSecond: 6
   Shooting: 0
-  HeldDistance: 1
+  HeldDistance: 0.6
   type: 0
   OnLeftSideOfScreen: 0
 --- !u!82 &882058071357159042
