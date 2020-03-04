@@ -68,7 +68,7 @@ public class Powerup : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Partyhat");
                 break;
             case PowerupType.Disco:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/NewPartyHat");
                 break;
             case PowerupType.LSD:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
@@ -206,6 +206,10 @@ public class Powerup : MonoBehaviour
 
             case PowerupType.Disco:
                 Debug.Log("Partytime, Baby!!");
+                foreach (Enemy enemy in GameObject.FindObjectsOfType<Enemy>())
+                {
+                    enemy.Spin(true);
+                }
                 break;
             case PowerupType.LSD:
                 //Implement some kind of post-processing colour grading
@@ -283,6 +287,10 @@ public class Powerup : MonoBehaviour
 
             case PowerupType.Disco:
                 Debug.Log("Un-Partytime, Baby!!");
+                foreach (Enemy enemy in GameObject.FindObjectsOfType<Enemy>())
+                {
+                    enemy.Spin(false);
+                }
                 break;
             case PowerupType.LSD:
                 Camera.main.GetComponent<PostProcessVolume>().enabled = false;
