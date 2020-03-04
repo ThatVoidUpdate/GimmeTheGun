@@ -33,6 +33,11 @@ public class Player : MonoBehaviour
     public Control Grab;
     public Control Shoot; //The controls for each of the respective actions
     public Control SummonGun;
+    public Control PushEnemy;
+
+    //push enemy
+    private Rigidbody2D Mass;
+
 
     [Header("Graphics")]
     public Sprite UpSprite;
@@ -167,7 +172,7 @@ public class Player : MonoBehaviour
             rend.sprite = DownSprite;
         }
 
-
+        //Pull gun twards player
         if (controller.GetControlState(SummonGun) == 1)
         {
             Gun gun = FindObjectOfType<Gun>();
@@ -184,6 +189,19 @@ public class Player : MonoBehaviour
 
             }
         }
+
+        //Push enemies 
+
+
+        /* WORKING PROGRESS
+ 
+        if (controller.GetControlState(PushEnemy) == 1)
+        {
+            Mass = GetComponent<Rigidbody2D>();
+            Mass.mass = Mass;
+            
+        }
+        */
 
         if (dead)
         {
