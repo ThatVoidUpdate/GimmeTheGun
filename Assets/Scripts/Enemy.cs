@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int ScoreValue = 10;
 
     public float Speed;
     public GameObject Target;
@@ -72,6 +74,7 @@ public class Enemy : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+            ScorePlayers.score += ScoreValue;
         }
     }
 }

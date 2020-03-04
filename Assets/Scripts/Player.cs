@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum Direction { Up, Down, Right, Left, None}
 
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
     public float RespawnTime;
     private float DeathTime;
     #endregion Variables
-
+    public int DeathScore = -10;
 
     // Start is called before the first frame update
     void Start()
@@ -215,6 +216,7 @@ public class Player : MonoBehaviour
         if (Health <= 0)
         {
             Die();
+            ScorePlayers.score += DeathScore;
         }
     }
 
