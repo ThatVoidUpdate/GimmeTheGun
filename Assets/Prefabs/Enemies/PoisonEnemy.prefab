@@ -223,9 +223,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e746e8730212b17449de825de869f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreValue: 7
+  ScoreValue: 8
   Speed: 0.05
   Target: {fileID: 0}
   MaxHealth: 60
   Damage: 5
   DamageTakenModifier: 1
+  SpinSpeed: 10
