@@ -68,7 +68,7 @@ public class Powerup : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Partyhat");
                 break;
             case PowerupType.Disco:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/NewPartyHat");
                 break;
             case PowerupType.LSD:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
@@ -289,7 +289,7 @@ public class Powerup : MonoBehaviour
                 Debug.Log("Un-Partytime, Baby!!");
                 foreach (Enemy enemy in GameObject.FindObjectsOfType<Enemy>())
                 {
-                    enemy.Spin(true);
+                    enemy.Spin(false);
                 }
                 break;
             case PowerupType.LSD:
