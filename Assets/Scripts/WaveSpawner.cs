@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour
     public GameObject NinjaEnemy;
     public GameObject FastEnemy;
     public GameObject PoisonEnemy;
+    public GameObject HexagonBloated;
 
     public GameObject Boss;
 
@@ -32,7 +33,7 @@ public class WaveSpawner : MonoBehaviour
         Waves.Add(new (GameObject, int)[] { (FastEnemy, 10) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 11), (FastEnemy, 3), (PoisonEnemy, 3) });
-
+        
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 12), (FastEnemy, 3), (NinjaEnemy, 2) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 14), (FastEnemy, 4), (PoisonEnemy, 4) });
