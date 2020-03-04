@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
 
     private Player LastDamagedBy;
+    private bool IsSpinning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,11 @@ public class Enemy : MonoBehaviour
         //transform.LookAt(Target.transform);
         //transform.Translate((Target.transform.position - transform.position).normalized * Speed * Time.deltaTime);]
         rb.MovePosition(transform.position + (Target.transform.position - transform.position).normalized * Speed);
+
+        if (IsSpinning)
+        {
+            GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0, 1));
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -41,7 +47,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(collision.gameObject);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
     }
@@ -75,6 +81,19 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
             ScorePlayers.score += ScoreValue;
+        }
+    }
+
+    public void Spin(bool DoSpin)
+    {
+        if (DoSpin)
+        {//start spinning
+            IsSpinning = true;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().gameObject.transform.rotation = Quaternion.identity;
+            IsSpinning = false;
         }
     }
 }
