@@ -229,6 +229,7 @@ MonoBehaviour:
   MaxHealth: 20
   Damage: 3
   DamageTakenModifier: 1
+  SpinSpeed: 10
   TeleportTime: 3
   ThrowTime: 0.5
   TopLeftTeleportZone: {x: -7.8, y: 4.5}
@@ -237,3 +238,5 @@ MonoBehaviour:
     type: 3}
   ShurikenSpeed: 7.5
   ShurikenSpawnDistance: 1
+  IndicatorPrefab: {fileID: 314605884549069538, guid: c1ab39c94e138414d97123123d1f1b2c,
+    type: 3}
