@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BarkLinesFile: Assets/lines.txt
+  FallbackBarkLineFile: lines.txt
   bubble: {fileID: 2075839854}
 --- !u!4 &321057958
 Transform:
@@ -2403,7 +2404,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834721926}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}

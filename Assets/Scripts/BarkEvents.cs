@@ -11,6 +11,7 @@ public enum BarkEventTypes {Error, PowerupPickup, KillEnemy, NewRound, HalfHealt
 public class BarkEvents : MonoBehaviour
 {
     public string BarkLinesFile;
+    public string FallbackBarkLineFile;
     private Dictionary<BarkEventTypes, (float, List<string>)> AllLines = new Dictionary<BarkEventTypes, (float, List<string>)>();
 
     public BarkBubble bubble;
@@ -18,9 +19,19 @@ public class BarkEvents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        string FilePath;
+        if (File.Exists(BarkLinesFile))
+        {
+            FilePath = BarkLinesFile;
+        }
+        else
+        {
+            FilePath = FallbackBarkLineFile;
+        }
+
         string[] lines = File.ReadAllLines(BarkLinesFile);
         lines = (from line in lines where !line.StartsWith("#") select line).ToArray();
-        lines = (from line in lines where line!="" select line).ToArray();
+        lines = (from line in lines where line != "" select line).ToArray();
 
         BarkEventTypes currentType = BarkEventTypes.Error;
 
@@ -45,6 +56,8 @@ public class BarkEvents : MonoBehaviour
                 AllLines[currentType].Item2.Add(line);
             }
         }
+        
+
     }
 
     public void TriggerBarkLine(BarkEventTypes type, GameObject Player)
