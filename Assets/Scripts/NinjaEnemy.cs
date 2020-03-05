@@ -51,6 +51,9 @@ public class NinjaEnemy : Enemy
             angles.z = Vector3.SignedAngle(difference, Vector3.right, Vector3.back);
             AttackIndicator.transform.eulerAngles = angles;
             AttackIndicator.transform.position = transform.position + (difference / 2);
+            Vector3 scale = AttackIndicator.transform.localScale;
+            scale.x = difference.magnitude / 10;
+            AttackIndicator.transform.localScale = scale;
         }
     }
 
