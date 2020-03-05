@@ -65,7 +65,7 @@ public class Powerup : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
                 break;
             case PowerupType.fourTwenty:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Partyhat");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
                 break;
             case PowerupType.Disco:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/NewPartyHat");
@@ -132,7 +132,7 @@ public class Powerup : MonoBehaviour
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {
                     player.GetComponent<Player>().Health = player.GetComponent<Player>().MaxHealth;
-                    player.GetComponent<Player>().dead = false;
+                    player.GetComponent<Player>().Respawn();
                 }
                 break;
 

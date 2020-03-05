@@ -943,6 +943,11 @@ PrefabInstance:
       propertyPath: DeathScore
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: dead
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158149, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: m_Mass
@@ -2398,7 +2403,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834721926}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}

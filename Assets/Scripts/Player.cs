@@ -258,7 +258,7 @@ public class Player : MonoBehaviour
         
     }
 
-    private void Respawn()
+    public void Respawn()
     {
        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Respawn, gameObject);
 
