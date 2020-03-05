@@ -18,6 +18,10 @@ public class NinjaEnemy : Enemy
     public float ShurikenSpeed;
     public float ShurikenSpawnDistance;
 
+    [Space]
+    public GameObject IndicatorPrefab;
+    private GameObject AttackIndicator;
+
    public void FixedUpdate()
     {
         CurrentTime += Time.deltaTime;
@@ -34,6 +38,20 @@ public class NinjaEnemy : Enemy
             ThrowShuriken();
             HasThrown = true;
         }
+        else if (CurrentTime < ThrowTime)
+        {
+            //create a beam going towards the target, and fade it in slowly
+            if (AttackIndicator == null)
+            {
+                AttackIndicator = Instantiate(IndicatorPrefab, transform.position, Quaternion.identity);
+            }
+            Vector3 difference = Target.transform.position - transform.position;
+            AttackIndicator.SetActive(true);
+            Vector3 angles = AttackIndicator.transform.eulerAngles;
+            angles.z = Vector3.SignedAngle(difference, Vector3.right, Vector3.back);
+            AttackIndicator.transform.eulerAngles = angles;
+            AttackIndicator.transform.position = transform.position + (difference / 2);
+        }
     }
 
     public void Teleport()
@@ -49,5 +67,6 @@ public class NinjaEnemy : Enemy
     {
         Vector3 direction = new Vector2(Target.transform.position.x - transform.position.x, Target.transform.position.y - transform.position.y);
         Instantiate(Shuriken, transform.position + direction.normalized * ShurikenSpawnDistance, Quaternion.identity).GetComponent<Rigidbody2D>().velocity = direction.normalized * ShurikenSpeed;
+        AttackIndicator.SetActive(false);
     }
 }
