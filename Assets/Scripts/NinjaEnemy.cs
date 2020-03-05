@@ -54,6 +54,11 @@ public class NinjaEnemy : Enemy
             Vector3 scale = AttackIndicator.transform.localScale;
             scale.x = difference.magnitude / 10;
             AttackIndicator.transform.localScale = scale;
+
+            float ChargeTimeLeft = 1 - ((ThrowTime - CurrentTime) / ThrowTime);
+            Color colour = AttackIndicator.GetComponent<SpriteRenderer>().color;
+            colour.a = ChargeTimeLeft;
+            AttackIndicator.GetComponent<SpriteRenderer>().color = colour;
         }
     }
 
