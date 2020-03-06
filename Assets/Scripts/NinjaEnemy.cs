@@ -67,6 +67,11 @@ public class NinjaEnemy : Enemy
             colour.a = ChargeTimeLeft;
             AttackIndicator.GetComponent<SpriteRenderer>().color = colour;
         }
+
+        if (IsSpinning)
+        {
+            GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0, SpinSpeed));
+        }
     }
 
     public void Teleport()
