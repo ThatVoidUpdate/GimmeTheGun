@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6831750059705638535}
   - component: {fileID: 1352840069415968093}
   m_Layer: 8
-  m_Name: HexagonBoss
+  m_Name: BeefyHexagon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   ScoreValue: 18
   Speed: 0.02
   Target: {fileID: 0}
-  MaxHealth: 200
+  MaxHealth: 1000
   Damage: 35
   DamageTakenModifier: 1
   SpinSpeed: 10

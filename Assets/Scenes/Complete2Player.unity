@@ -940,7 +940,7 @@ PrefabInstance:
         type: 3}
       propertyPath: controller
       value: 
-      objectReference: {fileID: 1684713117}
+      objectReference: {fileID: 251614212}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: HeldDistance
@@ -2068,18 +2068,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525723963}
   m_CullTransparentMesh: 0
---- !u!114 &1684713117 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5464134633549716325, guid: e676989d627e51d4ebe5e6bfb7015081,
-    type: 3}
-  m_PrefabInstance: {fileID: 490802135}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0581c54c200d05b4a8d633c4f654a08a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1732371968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2427,6 +2415,7 @@ MonoBehaviour:
   RockyMusic: {fileID: 8300000, guid: 8cc98ce325a832840b142bdaa7bc4478, type: 3}
   LavaMusic: {fileID: 8300000, guid: 2115ff6a75195ff4f913ec4d15ea93cc, type: 3}
   ArcticMusic: {fileID: 8300000, guid: 8314a5db56b05034199a511f39694684, type: 3}
+  ForestMusic: {fileID: 0}
   source: {fileID: 0}
   background: 0
 --- !u!82 &1834721930
@@ -3493,6 +3482,23 @@ PrefabInstance:
       propertyPath: CurrentWave
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: HexagonBloated
+      value: 
+      objectReference: {fileID: 342876370130150961, guid: d3f8ff10b786ba4479c617ac721e9c90,
+        type: 3}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: Boss
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: BeefyHexagon
+      value: 
+      objectReference: {fileID: 8034868220926690958, guid: c850d868402502e46bfad2c3cb8f6bc2,
+        type: 3}
     - target: {fileID: 4768074863980927775, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
         type: 3}
       propertyPath: spawnee
