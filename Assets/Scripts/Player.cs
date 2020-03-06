@@ -33,10 +33,11 @@ public class Player : MonoBehaviour
     public Control Grab;
     public Control Shoot; //The controls for each of the respective actions
     public Control SummonGun;
-    public Control PushEnemy;
+    public Control MenuPause;
+    public Control Push;
 
-    //push enemy
     private Rigidbody2D Mass;
+
 
 
     [Header("Graphics")]
@@ -62,8 +63,9 @@ public class Player : MonoBehaviour
 
     public float RespawnTime;
     private float DeathTime;
-    #endregion Variables
     public int DeathScore = -10;
+    #endregion Variables
+
 
     // Start is called before the first frame update
     void Start()
@@ -111,7 +113,26 @@ public class Player : MonoBehaviour
             HeldObject.GetComponent<Gun>().Shooting = false;
         }
 
-        if (controller.GetControlDown(Grab) && HeldObject != null && CanDrop)
+        if (controller.GetControlState(MenuPause) == 1)
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
+        if (controller.GetControlState(Push) == 1)
+        {
+            Mass = GetComponent<Rigidbody2D>();
+            Mass.mass = 5000;
+            Debug.Log("Mass 500");
+        }
+        else if (controller.GetControlState(Push) == 0)
+        {
+            Mass = GetComponent<Rigidbody2D>();
+            Mass.mass = 4;
+            Debug.Log("Mass 4");
+        }
+
+
+            if (controller.GetControlDown(Grab) && HeldObject != null && CanDrop)
         {//We are holding a gun, and trying to drop it
             FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
 
@@ -189,19 +210,6 @@ public class Player : MonoBehaviour
 
             }
         }
-
-        //Push enemies 
-
-
-        /* WORKING PROGRESS
- 
-        if (controller.GetControlState(PushEnemy) == 1)
-        {
-            Mass = GetComponent<Rigidbody2D>();
-            Mass.mass = Mass;
-            
-        }
-        */
 
         if (dead)
         {
