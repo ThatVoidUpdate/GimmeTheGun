@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class WaveSpawner : MonoBehaviour
     public GameObject FastEnemy;
     public GameObject PoisonEnemy;
     public GameObject HexagonBloated;
+    public Text text;
 
     public GameObject Boss;
 
@@ -68,9 +70,13 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (CurrentEnemies.Count == 0)
         {//All enemies have been killed. MOAR ENEMIES
             CurrentWave++;
+            text.text = CurrentWave.ToString();
+            Debug.Log(CurrentWave.ToString());
 
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
