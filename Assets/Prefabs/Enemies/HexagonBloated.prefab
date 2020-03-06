@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2568257607230140093}
   - component: {fileID: 3651725787895408054}
   - component: {fileID: 6974679187326522189}
+  - component: {fileID: 6429941338273613246}
   m_Layer: 0
   m_Name: HexagonBloated
   m_TagString: Untagged
@@ -148,10 +149,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e746e8730212b17449de825de869f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreValue: 10
-  Speed: 0.025
+  ScoreValue: 12
+  Speed: 0.035
   Target: {fileID: 0}
   MaxHealth: 65
-  Damage: 10
+  Damage: 14
   DamageTakenModifier: 1
-  SpinSpeed: 10
+  SpinSpeed: 5
+--- !u!111 &6429941338273613246
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342876370130150961}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 19def889d187a3b4aa06b633c153ad00, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

@@ -366,6 +366,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e676989d627e51d4ebe5e6bfb7015081, type: 3}
+--- !u!114 &251614212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5464134633549716325, guid: e676989d627e51d4ebe5e6bfb7015081,
+    type: 3}
+  m_PrefabInstance: {fileID: 72165015}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0581c54c200d05b4a8d633c4f654a08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &321057956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1194,7 @@ PrefabInstance:
         type: 3}
       propertyPath: controller
       value: 
-      objectReference: {fileID: 1684713117}
+      objectReference: {fileID: 251614212}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: HeldDistance

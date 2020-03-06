@@ -52,9 +52,9 @@ public class WaveSpawner : MonoBehaviour
 
         Waves.Add(new (GameObject, int)[] { (PoisonEnemy, 20) });
 
-        Waves.Add(new (GameObject, int)[] { (HexagonBloated, 2), (FastEnemy, 8), (NinjaEnemy, 6) });
+        Waves.Add(new (GameObject, int)[] { (Boss, 1), (FastEnemy, 8), (NinjaEnemy, 3) });
 
-        Waves.Add(new (GameObject, int)[] { (HexagonBloated, 3), (PoisonEnemy, 8), (NinjaEnemy, 8) });
+        Waves.Add(new (GameObject, int)[] { (Boss, 2), (PoisonEnemy, 8), (NinjaEnemy, 8) });
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8), (FastEnemy, 10), (NinjaEnemy, 5) });
 
