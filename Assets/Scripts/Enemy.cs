@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
 
     private Player LastDamagedBy;
-    private bool IsSpinning = false;
+    protected bool IsSpinning = false;
     public float SpinSpeed = 10;
 
     // Start is called before the first frame update
