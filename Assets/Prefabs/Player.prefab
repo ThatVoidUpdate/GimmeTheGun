@@ -168,15 +168,18 @@ MonoBehaviour:
   Grab: 8
   Shoot: 9
   SummonGun: 14
+  MenuPause: 17
+  Push: 15
   UpSprite: {fileID: 21300000, guid: d40e87aed092115459cbf882bd8e989f, type: 3}
   DownSprite: {fileID: 21300000, guid: bd94c093e6681b941ac3cd16a5674269, type: 3}
   LeftSprite: {fileID: 21300000, guid: e15899593891a184ba6a8ea3a883c80d, type: 3}
   RightSprite: {fileID: 21300000, guid: f88a00e515b5e9e48bf0f73e7bf0244d, type: 3}
   MaxHealth: 100
   Health: 0
-  dead: 0
+  dead: 1
   DamageSpeed: 1
   RespawnTime: 5
+  DeathScore: -10
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4

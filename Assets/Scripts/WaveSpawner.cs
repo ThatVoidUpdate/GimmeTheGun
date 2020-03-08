@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class WaveSpawner : MonoBehaviour
     public GameObject FastEnemy;
     public GameObject PoisonEnemy;
     public GameObject HexagonBloated;
-    public Text text;
     public GameObject BeefyHexagon;
 
     public GameObject Boss;
+
+    public TextMeshProUGUI WaveCounter;
 
     public List<(GameObject, int)[]> Waves = new List<(GameObject, int)[]>();
 
@@ -76,8 +78,7 @@ public class WaveSpawner : MonoBehaviour
         if (CurrentEnemies.Count == 0)
         {//All enemies have been killed. MOAR ENEMIES
             CurrentWave++;
-            text.text = CurrentWave.ToString();
-            Debug.Log(CurrentWave.ToString());
+            WaveCounter.text = "Wave: " + CurrentWave.ToString();
 
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
