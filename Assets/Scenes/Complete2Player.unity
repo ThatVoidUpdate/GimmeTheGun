@@ -2491,10 +2491,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7e09a6d1b627a40b9a4a06b19e30dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RockyMusic: {fileID: 8300000, guid: 8cc98ce325a832840b142bdaa7bc4478, type: 3}
-  LavaMusic: {fileID: 8300000, guid: 2115ff6a75195ff4f913ec4d15ea93cc, type: 3}
-  ArcticMusic: {fileID: 8300000, guid: 8314a5db56b05034199a511f39694684, type: 3}
-  ForestMusic: {fileID: 0}
+  RockyMusic:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  LavaMusic:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ArcticMusic:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ForestMusic:
+  - {fileID: 0}
   source: {fileID: 0}
   background: 0
 --- !u!82 &1834721930
