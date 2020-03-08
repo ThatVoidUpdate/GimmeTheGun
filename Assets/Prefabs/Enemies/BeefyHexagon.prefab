@@ -174,13 +174,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e746e8730212b17449de825de869f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreValue: 18
+  ScoreValue: 20
   Speed: 0.02
   Target: {fileID: 0}
-  MaxHealth: 1000
+  MaxHealth: 800
   Damage: 35
   DamageTakenModifier: 1
-  SpinSpeed: 10
+  SpinSpeed: 5
 --- !u!50 &6831750059705638535
 Rigidbody2D:
   serializedVersion: 4

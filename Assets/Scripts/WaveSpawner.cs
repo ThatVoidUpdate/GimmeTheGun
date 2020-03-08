@@ -7,6 +7,9 @@ using TMPro;
 public class WaveSpawner : MonoBehaviour
 {
     public GameObject StandardEnemy;
+    public GameObject EnemySF;
+    public GameObject EnemyMD;
+    public GameObject EnemyRV;
     public GameObject NinjaEnemy;
     public GameObject FastEnemy;
     public GameObject PoisonEnemy;
@@ -27,13 +30,13 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
    
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 2), (EnemySF, 2) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (EnemyMD, 2) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8),  (FastEnemy, 2) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (EnemyRV, 1), (EnemyMD, 1), (EnemySF, 1), (FastEnemy, 2) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 10), (FastEnemy, 5) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 5), (EnemyMD, 3), (EnemySF, 2), (FastEnemy, 5) });
 
         Waves.Add(new (GameObject, int)[] { (FastEnemy, 10) });
 
@@ -47,13 +50,13 @@ public class WaveSpawner : MonoBehaviour
 
         Waves.Add(new (GameObject, int)[] { (FastEnemy, 10), (PoisonEnemy, 10) }); 
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8), (NinjaEnemy, 2), (PoisonEnemy, 2) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (EnemySF, 4), (NinjaEnemy, 2), (PoisonEnemy, 2) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6), (NinjaEnemy, 6) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 1), (EnemyMD, 2), (EnemySF, 1), (EnemyRV, 2), (NinjaEnemy, 6) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 6), (NinjaEnemy, 6), (PoisonEnemy, 4) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (EnemySF, 2), (NinjaEnemy, 6), (PoisonEnemy, 4) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (FastEnemy, 5), (NinjaEnemy, 10) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 2), (EnemyMD, 1), (EnemySF, 1), (FastEnemy, 5), (NinjaEnemy, 10) });
 
         Waves.Add(new (GameObject, int)[] { (PoisonEnemy, 20) });
 
@@ -61,9 +64,9 @@ public class WaveSpawner : MonoBehaviour
 
         Waves.Add(new (GameObject, int)[] { (BeefyHexagon, 2), (PoisonEnemy, 8), (NinjaEnemy, 8) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 8), (FastEnemy, 10), (NinjaEnemy, 5) });
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 3), (EnemyRV, 2), (EnemyMD, 3), (FastEnemy, 10), (NinjaEnemy, 5) });
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 5), (FastEnemy, 16), (HexagonBloated, 3) }); 
+        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 3), (EnemySF, 2), (FastEnemy, 16), (HexagonBloated, 3) }); 
 
         Waves.Add(new (GameObject, int)[] { (StandardEnemy, 20), (NinjaEnemy, 20), (HexagonBloated, 5) });
 

@@ -231,12 +231,12 @@ MonoBehaviour:
   DamageTakenModifier: 1
   SpinSpeed: 10
   TeleportTime: 3
-  ThrowTime: 0.5
+  ThrowTime: 0.75
   TopLeftTeleportZone: {x: -7.8, y: 4.5}
   BottomRightTeleportZone: {x: 7.8, y: -4.5}
   Shuriken: {fileID: 6148468784320163288, guid: 98967cde25b55cf46839f46071531666,
     type: 3}
-  ShurikenSpeed: 7.5
+  ShurikenSpeed: 8.5
   ShurikenSpawnDistance: 1
   IndicatorPrefab: {fileID: 314605884549069538, guid: c1ab39c94e138414d97123123d1f1b2c,
     type: 3}

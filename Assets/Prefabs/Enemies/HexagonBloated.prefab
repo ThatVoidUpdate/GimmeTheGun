@@ -149,11 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e746e8730212b17449de825de869f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreValue: 12
+  ScoreValue: 13
   Speed: 0.035
   Target: {fileID: 0}
   MaxHealth: 65
-  Damage: 14
+  Damage: 12
   DamageTakenModifier: 1
   SpinSpeed: 5
 --- !u!111 &6429941338273613246
@@ -168,6 +168,6 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 19def889d187a3b4aa06b633c153ad00, type: 2}
   m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
