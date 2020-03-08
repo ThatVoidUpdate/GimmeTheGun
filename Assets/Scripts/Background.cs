@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum Backgrounds {Rocky, Lava, Arctic, Forest}
 public class Background : MonoBehaviour
@@ -40,6 +41,11 @@ public class Background : MonoBehaviour
     }
     public IEnumerator PlayMusic(AudioClip[] clips)
     {
+        if (Array.TrueForAll(clips, clip => clip == null))
+        {
+            Debug.LogError("BACKGROUND HAS NO ASSIGNED AUDIO. STOP TRYING TO CRASH THE DAMN GAME");
+            yield break;
+        }
         while (true)
         {
             foreach (AudioClip clip in clips)
