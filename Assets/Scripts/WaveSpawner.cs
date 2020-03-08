@@ -10,11 +10,8 @@ public class WaveSpawner : MonoBehaviour
     public GameObject FastEnemy;
     public GameObject PoisonEnemy;
     public GameObject HexagonBloated;
-<<<<<<< HEAD
     public Text text;
-=======
     public GameObject BeefyHexagon;
->>>>>>> c882f3a45b5c473fb1e17de29923f40a0e311b43
 
     public GameObject Boss;
 

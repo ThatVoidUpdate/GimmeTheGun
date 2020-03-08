@@ -273,7 +273,6 @@ public class Powerup : MonoBehaviour
             case PowerupType.Cocaine:
                 Time.timeScale = 1;
                 break;
-                break;
 
             case PowerupType.fourTwenty:
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))

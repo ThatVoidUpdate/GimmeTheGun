@@ -37,8 +37,7 @@ public class Controller : MonoBehaviour
 
     [Space]
     [Tooltip("Enabling this will give a debug log of every button pressed and axis moved, every frame")]
-    [SerializeField]
-    private bool Verbose;
+    public bool Verbose;
 
     public void Start()
     {
