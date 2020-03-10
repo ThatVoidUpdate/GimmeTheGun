@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class FailManager : MonoBehaviour
 {
@@ -38,17 +39,14 @@ public class FailManager : MonoBehaviour
         if (!HasFailed)
         {
             FailOverlay.SetActive(true);
-            foreach (Enemy enemy in GameObject.FindObjectsOfType<Enemy>())
+            foreach (Enemy enemy in FindObjectsOfType<Enemy>())
             {
                 enemy.Speed = 0;
                 enemy.Damage = 0;
             }
-            foreach (Player player in GameObject.FindObjectsOfType<Player>())
+            foreach (Player player in FindObjectsOfType<Player>())
             {
-                player.HorizontalSpeed = 0;
-                player.VerticalSpeed = 0;
-                player.SetCanMove(false);
-                player.HeldObject = null;
+                player.RespawnTime = 999999999999999999; //31 billion years should be enough
             }
 
             HasFailed = true;
