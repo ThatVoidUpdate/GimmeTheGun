@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public enum Direction { Up, Down, Right, Left, None}
 
@@ -64,6 +65,10 @@ public class Player : MonoBehaviour
     public float RespawnTime;
     private float DeathTime;
     public int DeathScore = -10;
+
+    [Header("Events")]
+    public UnityEvent OnFail;
+
     #endregion Variables
 
 
@@ -261,8 +266,7 @@ public class Player : MonoBehaviour
             }
         }
         //both players are dead, hopefully
-        print("All players dead");
-        SceneManager.LoadScene("Menu");
+        OnFail.Invoke();
         
     }
 
