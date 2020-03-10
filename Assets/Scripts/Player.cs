@@ -39,8 +39,6 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D Mass;
 
-
-
     [Header("Graphics")]
     public Sprite UpSprite;
     public Sprite DownSprite;
@@ -127,17 +125,15 @@ public class Player : MonoBehaviour
         {
             Mass = GetComponent<Rigidbody2D>();
             Mass.mass = 5000;
-            Debug.Log("Mass 500");
         }
         else if (controller.GetControlState(Push) == 0)
         {
             Mass = GetComponent<Rigidbody2D>();
             Mass.mass = 4;
-            Debug.Log("Mass 4");
         }
 
 
-            if (controller.GetControlDown(Grab) && HeldObject != null && CanDrop)
+        if (controller.GetControlDown(Grab) && HeldObject != null && CanDrop)
         {//We are holding a gun, and trying to drop it
             FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
 
@@ -148,7 +144,6 @@ public class Player : MonoBehaviour
         if (HeldObject != null)
         {//We are holding a gun, so move it around the player
             HeldObject.SetAngle(theta, transform.position);
-
         }
 
         //Maths to get the angle of the stick assigned to rotation
@@ -218,9 +213,9 @@ public class Player : MonoBehaviour
 
         if (dead)
         {
-            DeathTime += Time.deltaTime;
-            
+            DeathTime += Time.deltaTime;            
         }
+
         if (dead&& DeathTime>RespawnTime)
         {
             Respawn();
@@ -267,7 +262,7 @@ public class Player : MonoBehaviour
         }
         //both players are dead, hopefully
         OnFail.Invoke();
-        
+
     }
 
     public void Respawn()
