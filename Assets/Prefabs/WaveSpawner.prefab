@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f1aa16888f3b649b25e0c49a97cacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FileName: Assets/waves.txt
+  FallbackFileName: waves.txt
   StandardEnemy: {fileID: 8048073611069811309, guid: 6ae7e1f932c55dd44ab93051a7157326,
     type: 3}
   FasterEnemy: {fileID: 8048073611069811309, guid: 2171c4d0643cf83478aae5203be46209,
