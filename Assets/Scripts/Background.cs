@@ -52,11 +52,9 @@ public class Background : MonoBehaviour
             {
                 source.clip = clip;
                 source.Play();
-                yield return new WaitForSeconds(source.clip.length);
-                
+                yield return new WaitForSeconds(source.clip.length);                
             }
-        }
-        
+        }        
     }
 
     public void ChangeBackground(Backgrounds _background)

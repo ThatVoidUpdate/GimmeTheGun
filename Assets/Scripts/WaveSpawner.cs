@@ -6,6 +6,7 @@ using TMPro;
 using System.IO;
 using System.Linq;
 using System;
+using UnityEngine.Events;
 
 public enum EnemyType { Standard, Faster, MoreDamage, Strong, Ninja, Fast, Poison, Bloated, Beefy}
 
@@ -35,6 +36,9 @@ public class WaveSpawner : MonoBehaviour
     public int CurrentWave = -1;
 
     private Dictionary<EnemyType, GameObject> EnemyTypes;
+
+    public BackgroundEvent BackgroundChangeEvent;
+    private Dictionary<int, Backgrounds> backgroundChanges = new Dictionary<int, Backgrounds>();
 
     // Start is called before the first frame update
     void Start()
@@ -70,30 +74,46 @@ public class WaveSpawner : MonoBehaviour
 
         foreach (string line in lines)
         {
-            string[] spawns = line.Split(',');
-            List<(GameObject, int)> wave = new List<(GameObject, int)>();
-
-            foreach (string spawn in spawns)
+            if (line.StartsWith("@"))
             {
-                EnemyType type;
-                if (!Enum.TryParse(spawn.Trim().Split(' ')[0], out type))
+                Backgrounds background;
+                if (!Enum.TryParse(line.Trim().Split(' ')[0].Substring(1, line.Trim().Split(' ')[0].Length - 1), out background))
                 {
-                    Debug.LogWarning("Enemy type " + spawn.Trim().Split(' ')[0] + " does not exist (" + FilePath + ")");
+                    Debug.LogWarning("Background type " + line.Trim().Split(' ')[0].Substring(1, line.Trim().Split(' ')[0].Length - 1) + " does not exist (" + FilePath + ")");
+                }
+                else
+                {
+                    int WaveNumber = Convert.ToInt32(line.Trim().Split(' ')[1]);
+                    Debug.Log("Changing background to " + background.ToString() + " on wave " + WaveNumber);
+                    backgroundChanges.Add(WaveNumber, background);
+                }
+            }
+            else
+            {
+                string[] spawns = line.Split(',');
+                List<(GameObject, int)> wave = new List<(GameObject, int)>();
+
+                foreach (string spawn in spawns)
+                {
+                    EnemyType type;
+                    if (!Enum.TryParse(spawn.Trim().Split(' ')[0], out type))
+                    {
+                        Debug.LogWarning("Enemy type " + spawn.Trim().Split(' ')[0] + " does not exist (" + FilePath + ")");
+                    }
+                    try
+                    {
+                        wave.Add((EnemyTypes[type], Convert.ToInt32(spawn.Trim().Split(' ')[1])));
+                    }
+                    catch (Exception)
+                    {
+                        Debug.Log(string.Join(", ", spawn.Trim().Split(' ')));
+                        throw;
+                    }
+
 
                 }
-                try
-                {
-                    wave.Add((EnemyTypes[type], Convert.ToInt32(spawn.Trim().Split(' ')[1])));
-                }
-                catch (Exception)
-                {
-                    Debug.Log(string.Join(", ", spawn.Trim().Split(' ')));
-                    throw;
-                }
-                
-                
+                Waves.Add(wave.ToArray());
             }
-            Waves.Add(wave.ToArray());            
         }
 
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
@@ -106,6 +126,11 @@ public class WaveSpawner : MonoBehaviour
         {//All enemies have been killed. MOAR ENEMIES
             CurrentWave++;
             WaveCounter.text = "Wave: " + CurrentWave.ToString();
+
+            if (backgroundChanges.ContainsKey(CurrentWave))
+            {
+                BackgroundChangeEvent.Invoke(backgroundChanges[CurrentWave]);
+            }
 
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
@@ -135,3 +160,6 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 }
+
+[Serializable]
+public class BackgroundEvent : UnityEvent<Backgrounds> { };

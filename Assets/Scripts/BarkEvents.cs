@@ -57,8 +57,6 @@ public class BarkEvents : MonoBehaviour
                 AllLines[currentType].Item2.Add(line);
             }
         }
-        
-
     }
 
     public void TriggerBarkLine(BarkEventTypes type, GameObject Player)
@@ -70,7 +68,6 @@ public class BarkEvents : MonoBehaviour
                 string DisplayLine = AllLines[type].Item2[UnityEngine.Random.Range(0, AllLines[type].Item2.Count)];
                 StartCoroutine(ShowBarkLine(DisplayLine, 2, Player));
             }
-            
         }
     }
 

@@ -2689,20 +2689,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RockyMusic:
   - {fileID: 8300000, guid: 494c6f4ce603b5241b5e1557b4d713ab, type: 3}
-  - {fileID: 8300000, guid: cfad72ee266408540a762fd7b51504cd, type: 3}
-  - {fileID: 8300000, guid: fdf97297f03ee444586f29164f7d2f5f, type: 3}
   LavaMusic:
-  - {fileID: 8300000, guid: 4d98f9d6ae2d4ea49a8711ef9b6e4046, type: 3}
   - {fileID: 8300000, guid: ce8592172d93319439f507e47692d22e, type: 3}
-  - {fileID: 8300000, guid: 6005f93f3b9641d46bb7e7b27dddec78, type: 3}
   ArcticMusic:
-  - {fileID: 8300000, guid: b8ee2f6f077b0cf4b84e1ac0cfc7ec7a, type: 3}
   - {fileID: 8300000, guid: ab576a0704004004aa0e83a22294df8a, type: 3}
-  - {fileID: 8300000, guid: 1787f2422a7212e488ee34c5a4e19707, type: 3}
   ForestMusic:
-  - {fileID: 8300000, guid: f080cdf0e942bc149abc94d38dbdf168, type: 3}
   - {fileID: 8300000, guid: 456196a75674548419c3b8b12c4ba2a8, type: 3}
-  - {fileID: 8300000, guid: fef44dffb48022a4b803dae388bfc942, type: 3}
   source: {fileID: 0}
   background: 0
 --- !u!82 &1834721930
@@ -4009,6 +4001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
         type: 3}
+      propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
       propertyPath: debug
       value: 
       objectReference: {fileID: 0}
@@ -4017,6 +4014,31 @@ PrefabInstance:
       propertyPath: WaveCounter
       value: 
       objectReference: {fileID: 70436645}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1834721929}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeBackground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4768074863980927775, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
         type: 3}
       propertyPath: spawnee

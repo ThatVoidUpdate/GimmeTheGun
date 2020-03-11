@@ -1,4 +1,6 @@
 #Example waves file
+@Arctic 0
+@Rocky 2
 Standard 2, Faster 2
 Standard 4, MoreDamage 2
 Standard 4, Strong 1, MoreDamage 1, Faster 1, Fast 2
