@@ -81,7 +81,16 @@ public class WaveSpawner : MonoBehaviour
                     Debug.LogWarning("Enemy type " + spawn.Trim().Split(' ')[0] + " does not exist (" + FilePath + ")");
 
                 }
-                wave.Add((EnemyTypes[type], Convert.ToInt32(spawn.Trim().Split(' ')[1])));
+                try
+                {
+                    wave.Add((EnemyTypes[type], Convert.ToInt32(spawn.Trim().Split(' ')[1])));
+                }
+                catch (Exception)
+                {
+                    Debug.Log(string.Join(", ", spawn.Trim().Split(' ')));
+                    throw;
+                }
+                
                 
             }
             Waves.Add(wave.ToArray());            

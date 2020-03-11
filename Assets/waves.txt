@@ -1,21 +1,21 @@
 #Example waves file
-StandardEnemy 2, FasterEnemy 2
-StandardEnemy 4, MoreDamageEnemy 2
-StandardEnemy 4, StrongEnemy 1, MoreDamageEnemy 1, FasterEnemy 1, FastEnemy, 2
-StandardEnemy 5, MoreDamageEnemy 3, FasterEnemy 2, FastEnemy 5
-FastEnemy 10
-FastEnemy 2, PoisonEnemy 2
-FastEnemy 4, PoisonEnemy 5
-FastEnemy 6, PoisonEnemy 6
-FastEnemy 7, PoisonEnemy 7
-FastEnemy 10, PoisonEnemy 10
-StandardEnemy 4, FasterEnemy 4, NinjaEnemy 2, PoisonEnemy 2
-StandardEnemy 1, MoreDamageEnemy 2, FasterEnemy 1, StrongEnemy 2, NinjaEnemy 6
-StandardEnemy 4, FasterEnemy 2, NinjaEnemy 6, PoisonEnemy 4
-StandardEnemy 2, MoreDamageEnemy 1, FasterEnemy 1, FastEnemy 5, NinjaEnemy 10
-PoisonEnemy 20
-BeefyHexagon 1, FastEnemy 8, NinjaEnemy 3
-BeefyHexagon 2, PoisonEnemy 8, NinjaEnemy 8
-StandardEnemy 3, StrongEnemy 2, MoreDamageEnemy 3, FastEnemy 10, NinjaEnemy 5
-StandardEnemy 3, FasterEnemy 2, FastEnemy 16, HexagonBloated 3
-StandardEnemy 20, NinjaEnemy 20, HexagonBloatedk 5
+Standard 2, Faster 2
+Standard 4, MoreDamage 2
+Standard 4, Strong 1, MoreDamage 1, Faster 1, Fast 2
+Standard 5, MoreDamage 3, Faster 2, Fast 5
+Fast 10
+Fast 2, Poison 2
+Fast 4, Poison 5
+Fast 6, Poison 6
+Fast 7, Poison 7
+Fast 10, Poison 10
+Standard 4, Faster 4, Ninja 2, Poison 2
+Standard 1, MoreDamage 2, Faster 1, Strong 2, Ninja 6
+Standard 4, Faster 2, Ninja 6, Poison 4
+Standard 2, MoreDamage 1, Faster 1, Fast 5, Ninja 10
+Poison 20
+Beefy 1, Fast 8, Ninja 3
+Beefy 2, Poison 8, Ninja 8
+Standard 3, Strong 2, MoreDamage 3, Fast 10, Ninja 5
+Standard 3, Faster 2, Fast 16, Bloated 3
+Standard 20, Ninja 20, Bloated 5
