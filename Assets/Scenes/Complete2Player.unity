@@ -2689,16 +2689,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RockyMusic:
   - {fileID: 8300000, guid: 494c6f4ce603b5241b5e1557b4d713ab, type: 3}
-  - {fileID: 8300000, guid: 8cc98ce325a832840b142bdaa7bc4478, type: 3}
+  - {fileID: 8300000, guid: cfad72ee266408540a762fd7b51504cd, type: 3}
+  - {fileID: 8300000, guid: fdf97297f03ee444586f29164f7d2f5f, type: 3}
   LavaMusic:
+  - {fileID: 8300000, guid: 4d98f9d6ae2d4ea49a8711ef9b6e4046, type: 3}
   - {fileID: 8300000, guid: ce8592172d93319439f507e47692d22e, type: 3}
-  - {fileID: 8300000, guid: 2115ff6a75195ff4f913ec4d15ea93cc, type: 3}
+  - {fileID: 8300000, guid: 6005f93f3b9641d46bb7e7b27dddec78, type: 3}
   ArcticMusic:
+  - {fileID: 8300000, guid: b8ee2f6f077b0cf4b84e1ac0cfc7ec7a, type: 3}
   - {fileID: 8300000, guid: ab576a0704004004aa0e83a22294df8a, type: 3}
-  - {fileID: 8300000, guid: 8314a5db56b05034199a511f39694684, type: 3}
+  - {fileID: 8300000, guid: 1787f2422a7212e488ee34c5a4e19707, type: 3}
   ForestMusic:
+  - {fileID: 8300000, guid: f080cdf0e942bc149abc94d38dbdf168, type: 3}
   - {fileID: 8300000, guid: 456196a75674548419c3b8b12c4ba2a8, type: 3}
-  - {fileID: 8300000, guid: ec19f6446da01c240a9ab0e2a74a6563, type: 3}
+  - {fileID: 8300000, guid: fef44dffb48022a4b803dae388bfc942, type: 3}
   source: {fileID: 0}
   background: 0
 --- !u!82 &1834721930
