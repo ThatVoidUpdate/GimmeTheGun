@@ -16,6 +16,7 @@ public class Builder
         System.IO.Directory.CreateDirectory(path + "/Assets");
         // Copy a file from the project folder to the build folder, alongside the built game.
         FileUtil.CopyFileOrDirectory("Assets/lines.txt", path + "/Assets/lines.txt");
+        FileUtil.CopyFileOrDirectory("Assets/waves.txt", path + "/Assets/waves.txt");
         UnityEngine.Debug.Log("Build Completed");
     }
 }
