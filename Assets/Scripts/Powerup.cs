@@ -65,10 +65,10 @@ public class Powerup : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
                 break;
             case PowerupType.fourTwenty:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/NewPartyHat");
                 break;
             case PowerupType.Disco:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/NewPartyHat");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/DiscoBall");
                 break;
             case PowerupType.LSD:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
