@@ -252,7 +252,10 @@ public class Player : MonoBehaviour
         CanMove = false;
         rend.color = new Color(1, 0.5f, 0.5f, 0.5f);
         dead = true;
-        HeldObject.Shooting = false;
+        if (HeldObject != null)
+        {
+            HeldObject.Shooting = false;
+        }
         HeldObject = null;
         foreach (Player player in FindObjectsOfType<Player>())
         {

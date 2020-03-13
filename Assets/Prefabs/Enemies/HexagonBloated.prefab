@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3651725787895408054}
   - component: {fileID: 6974679187326522189}
   - component: {fileID: 6429941338273613246}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HexagonBloated
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 4
 --- !u!60 &3651725787895408054
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.79, y: 5.61}
+    oldSize: {x: 0.579, y: 0.561}
     newSize: {x: 5.79, y: 5.61}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -129,14 +129,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.4129426, y: -2.8231785}
-      - {x: 2.8376687, y: -0.2169478}
-      - {x: 2.1030188, y: 1.0869677}
-      - {x: 1.398911, y: 2.2550366}
-      - {x: 0.3060187, y: 2.2812557}
-      - {x: -1.5410557, y: 2.3186421}
-      - {x: -2.9977438, y: -0.26354748}
-      - {x: -1.5448794, y: -2.8209364}
+    - - {x: -0.14812933, y: -0.2757988}
+      - {x: 0.14992721, y: -0.27550596}
+      - {x: 0.29209557, y: -0.022906378}
+      - {x: 0.14605245, y: 0.22864833}
+      - {x: -0.15175341, y: 0.2278642}
+      - {x: -0.29416427, y: -0.017104372}
 --- !u!114 &6974679187326522189
 MonoBehaviour:
   m_ObjectHideFlags: 0
