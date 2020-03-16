@@ -2704,7 +2704,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 456196a75674548419c3b8b12c4ba2a8, type: 3}
   - {fileID: 8300000, guid: 164daa1921a5e1e469d756a26ea4b7fb, type: 3}
   source: {fileID: 0}
-  background: 0
+  background: 1
 --- !u!82 &1834721930
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4051,6 +4051,16 @@ PrefabInstance:
         type: 3}
       propertyPath: CurrentWave
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4768074863980927775, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
         type: 3}
