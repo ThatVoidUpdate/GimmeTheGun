@@ -8,29 +8,22 @@ public class FailManager : MonoBehaviour
 {
     public GameObject FailOverlay;
     private bool HasFailed = false;
-    private Controller[] controllers;
-    public void Start()
-    {
-        controllers = FindObjectsOfType<Controller>();
-    }
     
     public void Update()
     {
         if (HasFailed)
         {
-            foreach (Controller controller in controllers)
+            if (Input.GetAxis("Submit") == 1)
             {
-                if (controller.GetControlState(Control.South) == 1)
-                {
-                    //someone is pressing the A button, restart the level
-                    SceneManager.LoadScene("Complete2Player");
-                }
-                if (controller.GetControlState(Control.East) == 1)
-                {
-                    //someone is pressing the B button, exit to the menu
-                    SceneManager.LoadScene("Menu");
-                }
+                //someone is pressing the A button, restart the level
+                SceneManager.LoadScene("Complete2Player");
             }
+            if (Input.GetAxis("Cancel") == 1)
+            {
+                //someone is pressing the B button, exit to the menu
+                SceneManager.LoadScene("Menu");
+            }
+            
         }
     }
 
