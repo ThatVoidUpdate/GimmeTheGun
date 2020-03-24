@@ -3,7 +3,12 @@ guid: e7f2d79a3a1db7247b2d0a1a36206909
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - FlameThrowerSound: {fileID: 8300000, guid: 641b9a8f79cbb9a45ac071a386686c64, type: 3}
+  - PistolSound: {fileID: 8300000, guid: df097d91baf5cf34d8e03833df6f9dba, type: 3}
+  - RocketLauncherSound: {fileID: 8300000, guid: ad59db016291bd44a9ddc7f9dc2df52c,
+      type: 3}
+  - ShotgunSound: {fileID: 8300000, guid: 253d6dcdcef69e8458ad7d4626041cb9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
