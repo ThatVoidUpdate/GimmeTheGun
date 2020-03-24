@@ -1354,6 +1354,51 @@ PrefabInstance:
       propertyPath: ID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: HorizontalLookControl
+      value: Controller1LookHorizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: VerticalLookControl
+      value: Controller1LookVertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: HorizontalMoveControl
+      value: Controller1MoveVertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: VerticalMoveControl
+      value: Controller1MoveHorizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: GrabControl
+      value: Controller1Grab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: ShootControl
+      value: Controller1Shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: SummonControl
+      value: Controller1Summon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: PushControl
+      value: Controller1Push
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: MenuControl
+      value: Controller1Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158149, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: m_Mass

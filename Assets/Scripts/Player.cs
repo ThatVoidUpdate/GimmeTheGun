@@ -18,16 +18,28 @@ public class Player : MonoBehaviour
     public float HorizontalSpeed;
     public float VerticalSpeed; //The horizontal and vertical speed of the player
 
+    [Header("Controls")]
     //Control Values. Replacement for controller gameobjects
-    private float HorizontalControlLook;
-    private float VerticalControlLook;
-    private float VerticalControlMove;
-    private float HorizontalControlMove;
+    private float HorizontalLookControlValue;
+    private float VerticalLookControlValue;
+    private float VerticalMoveControlValue;
+    private float HorizontalMoveControlValue;
     private float GrabControlValue;
     private float ShootControlValue;
     private bool SummonControlValue;
     private bool PushControlValue;
     private bool MenuControlValue;
+
+    public string HorizontalLookControl; 
+    public string VerticalLookControl;
+    public string HorizontalMoveControl;
+    public string VerticalMoveControl;
+    public string GrabControl;
+    public string ShootControl;
+    public string SummonControl;
+    public string PushControl;
+    public string MenuControl;
+
 
     [Header("Held object options")]
     public Gun HeldObject = null; //The object that the player is currently holding
@@ -69,7 +81,6 @@ public class Player : MonoBehaviour
     #endregion Variables
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -84,7 +95,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         UpdateControlState();
-        rb.velocity = new Vector2(HorizontalControlMove * (CanMove ? (InvertedControls ? -HorizontalSpeed : HorizontalSpeed) : 0), VerticalControlMove * (CanMove ? (InvertedControls ? VerticalSpeed : -VerticalSpeed) : 0)); //Set the movement speed according to the controller input        
+        rb.velocity = new Vector2(HorizontalMoveControlValue * (CanMove ? (InvertedControls ? -HorizontalSpeed : HorizontalSpeed) : 0), VerticalMoveControlValue * (CanMove ? (InvertedControls ? VerticalSpeed : -VerticalSpeed) : 0)); //Set the movement speed according to the controller input        
 
         if ((GrabControlValue == 1) && closeGuns.Count > 0 && HeldObject == null && !dead)
         {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun, and we arent currently dead
@@ -147,22 +158,22 @@ public class Player : MonoBehaviour
         }
 
         //Maths to get the angle of the stick assigned to rotation
-        if (VerticalControlLook != 0 || HorizontalControlLook != 0)
+        if (VerticalLookControlValue != 0 || HorizontalLookControlValue != 0)
         {
-            if (Mathf.Atan(VerticalControlLook / HorizontalControlLook) / Mathf.PI == 0.5)
+            if (Mathf.Atan(VerticalLookControlValue / HorizontalLookControlValue) / Mathf.PI == 0.5)
             {
                 theta = - Mathf.PI / 2;
             }
-            else if (Mathf.Atan(VerticalControlLook / HorizontalControlLook) / Mathf.PI == -0.5)
+            else if (Mathf.Atan(VerticalLookControlValue / HorizontalLookControlValue) / Mathf.PI == -0.5)
             {
                 theta = Mathf.PI / 2;
             }
             else
             {
-                theta = Mathf.Atan(VerticalControlLook / HorizontalControlLook);
+                theta = Mathf.Atan(VerticalLookControlValue / HorizontalLookControlValue);
             }            
 
-            if (HorizontalControlLook > 0)
+            if (HorizontalLookControlValue > 0)
             {
                  theta += Mathf.PI;
             }
@@ -304,8 +315,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
     public void EndWave()
     {
         FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.WaveCleared, gameObject);
@@ -335,30 +344,15 @@ public class Player : MonoBehaviour
 
     public void UpdateControlState()
     {
-        if (ID == PlayerID.Left)
-        {
-            HorizontalControlLook = Input.GetAxis("Controller0LookHorizontal");
-            VerticalControlLook = Input.GetAxis("Controller0LookVertical");
-            VerticalControlMove = Input.GetAxis("Controller0MoveVertical");
-            HorizontalControlMove = Input.GetAxis("Controller0MoveHorizontal");
-            GrabControlValue = Input.GetAxis("Controller0Grab");
-            ShootControlValue = Input.GetAxis("Controller0Shoot");
-            SummonControlValue = Input.GetAxis("Controller0Summon") == 1;
-            PushControlValue = Input.GetAxis("Controller0Push") == 1;
-            MenuControlValue = Input.GetAxis("Controller0Menu") == 1;
-        }
-        else if (ID == PlayerID.Right)
-        {
-            HorizontalControlLook = Input.GetAxis("Controller1LookHorizontal");
-            VerticalControlLook = Input.GetAxis("Controller1LookVertical");
-            VerticalControlMove = Input.GetAxis("Controller1MoveVertical");
-            HorizontalControlMove = Input.GetAxis("Controller1MoveHorizontal");
-            GrabControlValue = Input.GetAxis("Controller1Grab");
-            ShootControlValue = Input.GetAxis("Controller1Shoot");
-            SummonControlValue = Input.GetAxis("Controller1Summon") == 1;
-            PushControlValue = Input.GetAxis("Controller1Push") == 1;
-            MenuControlValue = Input.GetAxis("Controller1Menu") == 1;
-        }
+        HorizontalLookControlValue = Input.GetAxis(HorizontalLookControl);
+        VerticalLookControlValue = Input.GetAxis(VerticalLookControl);
+        VerticalMoveControlValue = Input.GetAxis(HorizontalMoveControl);
+        HorizontalMoveControlValue = Input.GetAxis(VerticalMoveControl);
+        GrabControlValue = Input.GetAxis(GrabControl);
+        ShootControlValue = Input.GetAxis(ShootControl);
+        SummonControlValue = Input.GetAxis(SummonControl) == 1;
+        PushControlValue = Input.GetAxis(PushControl) == 1;
+        MenuControlValue = Input.GetAxis(MenuControl) == 1;
     }
 }
 
