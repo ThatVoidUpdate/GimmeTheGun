@@ -77,11 +77,14 @@ public class Powerup : MonoBehaviour
                 break;
         }
     }
+
+    
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.PowerupPickup, collision.gameObject);
+            //BarkLineEvent.Invoke(BarkEventTypes.PowerupPickup, collision.gameObject);
             StartCoroutine(DoPowerup());
         }
     }

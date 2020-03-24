@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent OnFail;
+    public SendBarkEvent BarkLineEvent;
 
     #endregion Variables
 
@@ -110,7 +111,8 @@ public class Player : MonoBehaviour
                 closeGuns[0].GetComponent<Gun>().OnLeftSideOfScreen = false;
             }
 
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.GunPickup, gameObject);
+            //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.GunPickup, gameObject);
+            BarkLineEvent.Invoke(BarkEventTypes.GunPickup, this.gameObject);
         }
 
         if (GrabControlValue == 0)
@@ -146,7 +148,8 @@ public class Player : MonoBehaviour
 
         if (GrabControlValue == 1 && HeldObject != null && CanDrop)
         {//We are holding a gun, and trying to drop it
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
+            //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
+            BarkLineEvent.Invoke(BarkEventTypes.ThrowGun, this.gameObject);
 
             HeldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(ThrowSpeed * Mathf.Cos(theta * 2 * Mathf.PI / 360), ThrowSpeed * Mathf.Sin(theta * 2 * Mathf.PI / 360));
             HeldObject = null;
@@ -240,13 +243,15 @@ public class Player : MonoBehaviour
         //If we are currently above half health, but taking damage would take us below half health
         if (Health > MaxHealth / 2 && Health - DamageAmount <= MaxHealth / 2)
         {//Say a half health line
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.HalfHealth, gameObject);
+            //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.HalfHealth, gameObject);
+            BarkLineEvent.Invoke(BarkEventTypes.HalfHealth, this.gameObject);
         }
 
         //If we are currently above 10% health, but taking damage would take us below 10% health
         if (Health > MaxHealth / 10 && Health - DamageAmount <= MaxHealth / 10)
         {//Say a near death line   
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NearDeath, gameObject);            
+            //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NearDeath, gameObject);
+            BarkLineEvent.Invoke(BarkEventTypes.NearDeath, this.gameObject);
         }
 
         Health -= DamageAmount;
@@ -282,7 +287,8 @@ public class Player : MonoBehaviour
 
     public void Respawn()
     {
-       FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Respawn, gameObject);
+        //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Respawn, gameObject);
+        BarkLineEvent.Invoke(BarkEventTypes.Respawn, this.gameObject);
 
         rend.color = new Color(1, 1, 1, 1);
         dead = false;
@@ -317,18 +323,21 @@ public class Player : MonoBehaviour
 
     public void EndWave()
     {
-        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.WaveCleared, gameObject);
+        //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.WaveCleared, gameObject);
+        BarkLineEvent.Invoke(BarkEventTypes.WaveCleared, this.gameObject);
     }
 
     public void StartWave()
     {
-        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NewRound, gameObject);
-        
+        //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NewRound, gameObject);
+        BarkLineEvent.Invoke(BarkEventTypes.NewRound, this.gameObject);
+
     }
 
     public void KillEnemy()
     {
-        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.KillEnemy, gameObject);
+        //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.KillEnemy, gameObject);
+        BarkLineEvent.Invoke(BarkEventTypes.KillEnemy, this.gameObject);
     }
 
 

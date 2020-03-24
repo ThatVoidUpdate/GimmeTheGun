@@ -5,8 +5,12 @@ using System.Linq;
 using System;
 using TMPro;
 using System.Collections;
+using UnityEngine.Events;
 
 public enum BarkEventTypes {Error, PowerupPickup, KillEnemy, NewRound, HalfHealth, NearDeath, Death, WaveCleared, NewWeapon, ThrowGun, NewSkin, NewPowerup, Achievement, Boss, GunPickup, Respawn}
+
+[System.Serializable]
+public class SendBarkEvent : UnityEvent<BarkEventTypes, GameObject> { } // Can pass a GameObject as an argument in the event
 
 public class BarkEvents : MonoBehaviour
 {
