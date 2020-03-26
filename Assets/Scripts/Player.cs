@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public enum Direction { Up, Down, Right, Left, None}
 
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
@@ -64,6 +65,9 @@ public class Player : MonoBehaviour
     public float RespawnTime;
     private float DeathTime;
     public int DeathScore = -10;
+    private ScorePlayers scorer;
+
+
     #endregion Variables
 
 
@@ -76,6 +80,8 @@ public class Player : MonoBehaviour
         rend.sprite = DownSprite;
 
         Health = MaxHealth;
+
+        scorer = FindObjectOfType<ScorePlayers>();
     }
 
 
@@ -128,7 +134,6 @@ public class Player : MonoBehaviour
         {
             Mass = GetComponent<Rigidbody2D>();
             Mass.mass = 4;
-            Debug.Log("Mass 4");
         }
 
 
@@ -242,7 +247,7 @@ public class Player : MonoBehaviour
         if (Health <= 0)
         {
             Die();
-            ScorePlayers.score += DeathScore;
+            scorer.PlayerKills(this);
         }
     }
 

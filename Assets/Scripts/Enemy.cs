@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
     public int ScoreValue = 10;
+    private ScorePlayers scorer;
 
     public float Speed;
     public GameObject Target;
@@ -23,12 +25,17 @@ public class Enemy : MonoBehaviour
     protected bool IsSpinning = false;
     public float SpinSpeed = 10;
 
+    public UnityEvent OnDie;
+
     // Start is called before the first frame update
     void Start()
     {
         Health = MaxHealth;
         rb = GetComponent<Rigidbody2D>();
+        scorer = FindObjectOfType<ScorePlayers>();
+        OnDie.AddListener(() => scorer.EnemyKill(this));
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -81,8 +88,10 @@ public class Enemy : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
-            ScorePlayers.score += ScoreValue;
+            scorer.EnemyKill(this);
         }
+        OnDie.Invoke();
+
     }
 
     public void Spin(bool DoSpin)
