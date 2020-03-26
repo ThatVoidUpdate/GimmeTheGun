@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectorScript : MonoBehaviour {
 
@@ -59,11 +60,11 @@ public class SelectorScript : MonoBehaviour {
         }
     }
 
-    
+
     //made for the restart so once its cycled through all the characters it resets.
     private void ResetInt()
     {
-        if(CharacterInt >=3)
+        if (CharacterInt >= 3)
         {
             CharacterInt = 1;
         }
@@ -71,7 +72,14 @@ public class SelectorScript : MonoBehaviour {
         {
             CharacterInt = 4;
         }
+
     }
+    public void PlayGame()  
+
+    {
+        SceneManager.LoadScene("Complete2Player");
+    }
+    
     
     
 }
