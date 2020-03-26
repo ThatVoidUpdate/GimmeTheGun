@@ -75,15 +75,11 @@ public class Player : MonoBehaviour
     public float RespawnTime;
     private float DeathTime;
     public int DeathScore = -10;
-<<<<<<< HEAD
     private ScorePlayers scorer;
-
-=======
 
     [Header("Events")]
     public UnityEvent OnFail;
     public SendBarkEvent BarkLineEvent;
->>>>>>> 4b12c8f6e822a491e0037d83499787b28c8baa61
 
     #endregion Variables
 
