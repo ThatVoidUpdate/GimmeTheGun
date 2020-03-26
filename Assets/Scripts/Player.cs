@@ -3,21 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public enum Direction { Up, Down, Right, Left, None}
+public enum PlayerID { Left, Right }
 
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     #region Variables
-    [Header("Control Options")]
-    [SerializeField]
-    private Controller controller; //The controller that his player is listening to
+    public PlayerID ID;
 
     [Header("Speeds")]
     public float HorizontalSpeed;
-    public float VerticalSpeed; //The ohirzontal and vertical speed of the player
+    public float VerticalSpeed; //The horizontal and vertical speed of the player
+
+    [Header("Controls")]
+    //Control Values. Replacement for controller gameobjects
+    private float HorizontalLookControlValue;
+    private float VerticalLookControlValue;
+    private float VerticalMoveControlValue;
+    private float HorizontalMoveControlValue;
+    private float GrabControlValue;
+    private float ShootControlValue;
+    private bool SummonControlValue;
+    private bool PushControlValue;
+    private bool MenuControlValue;
+
+    public string HorizontalLookControl; 
+    public string VerticalLookControl;
+    public string HorizontalMoveControl;
+    public string VerticalMoveControl;
+    public string GrabControl;
+    public string ShootControl;
+    public string SummonControl;
+    public string PushControl;
+    public string MenuControl;
+
 
     [Header("Held object options")]
     public Gun HeldObject = null; //The object that the player is currently holding
@@ -26,20 +49,7 @@ public class Player : MonoBehaviour
     public List<Collider2D> closeGuns = new List<Collider2D>(); //A list of all the guns in the trigger
     private bool CanDrop = true;
 
-    [Header("Controls")]
-    public Control MoveHorizontal;
-    public Control MoveVertical;
-    public Control LookHorizontal;
-    public Control LookVertical;
-    public Control Grab;
-    public Control Shoot; //The controls for each of the respective actions
-    public Control SummonGun;
-    public Control MenuPause;
-    public Control Push;
-
     private Rigidbody2D Mass;
-
-
 
     [Header("Graphics")]
     public Sprite UpSprite;
@@ -65,13 +75,19 @@ public class Player : MonoBehaviour
     public float RespawnTime;
     private float DeathTime;
     public int DeathScore = -10;
+<<<<<<< HEAD
     private ScorePlayers scorer;
 
+=======
+
+    [Header("Events")]
+    public UnityEvent OnFail;
+    public SendBarkEvent BarkLineEvent;
+>>>>>>> 4b12c8f6e822a491e0037d83499787b28c8baa61
 
     #endregion Variables
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -86,10 +102,11 @@ public class Player : MonoBehaviour
 
 
     void Update()
-    {       
-        rb.velocity = new Vector2(controller.GetControlState(MoveHorizontal) * (CanMove ? (InvertedControls ? -HorizontalSpeed : HorizontalSpeed) : 0), controller.GetControlState(MoveVertical) * (CanMove ? (InvertedControls ? VerticalSpeed : -VerticalSpeed) : 0)); //Set the movement speed according to the controller input        
+    {
+        UpdateControlState();
+        rb.velocity = new Vector2(HorizontalMoveControlValue * (CanMove ? (InvertedControls ? -HorizontalSpeed : HorizontalSpeed) : 0), VerticalMoveControlValue * (CanMove ? (InvertedControls ? VerticalSpeed : -VerticalSpeed) : 0)); //Set the movement speed according to the controller input        
 
-        if (controller.GetControlDown(Grab) && closeGuns.Count > 0 && HeldObject == null && !dead)
+        if ((GrabControlValue == 1) && closeGuns.Count > 0 && HeldObject == null && !dead)
         {//There is a gun close to us, and we are attempting to grab it, and we arent currently holding a gun, and we arent currently dead
             HeldObject = closeGuns[0].GetComponent<Gun>();
             CanDrop = false;
@@ -102,44 +119,45 @@ public class Player : MonoBehaviour
                 closeGuns[0].GetComponent<Gun>().OnLeftSideOfScreen = false;
             }
 
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.GunPickup, gameObject);
+            //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.GunPickup, gameObject);
+            BarkLineEvent.Invoke(BarkEventTypes.GunPickup, this.gameObject);
         }
 
-        if (controller.GetControlState(Grab) == 0)
+        if (GrabControlValue == 0)
         {//Let the player drop the gun after they release the grab button
             CanDrop = true;
         }
 
-        if (controller.GetControlState(Shoot) == 1 && HeldObject != null)
+        if (ShootControlValue == 1 && HeldObject != null)
         {//We are trying to shoot, and we are holding a gun
             HeldObject.GetComponent<Gun>().Shooting = true;
         }
-        else if (controller.GetControlState(Shoot) == 0 && HeldObject != null)
+        else if (ShootControlValue == 0 && HeldObject != null)
         {//We are trying to not shoot, and we are holding a gun
             HeldObject.GetComponent<Gun>().Shooting = false;
         }
 
-        if (controller.GetControlState(MenuPause) == 1)
+        if (MenuControlValue)
         {
             SceneManager.LoadScene("Menu");
         }
 
-        if (controller.GetControlState(Push) == 1)
+        if (PushControlValue)
         {
             Mass = GetComponent<Rigidbody2D>();
             Mass.mass = 5000;
-            Debug.Log("Mass 500");
         }
-        else if (controller.GetControlState(Push) == 0)
+        else if (PushControlValue)
         {
             Mass = GetComponent<Rigidbody2D>();
             Mass.mass = 4;
         }
 
 
-            if (controller.GetControlDown(Grab) && HeldObject != null && CanDrop)
+        if (GrabControlValue == 1 && HeldObject != null && CanDrop)
         {//We are holding a gun, and trying to drop it
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
+            //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.ThrowGun, gameObject);
+            BarkLineEvent.Invoke(BarkEventTypes.ThrowGun, this.gameObject);
 
             HeldObject.GetComponent<Rigidbody2D>().velocity = new Vector2(ThrowSpeed * Mathf.Cos(theta * 2 * Mathf.PI / 360), ThrowSpeed * Mathf.Sin(theta * 2 * Mathf.PI / 360));
             HeldObject = null;
@@ -148,26 +166,25 @@ public class Player : MonoBehaviour
         if (HeldObject != null)
         {//We are holding a gun, so move it around the player
             HeldObject.SetAngle(theta, transform.position);
-
         }
 
         //Maths to get the angle of the stick assigned to rotation
-        if (controller.GetControlState(LookVertical) != 0 || controller.GetControlState(LookHorizontal) != 0)
+        if (VerticalLookControlValue != 0 || HorizontalLookControlValue != 0)
         {
-            if (Mathf.Atan(controller.GetControlState(LookVertical) / controller.GetControlState(LookHorizontal)) / Mathf.PI == 0.5)
+            if (Mathf.Atan(VerticalLookControlValue / HorizontalLookControlValue) / Mathf.PI == 0.5)
             {
                 theta = - Mathf.PI / 2;
             }
-            else if (Mathf.Atan(controller.GetControlState(LookVertical) / controller.GetControlState(LookHorizontal)) / Mathf.PI == -0.5)
+            else if (Mathf.Atan(VerticalLookControlValue / HorizontalLookControlValue) / Mathf.PI == -0.5)
             {
                 theta = Mathf.PI / 2;
             }
             else
             {
-                theta = Mathf.Atan(controller.GetControlState(LookVertical) / controller.GetControlState(LookHorizontal));
+                theta = Mathf.Atan(VerticalLookControlValue / HorizontalLookControlValue);
             }            
 
-            if (controller.GetControlState(LookHorizontal) > 0)
+            if (HorizontalLookControlValue > 0)
             {
                  theta += Mathf.PI;
             }
@@ -199,7 +216,7 @@ public class Player : MonoBehaviour
         }
 
         //Pull gun twards player
-        if (controller.GetControlState(SummonGun) == 1)
+        if (SummonControlValue)
         {
             Gun gun = FindObjectOfType<Gun>();
             if (gun.transform.position.x < 0 && transform.position.x < 0) 
@@ -218,9 +235,9 @@ public class Player : MonoBehaviour
 
         if (dead)
         {
-            DeathTime += Time.deltaTime;
-            
+            DeathTime += Time.deltaTime;            
         }
+
         if (dead&& DeathTime>RespawnTime)
         {
             Respawn();
@@ -234,13 +251,15 @@ public class Player : MonoBehaviour
         //If we are currently above half health, but taking damage would take us below half health
         if (Health > MaxHealth / 2 && Health - DamageAmount <= MaxHealth / 2)
         {//Say a half health line
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.HalfHealth, gameObject);
+            //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.HalfHealth, gameObject);
+            BarkLineEvent.Invoke(BarkEventTypes.HalfHealth, this.gameObject);
         }
 
         //If we are currently above 10% health, but taking damage would take us below 10% health
         if (Health > MaxHealth / 10 && Health - DamageAmount <= MaxHealth / 10)
         {//Say a near death line   
-            FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NearDeath, gameObject);            
+            //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NearDeath, gameObject);
+            BarkLineEvent.Invoke(BarkEventTypes.NearDeath, this.gameObject);
         }
 
         Health -= DamageAmount;
@@ -257,6 +276,10 @@ public class Player : MonoBehaviour
         CanMove = false;
         rend.color = new Color(1, 0.5f, 0.5f, 0.5f);
         dead = true;
+        if (HeldObject != null)
+        {
+            HeldObject.Shooting = false;
+        }
         HeldObject = null;
         foreach (Player player in FindObjectsOfType<Player>())
         {
@@ -266,14 +289,14 @@ public class Player : MonoBehaviour
             }
         }
         //both players are dead, hopefully
-        print("All players dead");
-        SceneManager.LoadScene("Menu");
-        
+        OnFail.Invoke();
+
     }
 
     public void Respawn()
     {
-       FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Respawn, gameObject);
+        //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.Respawn, gameObject);
+        BarkLineEvent.Invoke(BarkEventTypes.Respawn, this.gameObject);
 
         rend.color = new Color(1, 1, 1, 1);
         dead = false;
@@ -306,50 +329,25 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
     public void EndWave()
     {
-        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.WaveCleared, gameObject);
+        //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.WaveCleared, gameObject);
+        BarkLineEvent.Invoke(BarkEventTypes.WaveCleared, this.gameObject);
     }
 
     public void StartWave()
     {
-        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NewRound, gameObject);
-        
+        //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.NewRound, gameObject);
+        BarkLineEvent.Invoke(BarkEventTypes.NewRound, this.gameObject);
+
     }
 
     public void KillEnemy()
     {
-        FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.KillEnemy, gameObject);
+        //FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.KillEnemy, gameObject);
+        BarkLineEvent.Invoke(BarkEventTypes.KillEnemy, this.gameObject);
     }
 
-    /// <summary>
-    /// Returns the controller attached to the player
-    /// </summary>
-    /// <returns>The local controller</returns>
-    public Controller GetController()
-    {
-        return controller;
-    }
-
-    /// <summary>
-    /// Sets the local controller
-    /// </summary>
-    /// <param name="_Controller">The controller to set to</param>
-    public void SetController(Controller _Controller)
-    {
-        controller = _Controller;
-    }
-
-    /// <summary>
-    /// Sets the id of the controller attached to the player
-    /// </summary>
-    /// <param name="ID">The ID to set it to</param>
-    public void SetControllerID(int ID)
-    {
-        controller.SetControllerID(ID);
-    }
 
     public void SetControlInversion(bool Inverted)
     {
@@ -359,6 +357,19 @@ public class Player : MonoBehaviour
     public void SetCanMove(bool _CanMove)
     {
         CanMove = _CanMove;
+    }
+
+    public void UpdateControlState()
+    {
+        HorizontalLookControlValue = Input.GetAxis(HorizontalLookControl);
+        VerticalLookControlValue = Input.GetAxis(VerticalLookControl);
+        VerticalMoveControlValue = Input.GetAxis(HorizontalMoveControl);
+        HorizontalMoveControlValue = Input.GetAxis(VerticalMoveControl);
+        GrabControlValue = Input.GetAxis(GrabControl);
+        ShootControlValue = Input.GetAxis(ShootControl);
+        SummonControlValue = Input.GetAxis(SummonControl) == 1;
+        PushControlValue = Input.GetAxis(PushControl) == 1;
+        MenuControlValue = Input.GetAxis(MenuControl) == 1;
     }
 }
 

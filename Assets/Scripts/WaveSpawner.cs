@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
+using System.Linq;
+using System;
+using UnityEngine.Events;
+
+public enum EnemyType { Standard, Faster, MoreDamage, Strong, Ninja, Fast, Poison, Bloated, Beefy}
 
 public class WaveSpawner : MonoBehaviour
 {
+    public string FileName;
+    public string FallbackFileName;
+
     public GameObject StandardEnemy;
     public GameObject FasterEnemy;
     public GameObject MoreDamageEnemy;
@@ -26,62 +35,102 @@ public class WaveSpawner : MonoBehaviour
     private GameObject[] spawners;
     public int CurrentWave = -1;
 
+    private Dictionary<EnemyType, GameObject> EnemyTypes;
+
+    public BackgroundEvent BackgroundChangeEvent;
+    private Dictionary<int, Backgrounds> backgroundChanges = new Dictionary<int, Backgrounds>();
+
     // Start is called before the first frame update
     void Start()
     {
-   
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 2), (FasterEnemy, 2) });
+        //load file as array of strings
+        //each line is a wve
+        //syntax: enemytype amount, enemytype amount, enemytype amount
+        //lines beginning with # are comments
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (MoreDamageEnemy, 2) });
+        EnemyTypes = new Dictionary<EnemyType, GameObject>() { { EnemyType.Standard, StandardEnemy }, 
+            { EnemyType.Faster, FasterEnemy }, 
+            { EnemyType.MoreDamage, MoreDamageEnemy}, 
+            { EnemyType.Strong, StrongEnemy}, 
+            { EnemyType.Ninja, NinjaEnemy}, 
+            { EnemyType.Fast, FastEnemy}, 
+            { EnemyType.Poison, PoisonEnemy},
+            { EnemyType.Bloated, HexagonBloated},
+            { EnemyType.Beefy, BeefyHexagon}};
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (StrongEnemy, 1), (MoreDamageEnemy, 1), (FasterEnemy, 1), (FastEnemy, 2) });
+        string FilePath;
+        if (File.Exists(FileName))
+        {
+            FilePath = FileName;
+        }
+        else
+        {
+            FilePath = FallbackFileName;
+        }
 
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 5), (MoreDamageEnemy, 3), (FasterEnemy, 2), (FastEnemy, 5) });
+        string[] lines = File.ReadAllLines(FilePath);
+        lines = (from line in lines where !line.StartsWith("#") select line).ToArray();
+        lines = (from line in lines where line != "" select line).ToArray();
 
-        Waves.Add(new (GameObject, int)[] { (FastEnemy, 10) });
+        foreach (string line in lines)
+        {
+            if (line.StartsWith("@"))
+            {
+                Backgrounds background;
+                if (!Enum.TryParse(line.Trim().Split(' ')[0].Substring(1, line.Trim().Split(' ')[0].Length - 1), out background))
+                {
+                    Debug.LogWarning("Background type " + line.Trim().Split(' ')[0].Substring(1, line.Trim().Split(' ')[0].Length - 1) + " does not exist (" + FilePath + ")");
+                }
+                else
+                {
+                    int WaveNumber = Convert.ToInt32(line.Trim().Split(' ')[1]);
+                    Debug.Log("Changing background to " + background.ToString() + " on wave " + WaveNumber);
+                    backgroundChanges.Add(WaveNumber, background);
+                }
+            }
+            else
+            {
+                string[] spawns = line.Split(',');
+                List<(GameObject, int)> wave = new List<(GameObject, int)>();
 
-        Waves.Add(new (GameObject, int)[] { (FastEnemy, 2), (PoisonEnemy, 2) });
-        
-        Waves.Add(new (GameObject, int)[] { (FastEnemy, 4), (PoisonEnemy, 5) });
+                foreach (string spawn in spawns)
+                {
+                    EnemyType type;
+                    if (!Enum.TryParse(spawn.Trim().Split(' ')[0], out type))
+                    {
+                        Debug.LogWarning("Enemy type " + spawn.Trim().Split(' ')[0] + " does not exist (" + FilePath + ")");
+                    }
+                    try
+                    {
+                        wave.Add((EnemyTypes[type], Convert.ToInt32(spawn.Trim().Split(' ')[1])));
+                    }
+                    catch (Exception)
+                    {
+                        Debug.Log(string.Join(", ", spawn.Trim().Split(' ')));
+                        throw;
+                    }
 
-        Waves.Add(new (GameObject, int)[] { (FastEnemy, 6), (PoisonEnemy, 6) });
 
-        Waves.Add(new (GameObject, int)[] { (FastEnemy, 7), (PoisonEnemy, 7) });
-
-        Waves.Add(new (GameObject, int)[] { (FastEnemy, 10), (PoisonEnemy, 10) }); 
-
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (FasterEnemy, 4), (NinjaEnemy, 2), (PoisonEnemy, 2) });
-
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 1), (MoreDamageEnemy, 2), (FasterEnemy, 1), (StrongEnemy, 2), (NinjaEnemy, 6) });
-
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 4), (FasterEnemy, 2), (NinjaEnemy, 6), (PoisonEnemy, 4) });
-
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 2), (MoreDamageEnemy, 1), (FasterEnemy, 1), (FastEnemy, 5), (NinjaEnemy, 10) });
-
-        Waves.Add(new (GameObject, int)[] { (PoisonEnemy, 20) });
-
-        Waves.Add(new (GameObject, int)[] { (BeefyHexagon, 1), (FastEnemy, 8), (NinjaEnemy, 3) });
-
-        Waves.Add(new (GameObject, int)[] { (BeefyHexagon, 2), (PoisonEnemy, 8), (NinjaEnemy, 8) });
-
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 3), (StrongEnemy, 2), (MoreDamageEnemy, 3), (FastEnemy, 10), (NinjaEnemy, 5) });
-
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 3), (FasterEnemy, 2), (FastEnemy, 16), (HexagonBloated, 3) }); 
-
-        Waves.Add(new (GameObject, int)[] { (StandardEnemy, 20), (NinjaEnemy, 20), (HexagonBloated, 5) });
+                }
+                Waves.Add(wave.ToArray());
+            }
+        }
 
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-
-
         if (CurrentEnemies.Count == 0)
         {//All enemies have been killed. MOAR ENEMIES
             CurrentWave++;
             WaveCounter.text = "Wave: " + CurrentWave.ToString();
+
+            if (backgroundChanges.ContainsKey(CurrentWave))
+            {
+                BackgroundChangeEvent.Invoke(backgroundChanges[CurrentWave]);
+            }
 
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
@@ -111,3 +160,6 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 }
+
+[Serializable]
+public class BackgroundEvent : UnityEvent<Backgrounds> { };

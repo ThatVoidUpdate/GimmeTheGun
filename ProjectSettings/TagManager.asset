@@ -26,7 +26,7 @@ TagManager:
   - HorizontalWall
   - GunTrigger
   - Projectile
-  - 
+  - FailOverlay
   - 
   - 
   - 
@@ -42,6 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: New Layer
+    uniqueID: 536290257
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: AlwaysInFront
+    uniqueID: 2206883011
     locked: 0

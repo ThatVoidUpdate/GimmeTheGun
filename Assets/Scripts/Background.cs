@@ -52,16 +52,35 @@ public class Background : MonoBehaviour
             {
                 source.clip = clip;
                 source.Play();
-                yield return new WaitForSeconds(source.clip.length);
-                
+                yield return new WaitForSeconds(source.clip.length);                
             }
-        }
-        
+        }        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeBackground(Backgrounds _background)
     {
-        
+        background = _background;
+        source.Stop();
+        switch (background)
+        {
+            case Backgrounds.Rocky:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Rocky");
+                StartCoroutine(PlayMusic(RockyMusic));
+                break;
+            case Backgrounds.Lava:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Lava");
+                StartCoroutine(PlayMusic(LavaMusic));
+                break;
+            case Backgrounds.Arctic:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Arctic");
+                StartCoroutine(PlayMusic(ArcticMusic));
+                break;
+            case Backgrounds.Forest:
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Forest");
+                StartCoroutine(PlayMusic(ForestMusic));
+                break;
+            default:
+                break;
+        }
     }
 }

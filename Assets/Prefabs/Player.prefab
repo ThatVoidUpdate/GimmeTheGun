@@ -155,31 +155,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788d66fada34a7446893045af3a4faa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  ID: 0
   HorizontalSpeed: 10
   VerticalSpeed: 10
+  HorizontalLookControl: Controller0LookHorizontal
+  VerticalLookControl: Controller0LookVertical
+  HorizontalMoveControl: Controller0MoveVertical
+  VerticalMoveControl: Controller0MoveHorizontal
+  GrabControl: Controller0Grab
+  ShootControl: Controller0Shoot
+  SummonControl: Controller0Summon
+  PushControl: Controller0Push
+  MenuControl: Controller0Menu
   HeldObject: {fileID: 0}
   ThrowSpeed: 30
   closeGuns: []
-  MoveHorizontal: 0
-  MoveVertical: 1
-  LookHorizontal: 3
-  LookVertical: 4
-  Grab: 8
-  Shoot: 9
-  SummonGun: 14
-  MenuPause: 17
-  Push: 15
   UpSprite: {fileID: 21300000, guid: d40e87aed092115459cbf882bd8e989f, type: 3}
   DownSprite: {fileID: 21300000, guid: bd94c093e6681b941ac3cd16a5674269, type: 3}
   LeftSprite: {fileID: 21300000, guid: e15899593891a184ba6a8ea3a883c80d, type: 3}
   RightSprite: {fileID: 21300000, guid: f88a00e515b5e9e48bf0f73e7bf0244d, type: 3}
   MaxHealth: 100
   Health: 0
-  dead: 1
+  dead: 0
   DamageSpeed: 1
   RespawnTime: 5
-  DeathScore: -10
+  DeathScore: -50
+  OnFail:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnFail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!50 &5909937672650158149
 Rigidbody2D:
   serializedVersion: 4

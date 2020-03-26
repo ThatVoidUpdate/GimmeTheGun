@@ -32,7 +32,7 @@ public class Powerup : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Nuke");
                 break;
             case PowerupType.SwitchEnemies:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/SwitchEnemies");
                 break;
             case PowerupType.HealthUp:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/HealthUp");
@@ -41,7 +41,7 @@ public class Powerup : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/DamageUp");
                 break;
             case PowerupType.SlowEnemy:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/SlowEnemy");
                 break;
             case PowerupType.FastPlayer:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Player_clock_1");
@@ -65,10 +65,10 @@ public class Powerup : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
                 break;
             case PowerupType.fourTwenty:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/NewPartyHat");
                 break;
             case PowerupType.Disco:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/NewPartyHat");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/DiscoBall");
                 break;
             case PowerupType.LSD:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
@@ -77,11 +77,14 @@ public class Powerup : MonoBehaviour
                 break;
         }
     }
+
+    
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.PowerupPickup, collision.gameObject);
+            //BarkLineEvent.Invoke(BarkEventTypes.PowerupPickup, collision.gameObject);
             StartCoroutine(DoPowerup());
         }
     }

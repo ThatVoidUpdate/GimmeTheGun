@@ -178,7 +178,7 @@ MonoBehaviour:
   Speed: 0.1
   Target: {fileID: 0}
   MaxHealth: 40
-  Damage: 10
+  Damage: 7
   DamageTakenModifier: 1
   SpinSpeed: 10
 --- !u!50 &362952281243813151
