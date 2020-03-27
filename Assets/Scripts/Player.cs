@@ -18,19 +18,9 @@ public class Player : MonoBehaviour
     [Header("Speeds")]
     public float HorizontalSpeed;
     public float VerticalSpeed; //The horizontal and vertical speed of the player
-
-    [Header("Controls")]
+    
     //Control Values. Replacement for controller gameobjects
-    private float HorizontalLookControlValue;
-    private float VerticalLookControlValue;
-    private float VerticalMoveControlValue;
-    private float HorizontalMoveControlValue;
-    private float GrabControlValue;
-    private float ShootControlValue;
-    private bool SummonControlValue;
-    private bool PushControlValue;
-    private bool MenuControlValue;
-
+    [Header("Controls")]
     public string HorizontalLookControl; 
     public string VerticalLookControl;
     public string HorizontalMoveControl;
@@ -40,6 +30,16 @@ public class Player : MonoBehaviour
     public string SummonControl;
     public string PushControl;
     public string MenuControl;
+    
+    private float HorizontalLookControlValue;
+    private float VerticalLookControlValue;
+    private float VerticalMoveControlValue;
+    private float HorizontalMoveControlValue;
+    private float GrabControlValue;
+    private float ShootControlValue;
+    private bool SummonControlValue;
+    private bool PushControlValue;
+    private bool MenuControlValue;
 
 
     [Header("Held object options")]
