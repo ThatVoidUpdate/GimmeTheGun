@@ -1034,6 +1034,30 @@ PrefabInstance:
       propertyPath: BarkLineEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: UpSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 26e154bdc53108846b386b67e925b589,
+        type: 3}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: DownSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc3bf10b13235484f876487f107be766,
+        type: 3}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: LeftSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 33b84f6d9f466d644b390d810d22a337,
+        type: 3}
+    - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
+        type: 3}
+      propertyPath: RightSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6f9bf7fb69f67140b4e8f9693b963dd,
+        type: 3}
     - target: {fileID: 5909937672650158149, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: m_Mass
