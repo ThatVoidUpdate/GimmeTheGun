@@ -79,8 +79,6 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        //LastDamagedBy.KillEnemy();
-
         if (GetComponent<Smash>())
         {
             GetComponent<Smash>().DoSmash();

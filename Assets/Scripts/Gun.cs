@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     [Space]
     public float ShotsPerSecond;
     public bool Shooting;
+    
 
     [Space]
     public float HeldDistance;
@@ -25,7 +26,9 @@ public class Gun : MonoBehaviour
 
     private Direction GunSide; //Left is true, right is false
 
-    private ParticleSystem system;
+    public float bulletSpeed;
+    public GameObject BulletPrefab;
+    public GameObject BulletSpawnPosition;
 
     [HideInInspector]
     public bool OnLeftSideOfScreen;
@@ -33,13 +36,12 @@ public class Gun : MonoBehaviour
     public void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        system = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {        
-        if (Shooting && (system.transform.position.x < 0) == OnLeftSideOfScreen)
+        if (Shooting && (BulletSpawnPosition.transform.position.x < 0) == OnLeftSideOfScreen)
         {
             if (TimeSinceShot > (1/ShotsPerSecond))
             {
@@ -49,8 +51,6 @@ public class Gun : MonoBehaviour
         }      
 
         TimeSinceShot += Time.deltaTime;
-
-        system.startRotation =  - (transform.rotation.eulerAngles.z * Mathf.Deg2Rad);
     }
 
     public void SetAngle(float angle, Vector2 PlayerPosition)
@@ -83,6 +83,11 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         GetComponent<AudioSource>().Play();
-        GetComponentInChildren<ParticleSystem>().Play();
+
+        //spawn the bullet
+        GameObject bullet = Instantiate(BulletPrefab, BulletSpawnPosition.transform.position, Quaternion.identity);
+        bullet.transform.rotation = transform.rotation;
+        bullet.GetComponent<Rigidbody2D>().velocity = bulletSpeed * transform.right;
+
     }
 }
