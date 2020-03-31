@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 
     public float RespawnTime;
     private float DeathTime;
-    public int DeathScore = -10;
+    public int DeathScorePenalty = -10;
     private ScorePlayers scorer;
 
     [Header("Events")]
@@ -262,7 +262,7 @@ public class Player : MonoBehaviour
         if (Health <= 0)
         {
             Die();
-            scorer.PlayerKills(this);
+            scorer.PlayerDies(this);
         }
     }
 
@@ -305,6 +305,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             DamageTime = 0;
+            TakeDamage(collision.gameObject.GetComponent<Enemy>().Damage);
         }
     }
 

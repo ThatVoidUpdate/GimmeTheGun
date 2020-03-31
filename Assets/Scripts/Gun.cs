@@ -88,6 +88,15 @@ public class Gun : MonoBehaviour
         GameObject bullet = Instantiate(BulletPrefab, BulletSpawnPosition.transform.position, Quaternion.identity);
         bullet.transform.rotation = transform.rotation;
         bullet.GetComponent<Rigidbody2D>().velocity = bulletSpeed * transform.right;
+        RaycastHit2D[] closeObjects = Physics2D.CircleCastAll(transform.position, HeldDistance * 5, Vector3.forward);
+        foreach (RaycastHit2D hit in closeObjects)
+        {
+            if (hit.collider.gameObject.GetComponent<Player>() != null)
+            {
+                bullet.GetComponent<Bullet>().SetSourcePlayer(hit.collider.gameObject.GetComponent<Player>());
+            }
+        }
+        
 
     }
 }

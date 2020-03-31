@@ -605,6 +605,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CentreWall
       objectReference: {fileID: 0}
+    - target: {fileID: 117524718912781537, guid: c0e062c95a600684ba44efc76f965d99,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 117524718912781542, guid: c0e062c95a600684ba44efc76f965d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -688,6 +693,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091603742318598483, guid: 88893ccafc2c95d42b06181c7ce85d30,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8084881725516846091, guid: 88893ccafc2c95d42b06181c7ce85d30,
         type: 3}
@@ -1369,47 +1379,47 @@ PrefabInstance:
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: HorizontalLookControl
-      value: Controller1LookHorizontal
+      value: Controller0LookHorizontal
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: VerticalLookControl
-      value: Controller1LookVertical
+      value: Controller0LookVertical
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: HorizontalMoveControl
-      value: Controller1MoveVertical
+      value: Controller0MoveVertical
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: VerticalMoveControl
-      value: Controller1MoveHorizontal
+      value: Controller0MoveHorizontal
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: GrabControl
-      value: Controller1Grab
+      value: Controller0Grab
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: ShootControl
-      value: Controller1Shoot
+      value: Controller0Shoot
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: SummonControl
-      value: Controller1Summon
+      value: Controller0Summon
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: PushControl
-      value: Controller1Push
+      value: Controller0Push
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: MenuControl
-      value: Controller1Menu
+      value: Controller0Menu
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
@@ -1671,6 +1681,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 117524718912781537, guid: c0e062c95a600684ba44efc76f965d99,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 117524718912781542, guid: c0e062c95a600684ba44efc76f965d99,
         type: 3}
@@ -2708,7 +2723,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834721926}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243989257252319200, guid: f120d96b1527b8c418a910c48f7d4bb3,
     type: 2}
@@ -3105,6 +3120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 117524718912781537, guid: c0e062c95a600684ba44efc76f965d99,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 117524718912781542, guid: c0e062c95a600684ba44efc76f965d99,
         type: 3}
@@ -3567,6 +3587,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 2091603742318598483, guid: 88893ccafc2c95d42b06181c7ce85d30,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8084881725516846091, guid: 88893ccafc2c95d42b06181c7ce85d30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4020,6 +4045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: HeldDistance
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155715651085213128, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2770653088723665101, guid: e6c3fdae9d7f8d749b9e692f0a92a6ac,
         type: 3}

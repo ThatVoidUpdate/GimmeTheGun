@@ -21,7 +21,9 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private Player LastDamagedBy;
+    [HideInInspector]
+    public Player LastDamagedBy;
+
     protected bool IsSpinning = false;
     public float SpinSpeed = 10;
 
@@ -40,8 +42,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //transform.LookAt(Target.transform);
-        //transform.Translate((Target.transform.position - transform.position).normalized * Speed * Time.deltaTime);]
         rb.MovePosition(transform.position + (Target.transform.position - transform.position).normalized * Speed);
 
         if (IsSpinning)
@@ -50,46 +50,34 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    /*public void OnCollisionEnter2D(Collision2D collision)
     {        
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+    }*/
 
-    }
-
-    public void OnParticleCollision(GameObject ParticleSystem)
+    public void TakeDamage(float DamageAmount, Player sourcePlayer)
     {
-        List<Vector4> data = new List<Vector4>();
-        ParticleSystem.GetComponent<ParticleSystem>().GetCustomParticleData(data, ParticleSystemCustomData.Custom1);
-        TakeDamage(data[0].x);
-        //LastDamagedBy = Physics2D.OverlapCircleAll(GameObject.FindGameObjectWithTag("Gun").transform.position, 2f, LayerMask.GetMask("Player"))[0].GetComponent<Player>();
-    }
-
-    public void TakeDamage(float DamageAmount)
-    {
+        if (sourcePlayer != null)
+        {
+            LastDamagedBy = sourcePlayer;
+        }
         Health -= DamageAmount * DamageTakenModifier;
         if (Health <= 0)
         {
             Die();
         }
+        
     }
 
     public void Die()
     {
-        if (GetComponent<Smash>())
-        {
-            GetComponent<Smash>().DoSmash();
-        }
-        else
-        {
-            Destroy(this.gameObject);
-            scorer.EnemyKill(this);
-        }
+        Destroy(this.gameObject);
+        scorer.EnemyKill(this);
         OnDie.Invoke();
-
     }
 
     public void Spin(bool DoSpin)

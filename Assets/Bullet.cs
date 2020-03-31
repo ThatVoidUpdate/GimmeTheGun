@@ -8,14 +8,23 @@ public class Bullet : MonoBehaviour
     [HideInInspector]
     public Player SourcePlayer;
 
-    void Start()
+    public void SetSourcePlayer(Player _SourcePlayer)
     {
-        
+        SourcePlayer = _SourcePlayer;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            //we hit an enemy
+            collision.collider.gameObject.GetComponent<Enemy>().TakeDamage(Damage, SourcePlayer);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            //we hit a wall
+            Destroy(gameObject);
+        }
     }
 }

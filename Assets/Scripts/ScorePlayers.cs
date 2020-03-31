@@ -14,39 +14,34 @@ public class ScorePlayers : MonoBehaviour
 
     public void EnemyKill(Enemy enemy)
     {
-        if (enemy.transform.position.x > 0)
-        {//enemy is on the right
-            RightScore += enemy.ScoreValue;
-        }
-        else if (enemy.transform.position.x < 0)
-        {//enemy is on the right
-            LeftScore += enemy.ScoreValue;
-        }
-        else
+        if (enemy.LastDamagedBy != null)
         {
-            //wat
+            if (enemy.LastDamagedBy.ID == PlayerID.Left)
+            {
+                LeftScore += enemy.ScoreValue;
+            }
+            else
+            {
+                RightScore += enemy.ScoreValue;
+            }
         }
 
-        LeftScoreText.text = "Left score" + LeftScore.ToString();
-        RightScoreText.text = "Right score" + RightScore.ToString();
+        LeftScoreText.text = "Score: " + LeftScore.ToString();
+        RightScoreText.text = "Score: " + RightScore.ToString();
     }
-    public void PlayerKills(Player player)
+    public void PlayerDies(Player player)
     {
-        if (player.transform.position.x > 0)
-        {//enemy is on the right
-            RightScore += player.DeathScore;
-        }
-        else if (player.transform.position.x < 0)
-        {//enemy is on the right
-            LeftScore += player.DeathScore;
+        if (player.ID == PlayerID.Left)
+        {
+            LeftScore += player.DeathScorePenalty;
         }
         else
         {
-            //wat
+            RightScore += player.DeathScorePenalty;
         }
 
-        LeftScoreText.text = "Left score" + LeftScore.ToString();
-        RightScoreText.text = "Right score" + RightScore.ToString();
+        LeftScoreText.text = "Score: " + LeftScore.ToString();
+        RightScoreText.text = "Score: " + RightScore.ToString();
     }
 
 }

@@ -84,7 +84,6 @@ public class Powerup : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             FindObjectOfType<BarkEvents>().TriggerBarkLine(BarkEventTypes.PowerupPickup, collision.gameObject);
-            //BarkLineEvent.Invoke(BarkEventTypes.PowerupPickup, collision.gameObject);
             StartCoroutine(DoPowerup());
         }
     }
@@ -120,7 +119,7 @@ public class Powerup : MonoBehaviour
             case PowerupType.DestroyAllEnemies:
                 foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
                 {
-                    enemy.GetComponent<Enemy>().TakeDamage(99999999999999); //ITS OVER 9000!!
+                    enemy.GetComponent<Enemy>().TakeDamage(99999999999999, null); //ITS OVER 9000!!
                 }
                 break;
 
@@ -166,7 +165,7 @@ public class Powerup : MonoBehaviour
                 {
                     foreach (Collider2D enemy in Physics2D.OverlapCircleAll(transform.position, BombRadius))
                     {
-                        enemy.GetComponent<Enemy>().TakeDamage(999999999999999);//ITS OVER 9000!!!
+                        enemy.GetComponent<Enemy>().TakeDamage(999999999999999, null);//ITS OVER 9000!!!
                     }
                 }
                 catch { }
