@@ -2,58 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GunType {Pistol, RocketLauncher, Flamethrower, Shotgun}
-
-
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public class Gun : MonoBehaviour
+public class Shotgun : Gun
 {
-    [Space]
-    public float ShotsPerSecond;
-    public bool Shooting;
-    
+    [Header("Shotgun Pellet Settings")]
+    public float SpreadAngle = 15;
+    public float PelletAmount = 10;
 
-    [Space]
-    public float HeldDistance;
 
-    [Space]
-    public GunType type;
+    private new float TimeSinceShot = 999;
+    private new SpriteRenderer rend;
 
-    protected float TimeSinceShot = 999;
-    protected SpriteRenderer rend;
+    private new Direction GunSide; //Left is true, right is false
 
-    protected Direction GunSide; //Left is true, right is false
-
-    public float bulletSpeed;
-    public GameObject BulletPrefab;
-    public GameObject BulletSpawnPosition;
-
-    [HideInInspector]
-    public bool OnLeftSideOfScreen;
-
-    public void Start()
+    public new void Start()
     {
         rend = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
-    {        
+    {
         if (Shooting && (BulletSpawnPosition.transform.position.x < 0) == OnLeftSideOfScreen)
         {
-            if (TimeSinceShot > (1/ShotsPerSecond))
+            if (TimeSinceShot > (1 / ShotsPerSecond))
             {
                 Shoot();
                 TimeSinceShot = 0;
             }
-        }      
+        }
 
         TimeSinceShot += Time.deltaTime;
     }
 
-    public void SetAngle(float angle, Vector2 PlayerPosition)
+    public new void SetAngle(float angle, Vector2 PlayerPosition)
     {
 
         if (angle < -270 - 45 && GunSide != Direction.Right)
@@ -72,7 +56,7 @@ public class Gun : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, angle);
             transform.localScale = new Vector2(1, -1);
         }
-        else if(GunSide == Direction.Right)
+        else if (GunSide == Direction.Right)
         {//gun is on the right side of hte player
             transform.position = PlayerPosition + new Vector2(HeldDistance, 0);
             transform.eulerAngles = new Vector3(0, 0, angle);
@@ -80,23 +64,30 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void Shoot()
+
+
+
+    public new void Shoot()
     {
+        print("shooting");
         GetComponent<AudioSource>().Play();
 
         //spawn the bullet
-        GameObject bullet = Instantiate(BulletPrefab, BulletSpawnPosition.transform.position, Quaternion.identity);
-        bullet.transform.rotation = transform.rotation;
-        bullet.GetComponent<Rigidbody2D>().velocity = bulletSpeed * transform.right;
-        RaycastHit2D[] closeObjects = Physics2D.CircleCastAll(transform.position, HeldDistance * 5, Vector3.forward);
-        foreach (RaycastHit2D hit in closeObjects)
+        for (int i = 0; i < PelletAmount; i++)
         {
-            if (hit.collider.gameObject.GetComponent<Player>() != null)
+            GameObject bullet = Instantiate(BulletPrefab, BulletSpawnPosition.transform.position, Quaternion.identity);
+            bullet.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0,0,Random.Range(-SpreadAngle / 2, SpreadAngle / 2)));
+            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpeed * bullet.transform.right;
+
+            RaycastHit2D[] closeObjects = Physics2D.CircleCastAll(transform.position, HeldDistance * 5, Vector3.forward);
+
+            foreach (RaycastHit2D hit in closeObjects)
             {
-                bullet.GetComponent<Bullet>().SetSourcePlayer(hit.collider.gameObject.GetComponent<Player>());
+                if (hit.collider.gameObject.GetComponent<Player>() != null)
+                {
+                    bullet.GetComponent<Bullet>().SetSourcePlayer(hit.collider.gameObject.GetComponent<Player>());
+                }
             }
         }
-        
-
     }
 }
