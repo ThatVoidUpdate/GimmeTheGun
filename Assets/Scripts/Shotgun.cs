@@ -11,12 +11,6 @@ public class Shotgun : Gun
     public float SpreadAngle = 15;
     public float PelletAmount = 10;
 
-
-    private new float TimeSinceShot = 999;
-    private new SpriteRenderer rend;
-
-    private new Direction GunSide; //Left is true, right is false
-
     public new void Start()
     {
         rend = GetComponent<SpriteRenderer>();
@@ -64,12 +58,8 @@ public class Shotgun : Gun
         }
     }
 
-
-
-
     public new void Shoot()
     {
-        print("shooting");
         GetComponent<AudioSource>().Play();
 
         //spawn the bullet
