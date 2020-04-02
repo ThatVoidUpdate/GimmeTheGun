@@ -70,7 +70,7 @@ public class SelectorScript : MonoBehaviour {
         }
         else
         {
-            CharacterInt = 4;
+            CharacterInt = 3;
         }
 
     }
