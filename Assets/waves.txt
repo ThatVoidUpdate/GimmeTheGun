@@ -8,14 +8,14 @@ Fast 2, Standard 2
 Fast 4, MoreDamage 2, Standard 1
 Fast 4, Faster 3, Standard 1
 Fast 7, Standard 2
-Poison 10
+Poison 8
 Standard 2, Faster 2, Poison 2
 Standard 1, MoreDamage 2, Faster 1, Strong 2
 Standard 1, Strong 2, Poison 4
 Standard 2, MoreDamage 1, Faster 1, Fast 5
-Ninja 10
-Beefy 1, Fast 8, Ninja 3
-Beefy 2, Poison 8, Ninja 8
-Standard 3, Strong 2, MoreDamage 3, Fast 10, Ninja 5
-Standard 3, Faster 2, Fast 2, Bloated 3
-Standard 6, Ninja 4, Bloated 5
+Ninja 8
+Beefy 1, Fast 6, Ninja 3
+Beefy 2, Standard 2
+Strong 2, MoreDamage 1, Fast 6, Ninja 5
+Standard 1, Faster 2, Fast 2,
+Standard 3, MoreDamage 2, Ninja 4, Bloated 2
