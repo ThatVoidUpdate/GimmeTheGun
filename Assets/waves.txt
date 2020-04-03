@@ -1,21 +1,21 @@
 #Example waves file
 Standard 2, Faster 2
 Standard 4, MoreDamage 2
-Standard 4, Strong 1, MoreDamage 1, Faster 1, Fast 2
-Standard 5, MoreDamage 3, Faster 2, Fast 5
+Standard 4, Strong 1, MoreDamage 1, Faster 1
+Standard 5, MoreDamage 3, Faster 2
 Fast 10
-Fast 2, Poison 2
-Fast 4, Poison 5
-Fast 6, Poison 6
-Fast 7, Poison 7
-Fast 10, Poison 10
-Standard 4, Faster 4, Ninja 2, Poison 2
-Standard 1, MoreDamage 2, Faster 1, Strong 2, Ninja 6
-Standard 4, Faster 2, Ninja 6, Poison 4
-Standard 2, MoreDamage 1, Faster 1, Fast 5, Ninja 10
-Poison 20
+Fast 2, Standard 2
+Fast 4, MoreDamage 2, Standard 1
+Fast 4, Faster 3, Standard 1
+Fast 7, Standard 2
+Poison 10
+Standard 2, Faster 2, Poison 2
+Standard 1, MoreDamage 2, Faster 1, Strong 2
+Standard 1, Strong 2, Poison 4
+Standard 2, MoreDamage 1, Faster 1, Fast 5
+Ninja 10
 Beefy 1, Fast 8, Ninja 3
 Beefy 2, Poison 8, Ninja 8
 Standard 3, Strong 2, MoreDamage 3, Fast 10, Ninja 5
-Standard 3, Faster 2, Fast 16, Bloated 3
-Standard 20, Ninja 20, Bloated 5
+Standard 3, Faster 2, Fast 2, Bloated 3
+Standard 6, Ninja 4, Bloated 5
