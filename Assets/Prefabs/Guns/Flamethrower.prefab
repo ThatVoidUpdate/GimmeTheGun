@@ -145,10 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotsPerSecond: 100
   Shooting: 0
-  bullet: {fileID: 8585553154183444644, guid: 64775e72051d38b4882d7f152135aa73, type: 3}
-  BulletSpeed: 10
   HeldDistance: 1
-  BulletSpawn: {fileID: 0}
   type: 0
   OnLeftSideOfScreen: 0
 --- !u!82 &6111948976387259139
@@ -160,8 +157,9 @@ AudioSource:
   m_GameObject: {fileID: 3948224785865350264}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f120d96b1527b8c418a910c48f7d4bb3,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 641b9a8f79cbb9a45ac071a386686c64, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
