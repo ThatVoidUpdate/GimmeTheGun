@@ -46,9 +46,6 @@ public class Powerup : MonoBehaviour
             case PowerupType.FastPlayer:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Player_clock_1");
                 break;
-            case PowerupType.Bomb:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bomb");
-                break;
             case PowerupType.Drunk:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/DrunkMode");
                 break;
@@ -57,12 +54,6 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupType.Cocaine:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Cocaine");
-                break;
-            case PowerupType.HotPotato:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/HotPotato");
-                break;
-            case PowerupType.StickyGun:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/Bottle");
                 break;
             case PowerupType.fourTwenty:
                 GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/PowerUps/NewPartyHat");
