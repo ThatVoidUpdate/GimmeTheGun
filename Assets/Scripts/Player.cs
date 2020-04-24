@@ -94,6 +94,15 @@ public class Player : MonoBehaviour
         Health = MaxHealth;
 
         scorer = FindObjectOfType<ScorePlayers>();
+
+        if(ID == PlayerID.Left)
+        {
+            GetComponent<SpriteRenderer>().sprite = SelectorScript.instance.spriteToUse;
+        }
+        else if(ID == PlayerID.Right)
+        {
+            GetComponent<SpriteRenderer>().sprite = SelectorScript2.instance.spriteToUse;
+        }
     }
 
 

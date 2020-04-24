@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SelectorScript : MonoBehaviour {
 
+    public static SelectorScript instance = null;
+    public Sprite spriteToUse = null;
+
     public GameObject Football;
     public GameObject Scientist;
     public GameObject Soldier;
@@ -19,12 +22,23 @@ public class SelectorScript : MonoBehaviour {
     //stating the sprites
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        } else {
+            instance = this;
+        }
         CharacterPosition = Soldier.transform.position;
         OffScreen = Scientist.transform.position;
         SoldierRender = Soldier.GetComponent<SpriteRenderer>();
         ScientistRender = Scientist.GetComponent<SpriteRenderer>();
         FootballRender = Football.GetComponent<SpriteRenderer>();
 
+    }
+
+    private void Start()
+    {
+        spriteToUse = SoldierRender.sprite;
     }
 
     //This is used to render in the next character and move the previous character off screen
@@ -37,6 +51,7 @@ public class SelectorScript : MonoBehaviour {
                 Soldier.transform.position = OffScreen;
                 Scientist.transform.position = CharacterPosition;
                 ScientistRender.enabled = true;
+                spriteToUse = ScientistRender.sprite;
                 CharacterInt++;
                 break;
             case 2:
@@ -44,6 +59,8 @@ public class SelectorScript : MonoBehaviour {
                 Scientist.transform.position = OffScreen;
                 Football.transform.position = CharacterPosition;
                 FootballRender.enabled = true;
+                spriteToUse = FootballRender.sprite;
+
                 CharacterInt++;
                 break;
             case 3:
@@ -51,6 +68,8 @@ public class SelectorScript : MonoBehaviour {
                 Football.transform.position = OffScreen;
                 Soldier.transform.position = CharacterPosition;
                 SoldierRender.enabled = true;
+                spriteToUse = SoldierRender.sprite;
+
                 CharacterInt++;
                 ResetInt();
                 break;
