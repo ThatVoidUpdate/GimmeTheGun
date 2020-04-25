@@ -96,7 +96,7 @@ public class SelectorScript : MonoBehaviour {
     public void PlayGame()  
 
     {
-        SceneManager.LoadScene("Complete2Player");
+        SceneManager.LoadScene("Comic");
     }
     
     
