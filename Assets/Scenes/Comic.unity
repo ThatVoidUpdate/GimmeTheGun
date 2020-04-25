@@ -446,3 +446,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9bc86ecb72b8b4c8a183f5cb233e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panels:
+  - {fileID: 21300000, guid: e8a62decb3f19e64a85a571ccdea7923, type: 3}
+  - {fileID: 21300000, guid: 709bb028062a7064db7b9f7ad90c367b, type: 3}
+  - {fileID: 21300000, guid: f8fb9534d78a44e4395ca3decd06f387, type: 3}
+  - {fileID: 21300000, guid: c9109204e6efd034495411a97cf46fed, type: 3}
+  timings:
+  - 1
+  - 1
+  - 1
+  - 1
+  FadeTime: 1
+  displayImage: {fileID: 411264442}
