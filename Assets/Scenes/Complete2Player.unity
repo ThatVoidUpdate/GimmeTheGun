@@ -2678,7 +2678,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834721926}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be7e09a6d1b627a40b9a4a06b19e30dc, type: 3}
   m_Name: 
@@ -4049,6 +4049,11 @@ PrefabInstance:
       propertyPath: BackgroundChangeEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2393269086270930100, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
+        type: 3}
+      propertyPath: WavesFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 0dcdf43f82f11634e861d335777b3855, type: 3}
     - target: {fileID: 4768074863980927775, guid: 44a8c764ad3ad1a44a3cb4dcb2080336,
         type: 3}
       propertyPath: spawnee

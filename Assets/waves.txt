@@ -17,5 +17,5 @@ Ninja 8
 Beefy 1, Fast 6, Ninja 3
 Beefy 2, Standard 2
 Strong 2, MoreDamage 1, Fast 6, Ninja 5
-Standard 1, Faster 2, Fast 2,
+Standard 1, Faster 2, Fast 2
 Standard 3, MoreDamage 2, Ninja 4, Bloated 2

@@ -12,8 +12,7 @@ public enum EnemyType { Standard, Faster, MoreDamage, Strong, Ninja, Fast, Poiso
 
 public class WaveSpawner : MonoBehaviour
 {
-    public string FileName;
-    public string FallbackFileName;
+    public TextAsset WavesFile;
 
     public GameObject StandardEnemy;
     public GameObject FasterEnemy;
@@ -58,17 +57,8 @@ public class WaveSpawner : MonoBehaviour
             { EnemyType.Bloated, HexagonBloated},
             { EnemyType.Beefy, BeefyHexagon}};
 
-        string FilePath;
-        if (File.Exists(FileName))
-        {
-            FilePath = FileName;
-        }
-        else
-        {
-            FilePath = FallbackFileName;
-        }
 
-        string[] lines = File.ReadAllLines(FilePath);
+        string[] lines = WavesFile.text.Split('\n');
         lines = (from line in lines where !line.StartsWith("#") select line).ToArray();
         lines = (from line in lines where line != "" select line).ToArray();
 
@@ -79,7 +69,7 @@ public class WaveSpawner : MonoBehaviour
                 Backgrounds background;
                 if (!Enum.TryParse(line.Trim().Split(' ')[0].Substring(1, line.Trim().Split(' ')[0].Length - 1), out background))
                 {
-                    Debug.LogWarning("Background type " + line.Trim().Split(' ')[0].Substring(1, line.Trim().Split(' ')[0].Length - 1) + " does not exist (" + FilePath + ")");
+                    Debug.LogWarning("Background type " + line.Trim().Split(' ')[0].Substring(1, line.Trim().Split(' ')[0].Length - 1) + " does not exist");
                 }
                 else
                 {
@@ -91,6 +81,7 @@ public class WaveSpawner : MonoBehaviour
             else
             {
                 string[] spawns = line.Split(',');
+                print(line.Split(',')[0]);
                 List<(GameObject, int)> wave = new List<(GameObject, int)>();
 
                 foreach (string spawn in spawns)
@@ -98,7 +89,7 @@ public class WaveSpawner : MonoBehaviour
                     EnemyType type;
                     if (!Enum.TryParse(spawn.Trim().Split(' ')[0], out type))
                     {
-                        Debug.LogWarning("Enemy type " + spawn.Trim().Split(' ')[0] + " does not exist (" + FilePath + ")");
+                        Debug.LogWarning("Enemy type " + spawn.Trim().Split(' ')[0] + " does not exist");
                     }
                     try
                     {
