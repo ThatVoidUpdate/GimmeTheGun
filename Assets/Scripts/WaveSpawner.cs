@@ -37,6 +37,8 @@ public class WaveSpawner : MonoBehaviour
     private Dictionary<EnemyType, GameObject> EnemyTypes;
 
     public BackgroundEvent BackgroundChangeEvent;
+    public UnityEvent WinEvent;
+
     private Dictionary<int, Backgrounds> backgroundChanges = new Dictionary<int, Backgrounds>();
 
     // Start is called before the first frame update
@@ -81,7 +83,6 @@ public class WaveSpawner : MonoBehaviour
             else
             {
                 string[] spawns = line.Split(',');
-                print(line.Split(',')[0]);
                 List<(GameObject, int)> wave = new List<(GameObject, int)>();
 
                 foreach (string spawn in spawns)
@@ -117,6 +118,13 @@ public class WaveSpawner : MonoBehaviour
         {//All enemies have been killed. MOAR ENEMIES
             CurrentWave++;
             WaveCounter.text = "Wave: " + CurrentWave.ToString();
+
+            //check for win condition
+            if (CurrentWave >= Waves.Count)
+            {
+                WinEvent.Invoke();
+                return;
+            }
 
             if (backgroundChanges.ContainsKey(CurrentWave))
             {
