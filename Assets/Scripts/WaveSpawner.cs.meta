@@ -3,7 +3,27 @@ guid: 25f1aa16888f3b649b25e0c49a97cacc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - WavesFile: {fileID: 4900000, guid: 0dcdf43f82f11634e861d335777b3855, type: 3}
+  - StandardEnemy: {fileID: 8048073611069811309, guid: 6ae7e1f932c55dd44ab93051a7157326,
+      type: 3}
+  - FasterEnemy: {fileID: 3464648849592760336, guid: 60c17c60441c0cf468acba4385ec6ce3,
+      type: 3}
+  - MoreDamageEnemy: {fileID: 8048073611069811309, guid: 7bbef006944a9974ea0ebac69e89654e,
+      type: 3}
+  - StrongEnemy: {fileID: 8034868220926690958, guid: c850d868402502e46bfad2c3cb8f6bc2,
+      type: 3}
+  - NinjaEnemy: {fileID: 6078072098651713398, guid: 9e1d469f90a4eaa4d8f6dbdf1519a88c,
+      type: 3}
+  - FastEnemy: {fileID: 3464648849592760336, guid: 60c17c60441c0cf468acba4385ec6ce3,
+      type: 3}
+  - PoisonEnemy: {fileID: 6675327735767854975, guid: cb3d7cfe29b0f6d4f940ff58e1f758fe,
+      type: 3}
+  - HexagonBloated: {fileID: 8034868220926690958, guid: c850d868402502e46bfad2c3cb8f6bc2,
+      type: 3}
+  - BeefyHexagon: {instanceID: 0}
+  - Boss: {instanceID: 0}
+  - WaveCounter: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
