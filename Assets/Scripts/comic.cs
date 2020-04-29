@@ -27,12 +27,12 @@ public class comic : MonoBehaviour
 
     void Update()
     {
-        //wait for timings[index]
-
-        //fade out
-        //change panel
-        //fade in
-        //repeat
+        if (Input.GetAxis("Submit") == 1)
+        {
+            //skip cutscene
+            StopAllCoroutines();
+            SceneManager.LoadScene("Complete2Player");
+        }
     }
 
     public IEnumerator ComicWait()
