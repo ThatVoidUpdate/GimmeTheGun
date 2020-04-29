@@ -62,7 +62,7 @@ public class SelectorScript : MonoBehaviour {
         else if (Input.GetAxis("Controller0MoveVertical") == -1 && !LeftDownHeld)
         {
             //previous character left
-            leftSelectionIndex = (leftSelectionIndex - 1) % AllPlayerGraphics.Length;
+            leftSelectionIndex = leftSelectionIndex == 0 ? AllPlayerGraphics.Length - 1 : (leftSelectionIndex - 1);
             leftGraphics = AllPlayerGraphics[leftSelectionIndex];
             LeftPlayer.sprite = leftGraphics.FrontSprite;
             LeftDownHeld = true;
@@ -78,7 +78,7 @@ public class SelectorScript : MonoBehaviour {
         else if (Input.GetAxis("Controller1MoveVertical") == -1 && !RightDownHeld)
         {
             //previous character right
-            rightSelectionIndex = (rightSelectionIndex - 1) % AllPlayerGraphics.Length;
+            rightSelectionIndex = rightSelectionIndex == 0 ? AllPlayerGraphics.Length - 1 : (rightSelectionIndex - 1);
             rightGraphics = AllPlayerGraphics[rightSelectionIndex];
             RightPlayer.sprite = rightGraphics.FrontSprite;
             RightDownHeld = true;
