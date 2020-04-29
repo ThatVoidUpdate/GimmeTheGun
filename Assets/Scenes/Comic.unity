@@ -447,14 +447,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels:
-  - {fileID: 21300000, guid: e8a62decb3f19e64a85a571ccdea7923, type: 3}
-  - {fileID: 21300000, guid: 709bb028062a7064db7b9f7ad90c367b, type: 3}
-  - {fileID: 21300000, guid: f8fb9534d78a44e4395ca3decd06f387, type: 3}
-  - {fileID: 21300000, guid: c9109204e6efd034495411a97cf46fed, type: 3}
+  - {fileID: 21300000, guid: 41b39356b4d90c74bb93de6ecfe8bb14, type: 3}
+  - {fileID: 21300000, guid: 2a6a02bdc4ae56c4daa7097b78386bf0, type: 3}
+  - {fileID: 21300000, guid: ac3ebf081da7eb64b87354ca443c5bc0, type: 3}
+  - {fileID: 21300000, guid: c7a0ab7152b23e64fa0e05246d25dbba, type: 3}
   timings:
-  - 1
-  - 1
-  - 1
-  - 1
-  FadeTime: 1
+  - 10
+  - 10
+  - 10
+  - 10
+  FadeTime: 0.5
   displayImage: {fileID: 411264442}
