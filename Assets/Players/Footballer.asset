@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afda938d4ddc93e48a2f9eb22c811d6d, type: 3}
   m_Name: Footballer
   m_EditorClassIdentifier: 
-  FrontSprite: {fileID: 0}
-  BackSprite: {fileID: 0}
-  LeftSprite: {fileID: 0}
-  RightSprite: {fileID: 0}
+  FrontSprite: {fileID: 21300000, guid: 6dd34a1dadd8e8f4a8d385bcf31295e5, type: 3}
+  BackSprite: {fileID: 21300000, guid: bbc206c8741310444903e618a3ab82b1, type: 3}
+  LeftSprite: {fileID: 21300000, guid: 8ff40b1ad9cb7a94d90238fc7eee04d7, type: 3}
+  RightSprite: {fileID: 21300000, guid: 31b7563680176bf48b5904de6d101cae, type: 3}

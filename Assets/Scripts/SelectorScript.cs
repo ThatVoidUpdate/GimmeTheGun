@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SelectorScript : MonoBehaviour {
 
     public static SelectorScript instance = null;
-    public Sprite spriteToUse = null;
 
-    public GameObject Football;
-    public GameObject Scientist;
-    public GameObject Soldier;
+    public Image LeftPlayer;
+    public Image RightPlayer;
 
-    private Vector3 CharacterPosition;
-    private Vector3 OffScreen;
+    [HideInInspector]
+    public PlayerGraphics leftGraphics;
+    [HideInInspector]
+    public PlayerGraphics rightGraphics;
 
-    private int CharacterInt = 1;
+    public PlayerGraphics[] AllPlayerGraphics;
 
-    private SpriteRenderer ScientistRender, FootballRender, SoldierRender;
+    private int leftSelectionIndex = 0;
+    private int rightSelectionIndex = 0;
 
     //stating the sprites
     private void Awake()
@@ -28,71 +30,49 @@ public class SelectorScript : MonoBehaviour {
         } else {
             instance = this;
         }
-        CharacterPosition = Soldier.transform.position;
-        OffScreen = Scientist.transform.position;
-        SoldierRender = Soldier.GetComponent<SpriteRenderer>();
-        ScientistRender = Scientist.GetComponent<SpriteRenderer>();
-        FootballRender = Football.GetComponent<SpriteRenderer>();
 
     }
 
     private void Start()
     {
-        spriteToUse = SoldierRender.sprite;
+        leftGraphics = AllPlayerGraphics[0];
+        rightGraphics = AllPlayerGraphics[0];
+        LeftPlayer.sprite = leftGraphics.FrontSprite;
+        RightPlayer.sprite = rightGraphics.FrontSprite;
     }
 
-    //This is used to render in the next character and move the previous character off screen
-    public void NextCharacter()
+    private void Update()
     {
-        switch (CharacterInt)
+        if(Input.GetAxis("Controller0MoveVertical") == 1)
         {
-            case 1:
-                SoldierRender.enabled = false;
-                Soldier.transform.position = OffScreen;
-                Scientist.transform.position = CharacterPosition;
-                ScientistRender.enabled = true;
-                spriteToUse = ScientistRender.sprite;
-                CharacterInt++;
-                break;
-            case 2:
-                ScientistRender.enabled = false;
-                Scientist.transform.position = OffScreen;
-                Football.transform.position = CharacterPosition;
-                FootballRender.enabled = true;
-                spriteToUse = FootballRender.sprite;
-
-                CharacterInt++;
-                break;
-            case 3:
-                FootballRender.enabled = false;
-                Football.transform.position = OffScreen;
-                Soldier.transform.position = CharacterPosition;
-                SoldierRender.enabled = true;
-                spriteToUse = SoldierRender.sprite;
-
-                CharacterInt++;
-                ResetInt();
-                break;
-            default:
-                ResetInt();
-                break;
+            //next character left
+            leftSelectionIndex = (leftSelectionIndex + 1) % AllPlayerGraphics.Length;
+            leftGraphics = AllPlayerGraphics[leftSelectionIndex];
+            LeftPlayer.sprite = leftGraphics.FrontSprite;
+        }
+        else if (Input.GetAxis("Controller0MoveVertical") == -1)
+        {
+            //previous character left
+            leftSelectionIndex = (leftSelectionIndex - 1) % AllPlayerGraphics.Length;
+            leftGraphics = AllPlayerGraphics[leftSelectionIndex];
+            LeftPlayer.sprite = leftGraphics.FrontSprite;
+        }
+        if (Input.GetAxis("Controller1MoveVertical") == 1)
+        {
+            //next character right
+            rightSelectionIndex = (rightSelectionIndex + 1) % AllPlayerGraphics.Length;
+            rightGraphics = AllPlayerGraphics[rightSelectionIndex];
+            RightPlayer.sprite = rightGraphics.FrontSprite;
+        }
+        else if (Input.GetAxis("Controller1MoveVertical") == -1)
+        {
+            //previous character right
+            rightSelectionIndex = (rightSelectionIndex - 1) % AllPlayerGraphics.Length;
+            rightGraphics = AllPlayerGraphics[rightSelectionIndex];
+            RightPlayer.sprite = rightGraphics.FrontSprite;
         }
     }
 
-
-    //made for the restart so once its cycled through all the characters it resets.
-    private void ResetInt()
-    {
-        if (CharacterInt >= 3)
-        {
-            CharacterInt = 1;
-        }
-        else
-        {
-            CharacterInt = 3;
-        }
-
-    }
     public void PlayGame()  
 
     {

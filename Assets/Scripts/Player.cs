@@ -52,10 +52,11 @@ public class Player : MonoBehaviour
     private Rigidbody2D Mass;
 
     [Header("Graphics")]
-    public Sprite UpSprite;
-    public Sprite DownSprite;
-    public Sprite LeftSprite;
-    public Sprite RightSprite; //The sprites for each of their respective directions
+    public PlayerGraphics graphics;
+    private Sprite UpSprite;
+    private Sprite DownSprite;
+    private Sprite LeftSprite;
+    private Sprite RightSprite; //The sprites for each of their respective directions
     private SpriteRenderer rend; //The sprite renderer attached to this gameobject
     private Direction CurrentDirection = Direction.Down; //The direction that the player is currently facing
 
@@ -89,20 +90,20 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
 
-        rend.sprite = DownSprite;
-
         Health = MaxHealth;
 
         scorer = FindObjectOfType<ScorePlayers>();
 
         if(ID == PlayerID.Left)
         {
-            GetComponent<SpriteRenderer>().sprite = SelectorScript.instance.spriteToUse;
+            graphics = SelectorScript.instance.leftGraphics;
         }
         else if(ID == PlayerID.Right)
         {
-            GetComponent<SpriteRenderer>().sprite = SelectorScript2.instance.spriteToUse;
+            graphics = SelectorScript.instance.rightGraphics;
         }
+
+        rend.sprite = graphics.FrontSprite;
     }
 
 
@@ -202,22 +203,22 @@ public class Player : MonoBehaviour
         if (theta < -315 && theta > -405 && CurrentDirection != Direction.Left)
         {
             CurrentDirection = Direction.Left;
-            rend.sprite = RightSprite;
+            rend.sprite = graphics.RightSprite;
         }
         else if (theta < -225 && theta > -315 && CurrentDirection != Direction.Up)
         {
             CurrentDirection = Direction.Up;
-            rend.sprite = UpSprite;
+            rend.sprite = graphics.BackSprite;
         }
         else if (theta < -135 && theta > -225 && CurrentDirection != Direction.Right)
         {
             CurrentDirection = Direction.Right;
-            rend.sprite = LeftSprite;
+            rend.sprite = graphics.LeftSprite;
         }
         else if ((theta > -135 || theta < -405) && CurrentDirection != Direction.Down)
         {
             CurrentDirection = Direction.Down;
-            rend.sprite = DownSprite;
+            rend.sprite = graphics.FrontSprite;
         }
 
         //Pull gun twards player

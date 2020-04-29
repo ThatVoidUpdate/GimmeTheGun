@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afda938d4ddc93e48a2f9eb22c811d6d, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
-  FrontSprite: {fileID: 0}
-  BackSprite: {fileID: 0}
-  LeftSprite: {fileID: 0}
-  RightSprite: {fileID: 0}
+  FrontSprite: {fileID: 21300000, guid: 58b99274dfdf30b4fa89687f8ac8f873, type: 3}
+  BackSprite: {fileID: 21300000, guid: 4bd9a0be559112d49872b7bf83a8c227, type: 3}
+  LeftSprite: {fileID: 21300000, guid: b02c524b6ebf2174c9227b5006a42285, type: 3}
+  RightSprite: {fileID: 21300000, guid: a0437aebafb456d4d9f6dc9a1faa1649, type: 3}
