@@ -33,7 +33,9 @@ public class SelectorScript : MonoBehaviour {
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
-        } else {
+        } 
+        else 
+        {
             instance = this;
         }
 
@@ -95,7 +97,6 @@ public class SelectorScript : MonoBehaviour {
     }
 
     public void PlayGame()  
-
     {
         SceneManager.LoadScene("Comic");
     }

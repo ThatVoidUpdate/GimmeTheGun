@@ -14,8 +14,7 @@ public class SendBarkEvent : UnityEvent<BarkEventTypes, GameObject> { } // Can p
 
 public class BarkEvents : MonoBehaviour
 {
-    public string BarkLinesFile;
-    public string FallbackBarkLineFile;
+    public TextAsset BarkLinesFile;
 
     private Dictionary<BarkEventTypes, (float, List<string>)> AllLines = new Dictionary<BarkEventTypes, (float, List<string>)>();
     //type of event, chance that a line will show up, list of all the possible lines
@@ -24,17 +23,7 @@ public class BarkEvents : MonoBehaviour
 
     void Start()
     {
-        string FilePath;
-        if (File.Exists(BarkLinesFile))
-        {
-            FilePath = BarkLinesFile;
-        }
-        else
-        {
-            FilePath = FallbackBarkLineFile;
-        }
-
-        string[] lines = File.ReadAllLines(FilePath);
+        string[] lines = BarkLinesFile.text.Split('\n');
         lines = (from line in lines where !line.StartsWith("#") select line).ToArray();
         lines = (from line in lines where line != "" select line).ToArray();
 
@@ -51,7 +40,7 @@ public class BarkEvents : MonoBehaviour
             {
                 if (!Enum.TryParse(line.Split(']')[0].Substring(1, line.Split(']')[0].Length - 1), out currentType))
                 {
-                    Debug.LogWarning("Event " + line.Split(']')[0].Substring(1, line.Split(']')[0].Length - 1) + " does not exist (" + FilePath + ")");
+                    Debug.LogWarning("Event " + line.Split(']')[0].Substring(1, line.Split(']')[0].Length - 1) + " does not exist (bark lines)");
                 }
 
                 AllLines[currentType] = ((float)Convert.ToDouble(line.Split(']')[1]), AllLines[currentType].Item2);
