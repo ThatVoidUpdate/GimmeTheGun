@@ -94,13 +94,16 @@ public class Player : MonoBehaviour
 
         scorer = FindObjectOfType<ScorePlayers>();
 
-        if(ID == PlayerID.Left)
+        if (SelectorScript.instance != null)
         {
-            graphics = SelectorScript.instance.leftGraphics;
-        }
-        else if(ID == PlayerID.Right)
-        {
-            graphics = SelectorScript.instance.rightGraphics;
+            if (ID == PlayerID.Left)
+            {
+                graphics = SelectorScript.instance.leftGraphics;
+            }
+            else if (ID == PlayerID.Right)
+            {
+                graphics = SelectorScript.instance.rightGraphics;
+            }
         }
 
         rend.sprite = graphics.FrontSprite;
