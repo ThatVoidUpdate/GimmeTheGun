@@ -15,24 +15,16 @@ public class Splash : MonoBehaviour
         {
             StartCoroutine(TosplashTwo ());
         }
-        if (SceneNumber == 1)
-        {
-            StartCoroutine(ToMenuCharlie ());
-        }
+        
+        
     }
 
     IEnumerator TosplashTwo()
     {
         yield return new WaitForSeconds(5);
-        SceneNumber = 2;
-        SceneManager.LoadScene(2);
+        SceneNumber = 1;
+        SceneManager.LoadScene(1);
     }
 
-    IEnumerator ToMenuCharlie ()
-    {
-        yield return new WaitForSeconds(5);
-        SceneNumber = 2;
-        SceneManager.LoadScene(2);
-    }
-
+    
 }

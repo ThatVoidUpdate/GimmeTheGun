@@ -1,16 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MenuSceneChange : MonoBehaviour
+public class StopMenuMusic : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void OnMouseClick() 
-    
+    void Start()
     {
-        SceneManager.LoadScene(2);
-    
+        MenucharacterMusicScript.Instance.gameObject.GetComponent<AudioSource>().Pause();
+        
     }
 
     // Update is called once per frame
