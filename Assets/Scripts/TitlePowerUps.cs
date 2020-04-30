@@ -33,9 +33,6 @@ public class TitlePowerUps : MonoBehaviour
             case PowerupType.FastPlayer:
                 text.text = "Fast player";
                 break;
-            case PowerupType.Bomb:
-                text.text = "Bomb";
-                break;
             case PowerupType.Drunk:
                 text.text = "Drunk";
                 break;
@@ -44,12 +41,6 @@ public class TitlePowerUps : MonoBehaviour
                 break;
             case PowerupType.Cocaine:
                 text.text = "Cocaine";
-                break;
-            case PowerupType.HotPotato:
-                text.text = "Hot potato";
-                break;
-            case PowerupType.StickyGun:
-                text.text = "Sticky gun";
                 break;
             case PowerupType.fourTwenty:
                 text.text = "four twenty";
