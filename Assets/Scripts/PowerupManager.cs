@@ -7,7 +7,7 @@ public class PowerupManager : MonoBehaviour
     private BoxCollider2D SpawnArea;
     private float CurrentTime = 0;
 
-    private PowerupType[] chances = new PowerupType[] { PowerupType.ChangeWeapon, PowerupType.ChangeWeapon, PowerupType.DestroyAllEnemies, PowerupType.SwitchEnemies, PowerupType.HealthUp, PowerupType.DamageUp, PowerupType.SlowEnemy, PowerupType.FastPlayer, PowerupType.Drunk, PowerupType.Weed, PowerupType.Cocaine, PowerupType.fourTwenty, PowerupType.Disco, PowerupType.LSD };
+    private PowerupType[] chances = new PowerupType[] { PowerupType.ChangeWeapon, PowerupType.ChangeWeapon, PowerupType.DestroyAllEnemies, PowerupType.SwitchEnemies, PowerupType.HealthUp, PowerupType.DamageUp, PowerupType.SlowEnemy, PowerupType.FastPlayer, PowerupType.Bomb, PowerupType.Drunk, PowerupType.Weed, PowerupType.Cocaine, PowerupType.HotPotato, PowerupType.StickyGun, PowerupType.fourTwenty, PowerupType.Disco, PowerupType.LSD };
     // Start is called before the first frame update
     void Start()
     {

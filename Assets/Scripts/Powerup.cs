@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public enum PowerupType {ChangeWeapon, DestroyAllEnemies, SwitchEnemies, HealthUp, DamageUp, SlowEnemy, FastPlayer, Drunk, Weed, Cocaine, fourTwenty, Disco, LSD}
+public enum PowerupType {ChangeWeapon, DestroyAllEnemies, SwitchEnemies, HealthUp, DamageUp, SlowEnemy, FastPlayer, Bomb, Drunk, Weed, Cocaine, HotPotato, StickyGun, fourTwenty, Disco, LSD}
 
 
 /*
@@ -152,6 +152,17 @@ public class Powerup : MonoBehaviour
                 }
                 break;
 
+            case PowerupType.Bomb:
+                try
+                {
+                    foreach (Collider2D enemy in Physics2D.OverlapCircleAll(transform.position, BombRadius))
+                    {
+                        enemy.GetComponent<Enemy>().TakeDamage(999999999999999);//ITS OVER 9000!!!
+                    }
+                }
+                catch { }
+                break;
+
             case PowerupType.Drunk:
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {
@@ -163,6 +174,18 @@ public class Powerup : MonoBehaviour
                 break;
             case PowerupType.Cocaine:
                 Time.timeScale = 2;
+                break;
+            case PowerupType.HotPotato:
+                foreach (Collider2D collider in Physics2D.OverlapCircleAll(transform.position, 1))
+                {
+                    if (collider.gameObject.CompareTag("Player"))
+                    {
+                        collider.gameObject.GetComponent<Player>().HeldObject = null;
+                    }
+                }
+                break;
+            case PowerupType.StickyGun:
+                GameObject.FindGameObjectWithTag("Gun").GetComponent<Gun>().Shooting = true;
                 break;
 
             case PowerupType.fourTwenty:
