@@ -9,7 +9,7 @@ public class MenuSceneChange : MonoBehaviour
     public void OnMouseClick() 
     
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     
     }
 
