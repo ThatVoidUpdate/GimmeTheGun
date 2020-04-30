@@ -4770,6 +4770,7 @@ GameObject:
   - component: {fileID: 5592477080160795520}
   - component: {fileID: 7155715651085213128}
   - component: {fileID: 2770653088723665101}
+  - component: {fileID: 2294571818850730959}
   m_Layer: 12
   m_Name: Machine Gun
   m_TagString: Gun
@@ -4913,9 +4914,9 @@ AudioSource:
   m_GameObject: {fileID: 4930244215034406838}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: f120d96b1527b8c418a910c48f7d4bb3,
+  OutputAudioMixerGroup: {fileID: 243800434996121344, guid: f120d96b1527b8c418a910c48f7d4bb3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6b548ff46a9a7de45ab83dcb3cc8eb7e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4a7792f4f926d164da5ca4635c616153, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5001,3 +5002,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!164 &2294571818850730959
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930244215034406838}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -100
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.83
+  m_ReflectionsLevel: -2602
+  m_ReverbLevel: 200
+  m_ReverbDelay: 0.011
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 1
