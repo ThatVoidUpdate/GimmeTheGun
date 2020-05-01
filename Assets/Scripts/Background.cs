@@ -23,7 +23,7 @@ public class Background : MonoBehaviour
                 StartCoroutine(PlayMusic(RockyMusic));
                 break;
             case Backgrounds.Lava:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Lava");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Canyon");
                 StartCoroutine(PlayMusic(LavaMusic));
                 break;
             case Backgrounds.Arctic:
@@ -68,7 +68,7 @@ public class Background : MonoBehaviour
                 StartCoroutine(PlayMusic(RockyMusic));
                 break;
             case Backgrounds.Lava:
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Lava");
+                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Art/Backgrounds/Canyon");
                 StartCoroutine(PlayMusic(LavaMusic));
                 break;
             case Backgrounds.Arctic:

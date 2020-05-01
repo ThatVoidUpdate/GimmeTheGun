@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
 
         if (MenuControlValue)
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("MenuCharlie");
         }
 
         if (PushControlValue)

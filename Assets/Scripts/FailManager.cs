@@ -21,7 +21,7 @@ public class FailManager : MonoBehaviour
             if (Input.GetAxis("Cancel") == 1)
             {
                 //someone is pressing the B button, exit to the menu
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("MenuCharlie");
             }
             
         }
