@@ -1616,47 +1616,47 @@ PrefabInstance:
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: HorizontalLookControl
-      value: Controller0LookHorizontal
+      value: Controller1LookHorizontal
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: VerticalLookControl
-      value: Controller0LookVertical
+      value: Controller1LookVertical
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: HorizontalMoveControl
-      value: Controller0MoveVertical
+      value: Controller1MoveVertical
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: VerticalMoveControl
-      value: Controller0MoveHorizontal
+      value: Controller1MoveHorizontal
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: GrabControl
-      value: Controller0Grab
+      value: Controller1Grab
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: ShootControl
-      value: Controller0Shoot
+      value: Controller1Shoot
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: SummonControl
-      value: Controller0Summon
+      value: Controller1Summon
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: PushControl
-      value: Controller0Push
+      value: Controller1Push
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
       propertyPath: MenuControl
-      value: Controller0Menu
+      value: Controller1Menu
       objectReference: {fileID: 0}
     - target: {fileID: 5909937672650158151, guid: 1e4990cad1a4f9b43a81ba5dc438eae8,
         type: 3}
